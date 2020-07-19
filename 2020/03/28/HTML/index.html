@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>HTML学习笔记 | Hexo</title>
+  <meta name="description" content="[TOC] html基础html文件的基本结构1234567891011&lt;!DOCTYPE HTML&gt;&lt;!--注释是这样写的--&gt;&lt;html&gt;    &lt;head&gt;         &lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot;&gt;        &lt;t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML学习笔记">
+<meta property="og:url" content="http://verge.ink/2020/03/28/HTML/index.html">
+<meta property="og:site_name" content="Verge&#39;s Blog">
+<meta property="og:description" content="[TOC] html基础html文件的基本结构1234567891011&lt;!DOCTYPE HTML&gt;&lt;!--注释是这样写的--&gt;&lt;html&gt;    &lt;head&gt;         &lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot;&gt;        &lt;t">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.mukewang.com/528c50ea000146a205520264.jpg">
+<meta property="og:image" content="http://img.mukewang.com/52da4f2a000150b714280550.jpg">
+<meta property="article:published_time" content="2020-03-28T12:01:31.000Z">
+<meta property="article:modified_time" content="2020-07-17T14:35:23.635Z">
+<meta property="article:author" content="JinXuyang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.mukewang.com/528c50ea000146a205520264.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://verge.ink/2020/03/28/HTML/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Verge&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/jinxuyang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">JinXuyang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Xi&#39;an, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/jinxuyang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/26/Design-Patterns/" class="title">设计模式</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-26T02:32:48.000Z" itemprop="datePublished">2020-06-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/22/MyBatis/" class="title">MyBatis学习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-22T02:21:37.000Z" itemprop="datePublished">2020-06-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/02/Filter-listener/" class="title">Filter-listener</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-02T06:02:01.000Z" itemprop="datePublished">2020-06-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/01/DataSource/" class="title">数据库连接池</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-01T11:46:07.000Z" itemprop="datePublished">2020-06-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/01/cookie-session/" class="title">cookie&amp;session</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-31T16:48:08.000Z" itemprop="datePublished">2020-06-01</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-HTML" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML学习笔记
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/03/28/HTML/" class="article-date">
+	  <time datetime="2020-03-28T12:01:31.000Z" itemprop="datePublished">2020-03-28</time>
+	</a>
+</span>
+        
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/2020/03/28/HTML/" class="leancloud_visitors"  data-flag-title="HTML学习笔记">0</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/03/28/HTML/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="html"><a href="#html" class="headerlink" title="html"></a>html</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="html文件的基本结构"><a href="#html文件的基本结构" class="headerlink" title="html文件的基本结构"></a>html文件的基本结构</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--注释是这样写的--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>这里是head,title里的内容会显示在浏览器标题栏里<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>这里是body<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><h3 id="这些都很简单"><a href="#这些都很简单" class="headerlink" title="这些都很简单"></a>这些都很简单</h3><h4 id="body标签"><a href="#body标签" class="headerlink" title="body标签"></a>body标签</h4><p>一般网页需要展示出来的内容就存放在body标签里</p>
+<h4 id="p标签"><a href="#p标签" class="headerlink" title="p标签"></a>p标签</h4><p>段落标签</p>
+<h4 id="hx标签"><a href="#hx标签" class="headerlink" title="hx标签"></a>hx标签</h4><p>共有h1到h6六个从大到小的标签</p>
+<h4 id="em和strong标签"><a href="#em和strong标签" class="headerlink" title="em和strong标签"></a>em和strong标签</h4><p>em是<em>斜体</em>，strong是<strong>加粗</strong></p>
+<h4 id="span标签"><a href="#span标签" class="headerlink" title="span标签"></a>span标签</h4><p>span本身没有什么作用，它就是用来设置单独的样式用的</p>
+<h4 id="q标签"><a href="#q标签" class="headerlink" title="q标签"></a>q标签</h4><p>短文本引用，引用后会自动给引用的部分加上引号</p>
+<h4 id="blockquote标签"><a href="#blockquote标签" class="headerlink" title="blockquote标签"></a>blockquote标签</h4><blockquote>长文本引用，这个不会加引号，但是会产生缩进</blockquote>
+
+<p><img src="http://img.mukewang.com/528c50ea000146a205520264.jpg" alt="blockquote"></p>
+<h4 id="br标签和-amp-nbsp"><a href="#br标签和-amp-nbsp" class="headerlink" title="br标签和&amp;nbsp;"></a>br标签和&amp;nbsp;</h4><p>html中回车空格是无效的，换行需要&lt;br /&gt;或&lt;br&gt;(常用&lt;br /&gt;)</p>
+<p>br与其他标签不同的是，br不需要成对出现</p>
+<p>&amp;nbsp;就代表空格</p>
+<h4 id="hr标签"><a href="#hr标签" class="headerlink" title="hr标签"></a>hr标签</h4><p>效果</p>
+<hr>
+
+<p>写成&lt;hr&gt;或&lt;hr /&gt;</p>
+<h4 id="address标签"><a href="#address标签" class="headerlink" title="address标签"></a>address标签</h4><p>效果</p>
+<address>陕西西安</address>
+
+<h4 id="code标签"><a href="#code标签" class="headerlink" title="code标签"></a>code标签</h4><p>效果</p>
+<p><code>while(1)</code></p>
+<h4 id="pre标签"><a href="#pre标签" class="headerlink" title="pre标签"></a>pre标签</h4><p>插入大段代码</p>
+<pre>
+    #include<iostream>
+    using namespace std;
+    int main(){
+        cout << "Hello Word" << endl;
+    }
+</pre>
+
+<h3 id="列表-表格"><a href="#列表-表格" class="headerlink" title="列表/表格"></a>列表/表格</h3><h4 id="ul-ol标签"><a href="#ul-ol标签" class="headerlink" title="ul ol标签"></a>ul ol标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>123<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>456<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>789<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+    <li>123</li>
+    <li>456</li>
+    <li>789</li>
+</ul>
+
+<p>无序列表&lt;ul&gt;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>123<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>456<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>789<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+    <li>123</li>
+    <li>456</li>
+    <li>789</li>
+</ol>
+
+<p>有序列表&lt;ol&gt;</p>
+<h4 id="div标签"><a href="#div标签" class="headerlink" title="div标签"></a>div标签</h4><p>可以用来划分区域</p>
+<h4 id="table标签和caption标签"><a href="#table标签和caption标签" class="headerlink" title="table标签和caption标签"></a>table标签和caption标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">summary</span>=<span class="string">”这里的文字不会显示，增加表格可读性“</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 如果不加&lt;thead&gt;&lt;tbody&gt;&lt;tfooter&gt; , table表格加载完后才显示。加上这些表格结构， tbody包含行的内容下载完优先显示，不必等待表格结束后在显示，同时如果表格很长，用tbody分段，可以一部分一部分地显示。（通俗理解table 可以按结构一块块的显示，不在等整个表格加载完后显示。--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">caotion</span>&gt;</span>这是标题<span class="tag">&lt;/<span class="name">caotion</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="comment">&lt;!--表格的行--&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">th</span>&gt;</span>班级<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="comment">&lt;!--th是表格的表头--&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">th</span>&gt;</span>学生数<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">th</span>&gt;</span>平均成绩<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>一班<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="comment">&lt;!--一个单元格，有几个就说明表格有几列--&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>30<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>89<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>二班<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>35<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>85<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table summary=”这里的文字不会显示，增加表格可读性“>
+    <tbody>
+         <caotion>这是标题</caotion>
+        <tr>
+          <th>班级</th>
+          <th>学生数</th>
+          <th>平均成绩</th>
+        </tr>
+        <tr>
+          <td>一班</td>
+          <td>30</td>
+          <td>89</td>
+        </tr>
+        <tr>
+          <td>二班</td>
+          <td>35</td>
+          <td>85</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><h4 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"目标网址"</span>  <span class="attr">title</span>=<span class="string">"鼠标滑过显示的文本"</span>&gt;</span>链接显示的文本<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a  href="baidu.com"  title="鼠标滑过显示的文本">链接显示的文本</a></p>
+<p>默认情况下链接的网页是在档期浏览器窗口打开</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span>  <span class="attr">href</span>=<span class="string">"目标网址"</span>  <span class="attr">title</span>=<span class="string">"鼠标滑过显示的文本"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>链接显示的文本<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>z这样写就是在新窗口打开</p>
+<h4 id="malito标签"><a href="#malito标签" class="headerlink" title="malito标签"></a>malito标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:981340404@qq.com?cc=jinxuyang3@gmail.com&amp;subject=我觉得你很帅&amp;body=真的"</span>&gt;</span>发送<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="mailto:981340404@qq.com?cc=jinxuyang3@gmail.com&subject=我觉得你很帅&body=真的">发送</a></p>
+<p>mailto后若有多个参数的话，第一个参数用?开头，后面跟的参数用&amp;开头</p>
+<p>mailto后是<strong>“:”</strong>,其他参数后是<strong>“=”</strong></p>
+<p><img src="http://img.mukewang.com/52da4f2a000150b714280550.jpg" alt="mailto"></p>
+<h4 id="img标签"><a href="#img标签" class="headerlink" title="img标签"></a>img标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"图片地址"</span> <span class="attr">alt</span>=<span class="string">"下载失败时的替换文本"</span> <span class="attr">title</span> = <span class="string">"提示文本"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>图片使用<strong>src</strong>标识位置</p>
+<p><strong>alt</strong>当图像不可见时，显示的文本</p>
+<img src="" alt="就显示这个">
+
+<p><strong>title</strong>鼠标滑过时显示的文本</p>
+<p>img也不需要成对出现</p>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><p><strong>可以把用户输入内容传到服务端</strong></p>
+<p>&lt;form&gt;标签成对出现</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>    <span class="attr">method</span>=<span class="string">"post"</span>   <span class="attr">action</span>=<span class="string">"save.php"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"username"</span>&gt;</span>用户名:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"pass"</span>&gt;</span>密码:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"pass"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>method</strong>数据的传输方式（get/post）</p>
+<p><strong>action</strong>数据被传送到的地方</p>
+<p><strong>所有表单控件（文本框、文本域、按钮、单选框、复选框等）都必须放在  标签之间</strong></p>
+<h4 id="文本-密码输入框"><a href="#文本-密码输入框" class="headerlink" title="文本/密码输入框"></a>文本/密码输入框</h4><p>&lt;input /&gt;单独出现</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text/password"</span> <span class="attr">name</span>=<span class="string">"名称"</span> <span class="attr">value</span>=<span class="string">"文本"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>type=”text”时文本输入框</p>
+<p>type=”password”时是密码输入框</p>
+<p>name：文本框命名</p>
+<p>value：文本框默认值，不输入时显示的内容</p>
+<form>
+    <input type="text" name="account" value="value里显示的" /><br />
+    <input type="password" name="account" value="123123123" />
+</form>
+
+<h4 id="多行文本输入"><a href="#多行文本输入" class="headerlink" title="多行文本输入"></a>多行文本输入</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">rows</span>=<span class="string">"行数"</span> <span class="attr">cols</span>=<span class="string">"列数"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><textarea rows="5" cols="5"></textarea></p>
+<h4 id="单选框-复选框"><a href="#单选框-复选框" class="headerlink" title="单选框/复选框"></a>单选框/复选框</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio/checkbox"</span> <span class="attr">value</span>=<span class="string">"值"</span> <span class="attr">name</span>=<span class="string">"名称"</span> <span class="attr">checked</span>=<span class="string">"checked"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>type</strong></li>
+</ul>
+<p>=radio为单选框</p>
+<p>=checkbox为复选框</p>
+<ul>
+<li>value提交到服务器的值</li>
+<li>name为控件命名</li>
+<li>check=checked时该项默认勾选</li>
+</ul>
+<p><strong>同一组的单选按钮name一定要相同这样才能实现单选</strong></p>
+<form>
+    <label>你是人</label>
+    <input type="radio" value="1" name="单选" />
+    <br \>
+    <label>你不是🐖</label>
+    <input type="radio" value="1" name="单选" />
+</form>
+<hr \>
+<form>
+    1<input type="checkbox" value="1" name="1" />
+    2<input type="checkbox" value="1" name="2" />
+    3<input type="checkbox" value="1" name="3" checked="checked"/>
+</form>
+
+
+
+<h4 id="下拉列表框"><a href="#下拉列表框" class="headerlink" title="下拉列表框"></a>下拉列表框</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'1'</span>&gt;</span>1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'2'</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>value是向服务器提交的值</li>
+<li>selected=”selected”表示该项默认选中,没有这个默认第一项</li>
+</ul>
+<select>
+    <option value='1'>1</option>
+    <option value='2' selected="selected">2</option>
+</select>
+
+<h5 id="使用下拉列表框进行多选"><a href="#使用下拉列表框进行多选" class="headerlink" title="使用下拉列表框进行多选"></a>使用下拉列表框进行多选</h5><p>再&lt;select&gt;中添加multiple=”mutiple”</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'1'</span>&gt;</span>1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'2'</span>&gt;</span>2<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<select multiple="multiple">
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+</select>
+
+<h4 id="提交-重置按钮"><a href="#提交-重置按钮" class="headerlink" title="提交/重置按钮"></a>提交/重置按钮</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit/reset"</span> <span class="attr">value</span>=<span class="string">"提交"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>type=”submit”这样设置才是提交按钮</li>
+<li>value按钮上显示的内容</li>
+</ul>
+<form>
+    <input type="submit" value="提交" />
+    <input type="reset" value="重置" />
+</form>
+
+<h4 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a>label标签</h4><p>本来要选中控件就需要点中控件本身，有了label就可以把某些文字与控件关联，实现点击文字就聚焦到控件上</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"1"</span>&gt;</span>你是🐖<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"1"</span> <span class="attr">name</span>=<span class="string">"r"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"2"</span>&gt;</span>你是人<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"2"</span> <span class="attr">name</span>=<span class="string">"r"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"2"</span>&gt;</span>你是🐖<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"1"</span> <span class="attr">name</span>=<span class="string">"r"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"1"</span>&gt;</span>你是人<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"2"</span> <span class="attr">name</span>=<span class="string">"r"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<form>
+    <label for="1">你是🐖</label>
+    <input type="radio" id="1" name="r"/>
+    <label for="2">你是人</label>
+    <input type="radio" id="2" name="r"/>
+</form>
+
+<form>
+    <label for="2">你是🐖</label>
+    <input type="radio" id="1" name="r"/>
+    <label for="1">你是人</label>
+    <input type="radio" id="2" name="r"/>
+</form>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://verge.ink/2020/03/28/HTML/" title="HTML学习笔记" target="_blank" rel="external">http://verge.ink/2020/03/28/HTML/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/jinxuyang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/jinxuyang" target="_blank"><span class="text-dark">JinXuyang</span><small class="ml-1x">Student</small></a></h3>
+        <div>大学狗</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/03/30/JavaScript/" title="JavaScript学习笔记"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/03/23/string/" title="算法竞赛入门经典笔记"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/jinxuyang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<!-- custom analytics part create by xiamo -->
+<script defer src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+<script defer>
+AV.init({
+  appId: 'tTKkFgMyySoav2uY6xkOmJXb-gzGzoHsz',
+  appKey: 'XAMSF3GuaSrPHgY84qNqsvWI'
+});
+
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+		var visitors= $('.leancloud_visitors');
+		query.greaterThanOrEqualTo("time", 0);		
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {				
+					return;
+				}
+				var data = results;
+				visitors.each(function(){
+					var url = $(this).attr('id').trim();					
+					for (var i = 0; i < data.length; i++) {
+						var object = data[i];
+						var content = object.get('time');
+						var _url = object.get('url')
+						if(url == _url){
+							$(this).text(content);
+						}
+					}
+				})
+				
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: true,
+    appId: 'd9avhzyLi7ges1PUPP3LSYlD-gzGzoHsz',
+    appKey: 'Dk3uaHo79EoF3n2Lo6GYrjrI',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '7' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

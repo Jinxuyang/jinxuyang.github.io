@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>malloc()函数的用法/动态内存分配 | Hexo</title>
+  <meta name="description" content="计算机内存计算机的内存从高位到低位分别是系统内核-栈-可自由分配的空间-堆-数据段-代码段 源代码编译后的二进制文件会加载到内存中的代码段 数据段包含了在程序中明确被初始化的全局变量、静态变量（包括全局静态变量和局部静态变量）和常量数据（如字符串常量）。   栈存储区：  通常存放程序临时创建的局部变量（但不包括static声明的变量，static意味着在数据段中存放变量），即函数括大括号 “{">
+<meta property="og:type" content="article">
+<meta property="og:title" content="malloc()函数的用法&#x2F;动态内存分配">
+<meta property="og:url" content="http://verge.ink/2020/03/03/malloc/index.html">
+<meta property="og:site_name" content="Verge&#39;s Blog">
+<meta property="og:description" content="计算机内存计算机的内存从高位到低位分别是系统内核-栈-可自由分配的空间-堆-数据段-代码段 源代码编译后的二进制文件会加载到内存中的代码段 数据段包含了在程序中明确被初始化的全局变量、静态变量（包括全局静态变量和局部静态变量）和常量数据（如字符串常量）。   栈存储区：  通常存放程序临时创建的局部变量（但不包括static声明的变量，static意味着在数据段中存放变量），即函数括大括号 “{">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-03T07:11:37.000Z">
+<meta property="article:modified_time" content="2020-07-17T14:36:46.242Z">
+<meta property="article:author" content="JinXuyang">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://verge.ink/2020/03/03/malloc/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Verge&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/jinxuyang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">JinXuyang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Xi&#39;an, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/jinxuyang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/26/Design-Patterns/" class="title">设计模式</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-26T02:32:48.000Z" itemprop="datePublished">2020-06-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/22/MyBatis/" class="title">MyBatis学习笔记</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-22T02:21:37.000Z" itemprop="datePublished">2020-06-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/02/Filter-listener/" class="title">Filter-listener</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-02T06:02:01.000Z" itemprop="datePublished">2020-06-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/01/DataSource/" class="title">数据库连接池</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-01T11:46:07.000Z" itemprop="datePublished">2020-06-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/01/cookie-session/" class="title">cookie&amp;session</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-31T16:48:08.000Z" itemprop="datePublished">2020-06-01</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-malloc" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      malloc()函数的用法/动态内存分配
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/03/03/malloc/" class="article-date">
+	  <time datetime="2020-03-03T07:11:37.000Z" itemprop="datePublished">2020-03-03</time>
+	</a>
+</span>
+        
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/2020/03/03/malloc/" class="leancloud_visitors"  data-flag-title="malloc()函数的用法/动态内存分配">0</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/03/03/malloc/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="计算机内存"><a href="#计算机内存" class="headerlink" title="计算机内存"></a>计算机内存</h3><p>计算机的内存从高位到低位分别是<strong>系统内核-栈-可自由分配的空间-堆-数据段-代码段</strong></p>
+<p>源代码编译后的二进制文件会加载到内存中的<strong>代码段</strong></p>
+<p>数据段包含了在程序中明确被<strong>初始化的全局变量、静态变量（包括全局静态变量和局部静态变量）和常量数据（如字符串常量）</strong>。</p>
+<blockquote>
+<ul>
+<li>栈存储区：</li>
+</ul>
+<p><strong>通常存放程序临时创建的局部变量（但不包括static声明的变量，static意味着在数据段中存放变量）</strong>，即函数括大括号 “{ }” 中定义的变量，其中还包括函数调用时其形参，调用后的返回值等。</p>
+<p>最后栈还具有“小内存、自动化、可能会溢出”的特点。栈顶的地址和栈的最大容量一般是系统预先规定好的，通常不会太大。由于栈中主要存放的是局部变量，而局部变量的占用的内存空间是其所在的代码段或函数段结束时由系统回收重新利用，所以栈的空间是循环利用自动管理的，一般不需要人为操作。如果某次局部变量申请的空间超过栈的剩余空间时就有可能出现 “栈的溢出”，进而导致意想不到的后果。<strong>所以一般不宜在栈中申请过大的空间，比如长度很大的数组、递归调用重复次数很多的函数等等</strong>。</p>
+<ul>
+<li>堆存储区：</li>
+</ul>
+<p><strong>通常存放程序运行中动态分配的存储空间。</strong>它的大小，并不固定，可动态扩张或缩放。当进程调用malloc/free等函数分配内存时，新分配的内存就被动态添加到堆上（堆被扩张）/释放的内存从堆中被提出（堆被缩减）。</p>
+<p>(堆是低地址向高地址扩展的数据结构，是一块不连续的内存区域。<strong>在标准C语言上，使用malloc等内存分配函数是从堆中分配内存的</strong></p>
+<p>堆具有“大内存、手工分配管理、申请大小随意、可能会泄露”的特点，堆内存是操作系统划分给堆管理器来管理的，管理器向使用者（用户进程）提供API（malloc和free等）来使用堆内存。需要程序员手动分配释放，如果程序员在使用完申请后的堆内存却没有及时把它释放掉，那么这块内存就丢失了（进程自身认为该内存没被使用，但是在堆内存记录中该内存仍然属于这个进程，所以当需要分配空间时又会重新去申请新的内存而不是重复利用这块内存），就是我们常说的内存泄漏，所以内存泄漏指的是堆内存被泄露了。</p>
+</blockquote>
+<br>
+
+<h3 id="malloc-用法"><a href="#malloc-用法" class="headerlink" title="malloc()用法"></a>malloc()用法</h3><h4 id="malloc-函数的原型"><a href="#malloc-函数的原型" class="headerlink" title="malloc()函数的原型"></a>malloc()函数的原型</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">malloc</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="built_in">size</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><p>size应该为整型</p>
+<p>分配一个size这么大的内存，返回一个指向这片内存空间的起始位置的一个指针，类型为void*、</p>
+<p>若空间不足则或者其他原因没有成功申请到内存则返回NULL</p>
+<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<p>它的意思是：请求系统分配 <strong>4 字节</strong>的内存空间，并<strong>返回第一字节的地址</strong>，然后赋给指针变量 p。</p>
+<blockquote>
+<p>位（bit）：是计算机 内部数据 储存的最小单位，11001100是一个八位二进制数。<br>字节（byte）：是计算机中 数据处理 的基本单位，习惯上用大写 B 来表示,1B（byte,字节）= 8bit（位）</p>
+</blockquote>
+<p>C 语言中，void* 型可以不经转换（系统自动转换）地直接赋给任何类型的指针变量（函数指针变量除外）。或者自己进行强制类型转换也可以</p>
+<p>void*与void不同，void* 是定义一个无类型的指针变量，它可以指向任何类型的数据。任何类型的指针变量都可以直接赋给 void* 型的指针变量，无需进行强制类型转换。</p>
+<p><strong>注意，不能对 void* 型的指针变量进行运算操作，如指针的运算、指针的移动等。原因很简单，前面讲int<em>型的指针变量加 1 就是移动 4 个单元，因为 int\</em> 型的指针变量指向的是 int 型数据；但是 void* 型可以指向任何类型的数据，所以无法知道“1”所表示的是几个内存单元。</strong></p>
+<h3 id="free"><a href="#free" class="headerlink" title="free()"></a>free()</h3><p>用于释放使用malloc动态分配的内存</p>
+<h4 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">free</span><span class="params">(<span class="keyword">void</span> *ptr)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>参考</strong>：<a href="http://c.biancheng.net/view/223.html" target="_blank" rel="noopener">http://c.biancheng.net/view/223.html</a></p>
+<p>​            <a href="https://blog.csdn.net/weixin_39371711/article/details/81783780" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39371711/article/details/81783780</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://verge.ink/2020/03/03/malloc/" title="malloc()函数的用法/动态内存分配" target="_blank" rel="external">http://verge.ink/2020/03/03/malloc/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/jinxuyang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/jinxuyang" target="_blank"><span class="text-dark">JinXuyang</span><small class="ml-1x">Student</small></a></h3>
+        <div>大学狗</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/03/03/linerlist/" title="线性表"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/03/02/and-in-C/" title="C语言中的*和&amp;"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/jinxuyang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<!-- custom analytics part create by xiamo -->
+<script defer src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+<script defer>
+AV.init({
+  appId: 'tTKkFgMyySoav2uY6xkOmJXb-gzGzoHsz',
+  appKey: 'XAMSF3GuaSrPHgY84qNqsvWI'
+});
+
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+		var visitors= $('.leancloud_visitors');
+		query.greaterThanOrEqualTo("time", 0);		
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {				
+					return;
+				}
+				var data = results;
+				visitors.each(function(){
+					var url = $(this).attr('id').trim();					
+					for (var i = 0; i < data.length; i++) {
+						var object = data[i];
+						var content = object.get('time');
+						var _url = object.get('url')
+						if(url == _url){
+							$(this).text(content);
+						}
+					}
+				})
+				
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content = counter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else {
+		showTime(Counter);
+	}
+}); 
+</script>
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: true,
+    appId: 'd9avhzyLi7ges1PUPP3LSYlD-gzGzoHsz',
+    appKey: 'Dk3uaHo79EoF3n2Lo6GYrjrI',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '7' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
