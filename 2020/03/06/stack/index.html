@@ -1,87 +1,107 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>堆栈 | Verge's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">堆栈</h1><a id="logo" href="/.">Verge's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">堆栈</h1><div class="post-meta">2020-03-06</div><div class="post-content"><h3 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h3><p>数据对象集：一个有0个或多个元素的有穷线性表</p>
-<p>操作集：</p>
-<ol>
-<li>Stack CreateStack(int MaxSize)</li>
-<li>bool IsFull(Stacak S,int MaxSize)</li>
-<li>void Push(Stack S,ElementType item)</li>
-<li>bool IsEmpty(Stack S)</li>
-<li>ElementType Pop(Stack S)</li>
-</ol>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="alternate" type="application/rss+xml" title="Verge's Blog" href="https://jysperm.me/atom.xml"><link rel="stylesheet" href="/styles.css"><title>堆栈 | Verge's Blog</title><meta name="generator" content="Hexo 4.2.1"></head><body><div class="container"><div class="columns page-header"><h1>Verge's Blog</h1></div><div class="columns"><div class="navigation"><nav class="menus-main"><a href="/" class="favicon"><img alt="Verge's Blog" src="/favicon.png"></a><a href="/">Home</a></nav><nav class="right menus-right"><a href="/atom.xml">RSS</a><a target="_blank" href="hexo-theme-simpleblock">fork on Github</a></nav></div></div><div class="columns"><div class="block-body column three-fourths"><div class="article-widget"><a href="https://github.com/jysperm/hexo-theme-simpleblock" target="_blank" rel="noopener">与精子同款的博客主题 simpleblock 现已发布！</a></div><article><header><small class="right"><a target="_blank" href="null_posts%2Fstack.md">查看源代码</a></small><h1>堆栈</h1></header><div class="article-meta clearfix"><time class="left">2020-03-06</time><ul class="tags left"></ul><ul class="tags right"></ul></div><div class="markdown-body">
+### 堆栈
+
+数据对象集：一个有0个或多个元素的有穷线性表
+
+操作集：
+
+1. Stack CreateStack(int MaxSize)
+2. bool IsFull(Stacak S,int MaxSize)
+3. void Push(Stack S,ElementType item)
+4. bool IsEmpty(Stack S)
+5. ElementType Pop(Stack S)
+
 <br>
 
-<h4 id="堆栈的顺序存储实现"><a href="#堆栈的顺序存储实现" class="headerlink" title="堆栈的顺序存储实现"></a>堆栈的顺序存储实现</h4><p>通常由一个<strong>一维数组</strong>和一个<strong>记录栈顶元素位置的变量</strong>组组成</p>
+#### 堆栈的顺序存储实现
+
+通常由一个**一维数组**和一个**记录栈顶元素位置的变量**组组成
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 元素最大个数</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span>&#123;</span></span><br><span class="line">    ElementType *Data;</span><br><span class="line">    <span class="keyword">int</span> Top;</span><br><span class="line">    <span class="keyword">int</span> MaxSize;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<ol>
-<li>创建</li>
-</ol>
+1. 创建
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">(<span class="keyword">int</span> MaxSize)</span></span>&#123;</span><br><span class="line">	Stack S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));<span class="comment">//申请一块空间，存放Stack这个结构</span></span><br><span class="line">    S-&gt;Data = (ElementType *)<span class="built_in">malloc</span>(MaxSize * <span class="keyword">sizeof</span>(ElementType))<span class="comment">//申请一块空间存放MaxSize个ElementType</span></span><br><span class="line">    S-&gt;Top = <span class="number">-1</span>;<span class="comment">//初始状态栈顶为-1</span></span><br><span class="line">    S-&gt;MaxSize = MaxSize;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>栈是否满了</li>
-</ol>
+2. 栈是否满了
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsFull</span><span class="params">(Stack S,<span class="keyword">int</span> MaxSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S-&gt;Top == S-&gt;MaxSize - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>3.栈是否为空</p>
+3.栈是否为空
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsEmpty</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S-&gt;Top == <span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="4">
-<li>Push</li>
-</ol>
+4. Push
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Push</span><span class="params">(Stack S,ElemenType item)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IsFull(S) == <span class="literal">true</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"栈满"</span>)；</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        S-&gt;Data[++(S-&gt;Top)] = item; <span class="comment">//Top先加一，在进行运算</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>++a是先自加再进行运算，a++是先运算再自加</strong></p>
-<ol start="5">
-<li>Pop</li>
-</ol>
+**++a是先自加再进行运算，a++是先运算再自加**
+
+5. Pop
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">( Stack S )</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ( IsEmpty(S) )&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"栈空"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> s-&gt;Data[(S-&gt;Top)--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <br>
 
-<h4 id="用一个数组实现两个堆栈"><a href="#用一个数组实现两个堆栈" class="headerlink" title="用一个数组实现两个堆栈"></a>用一个数组实现两个堆栈</h4><p>思路：两个堆栈分别从数组头和尾开始，向中间，当两个顶指针相遇时，表示两个堆栈都满了</p>
-<p>​            —–&gt;    &lt;——-</p>
+#### 用一个数组实现两个堆栈
+
+思路：两个堆栈分别从数组头和尾开始，向中间，当两个顶指针相遇时，表示两个堆栈都满了
+
+​			----->    <-------
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 元素最大个数</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DStack</span> *<span class="title">PtrS</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DStack</span>&#123;</span></span><br><span class="line">    ElementType *Data;</span><br><span class="line">    <span class="keyword">int</span> Top1;</span><br><span class="line">    <span class="keyword">int</span> Top2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>​    S.Top1 = -1    说明栈1空</p>
-<p>​    S.Top2 = MaxSize    说明栈2空</p>
-<ol>
-<li>Push</li>
-</ol>
+​    S.Top1 = -1    说明栈1空
+
+​    S.Top2 = MaxSize    说明栈2空
+
+1. Push
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(PtrS S,ElementType item,<span class="keyword">int</span> Tag)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S-&gt;Top2 - S-&gt;Top1 == <span class="number">1</span>)&#123;<span class="comment">//两栈相遇时Top相差1</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"堆栈满"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(Tag == <span class="number">1</span>)</span><br><span class="line">        S-&gt;Data[++(S-&gt;Top1)] = item;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        S-&gt;Data[--(S-&gt;Top2)] = item;<span class="comment">//注意因为堆栈2是倒着来的，所以是--</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>Pop</li>
-</ol>
+2. Pop
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">(PtrS S,<span class="keyword">int</span> Tag)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tag == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(S-&gt;Top1 == <span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"堆栈1空"</span>)；</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> S-&gt;Data[(S-&gt;Top1)--];</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(S-&gt;Top2 == MaxSize)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"堆栈1空"</span>)；</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> S-&gt;Data[(S-&gt;Top2)++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="堆栈的链式存储实现"><a href="#堆栈的链式存储实现" class="headerlink" title="堆栈的链式存储实现"></a>堆栈的链式存储实现</h4><p>实际上是单向链表，叫链栈。插入和删除操作只能再链栈的栈顶进行，<strong>栈顶指针应该在链表的表头后其他节点之前</strong>，否则无法进行删除操作，因为前一个节点无法保存上一个节点的指针</p>
+#### 堆栈的链式存储实现
+
+实际上是单向链表，叫链栈。插入和删除操作只能再链栈的栈顶进行，**栈顶指针应该在链表的表头后其他节点之前**，否则无法进行删除操作，因为前一个节点无法保存上一个节点的指针
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span>&#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Next</span>;</span> <span class="comment">//记录下一个节点的指针</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<ol>
-<li>Create</li>
-</ol>
+1. Create
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">()</span></span>&#123;<span class="comment">//构建指针头节点</span></span><br><span class="line">    Stack S;</span><br><span class="line">    S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));</span><br><span class="line">    S-&gt;Next == <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>2.IsEmpty</p>
+2.IsEmpty
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsEmpty</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (S-&gt;Next == <span class="literal">NULL</span>); <span class="comment">//若头节点的Next为NULL则堆栈为空</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li><p>Push</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(ElementType item,Stack S)</span></span>&#123;</span><br><span class="line">    Stack TempCell;</span><br><span class="line">    TempCell = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Struct SNode));</span><br><span class="line">    TempCell-&gt;Data = item;</span><br><span class="line">    TempCell-&gt;Next = S-&gt;Next;</span><br><span class="line">    S-&gt;Next = TempCell; <span class="comment">//插到头节点之后其他节点之前</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+3. Push
+
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(ElementType item,Stack S)</span></span>&#123;</span><br><span class="line">    Stack TempCell;</span><br><span class="line">    TempCell = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Struct SNode));</span><br><span class="line">    TempCell-&gt;Data = item;</span><br><span class="line">    TempCell-&gt;Next = S-&gt;Next;</span><br><span class="line">    S-&gt;Next = TempCell; <span class="comment">//插到头节点之后其他节点之前</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-</li>
-</ol>
-<ol start="4">
-<li>Pop </li>
-</ol>
+4. Pop 
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IsEmpty(S))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"堆栈空"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Stack TopCell;<span class="comment">//为了找到第三个节点和释放空间而声明的</span></span><br><span class="line">        ElemtType TopElem;</span><br><span class="line">    	TopCell = S-&gt;Next;<span class="comment">//把第二个节点的地址给TopCell</span></span><br><span class="line">    	S-&gt;Next = TopCell-&gt;Next;<span class="comment">//把第三个节点给S的Next，就跳过了第二个节点即删除了第二个节点</span></span><br><span class="line">		TopElem = TopCell-&gt;Element;        </span><br><span class="line">        <span class="built_in">free</span>(TopCell);</span><br><span class="line">        <span class="keyword">return</span> TopElem;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="堆栈的应用"><a href="#堆栈的应用" class="headerlink" title="堆栈的应用"></a>堆栈的应用</h4><ul>
-<li>中缀表达式转后缀表达式</li>
-<li>函数调用及递归实现</li>
-<li>深度优先搜索</li>
-<li>回溯算法</li>
-<li>…….</li>
+#### 堆栈的应用
+
+- 中缀表达式转后缀表达式
+- 函数调用及递归实现
+- 深度优先搜索
+- 回溯算法
+- .......
+
+</div></article></div><div class="block-sidebar column one-fourth"><div class="widget text-content"><p>Simple Block 是一个基于线框设计的简单的 Hexo 主题，拆分自 <a href="https://jysperm.me" target="_blank" rel="noopener">精子的博客</a>。
+支持使用 Jade 或 Markdown 来向边栏添加小部件，或向正文前添加横幅。</p>
+<p>技术栈：</p>
+<ul>
+<li>Jade - 页面模板</li>
+<li>Less/Sass - 页面样式</li>
+<li>Bower - 前端包管理器</li>
+<li>CoffeeScript - Hexo 拓展脚本</li>
+<li>Gulp - 编译工具</li>
 </ul>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2020/03/09/queue/">队列</a><a class="next" href="/2020/03/03/linerlist/">线性表</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://verge.ink"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/28/yiban-autocheck/">yiban_autocheck</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/21/algorithm/">算法学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/22/MyBatis/">MyBatis学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/01/DataSource/">数据库连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/01/cookie-session/">cookie&session</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/XML/">XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/Spring/">Spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/JDBC/">JDBC学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/Servlet/">Servlet学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/06/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">MySQL学习笔记</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Verge's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><div class="widget tags"></div><div class="widget archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li></ul></div><div class="widget text-content"><p>该博客使用基于 &nbsp;<a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>&nbsp; 的 &nbsp;<a href="https://github.com/jysperm/hexo-theme-simpleblock" target="_blank" rel="noopener">simpleblock</a>&nbsp; 主题。博客内容使用 &nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a>&nbsp; 授权发布。最后生成于 2020-08-05.</p></div></div></div></div></body></html>

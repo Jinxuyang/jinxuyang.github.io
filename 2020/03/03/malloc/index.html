@@ -1,42 +1,79 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>malloc()函数的用法/动态内存分配 | Verge's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">malloc()函数的用法/动态内存分配</h1><a id="logo" href="/.">Verge's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">malloc()函数的用法/动态内存分配</h1><div class="post-meta">2020-03-03</div><div class="post-content"><h3 id="计算机内存"><a href="#计算机内存" class="headerlink" title="计算机内存"></a>计算机内存</h3><p>计算机的内存从高位到低位分别是<strong>系统内核-栈-可自由分配的空间-堆-数据段-代码段</strong></p>
-<p>源代码编译后的二进制文件会加载到内存中的<strong>代码段</strong></p>
-<p>数据段包含了在程序中明确被<strong>初始化的全局变量、静态变量（包括全局静态变量和局部静态变量）和常量数据（如字符串常量）</strong>。</p>
-<blockquote>
-<ul>
-<li>栈存储区：</li>
-</ul>
-<p><strong>通常存放程序临时创建的局部变量（但不包括static声明的变量，static意味着在数据段中存放变量）</strong>，即函数括大括号 “{ }” 中定义的变量，其中还包括函数调用时其形参，调用后的返回值等。</p>
-<p>最后栈还具有“小内存、自动化、可能会溢出”的特点。栈顶的地址和栈的最大容量一般是系统预先规定好的，通常不会太大。由于栈中主要存放的是局部变量，而局部变量的占用的内存空间是其所在的代码段或函数段结束时由系统回收重新利用，所以栈的空间是循环利用自动管理的，一般不需要人为操作。如果某次局部变量申请的空间超过栈的剩余空间时就有可能出现 “栈的溢出”，进而导致意想不到的后果。<strong>所以一般不宜在栈中申请过大的空间，比如长度很大的数组、递归调用重复次数很多的函数等等</strong>。</p>
-<ul>
-<li>堆存储区：</li>
-</ul>
-<p><strong>通常存放程序运行中动态分配的存储空间。</strong>它的大小，并不固定，可动态扩张或缩放。当进程调用malloc/free等函数分配内存时，新分配的内存就被动态添加到堆上（堆被扩张）/释放的内存从堆中被提出（堆被缩减）。</p>
-<p>(堆是低地址向高地址扩展的数据结构，是一块不连续的内存区域。<strong>在标准C语言上，使用malloc等内存分配函数是从堆中分配内存的</strong></p>
-<p>堆具有“大内存、手工分配管理、申请大小随意、可能会泄露”的特点，堆内存是操作系统划分给堆管理器来管理的，管理器向使用者（用户进程）提供API（malloc和free等）来使用堆内存。需要程序员手动分配释放，如果程序员在使用完申请后的堆内存却没有及时把它释放掉，那么这块内存就丢失了（进程自身认为该内存没被使用，但是在堆内存记录中该内存仍然属于这个进程，所以当需要分配空间时又会重新去申请新的内存而不是重复利用这块内存），就是我们常说的内存泄漏，所以内存泄漏指的是堆内存被泄露了。</p>
-</blockquote>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="alternate" type="application/rss+xml" title="Verge's Blog" href="https://jysperm.me/atom.xml"><link rel="stylesheet" href="/styles.css"><title>malloc()函数的用法/动态内存分配 | Verge's Blog</title><meta name="generator" content="Hexo 4.2.1"></head><body><div class="container"><div class="columns page-header"><h1>Verge's Blog</h1></div><div class="columns"><div class="navigation"><nav class="menus-main"><a href="/" class="favicon"><img alt="Verge's Blog" src="/favicon.png"></a><a href="/">Home</a></nav><nav class="right menus-right"><a href="/atom.xml">RSS</a><a target="_blank" href="hexo-theme-simpleblock">fork on Github</a></nav></div></div><div class="columns"><div class="block-body column three-fourths"><div class="article-widget"><a href="https://github.com/jysperm/hexo-theme-simpleblock" target="_blank" rel="noopener">与精子同款的博客主题 simpleblock 现已发布！</a></div><article><header><small class="right"><a target="_blank" href="null_posts%2Fmalloc.md">查看源代码</a></small><h1>malloc()函数的用法/动态内存分配</h1></header><div class="article-meta clearfix"><time class="left">2020-03-03</time><ul class="tags left"></ul><ul class="tags right"></ul></div><div class="markdown-body">
+### 计算机内存
+
+计算机的内存从高位到低位分别是**系统内核-栈-可自由分配的空间-堆-数据段-代码段**
+
+源代码编译后的二进制文件会加载到内存中的**代码段**
+
+数据段包含了在程序中明确被**初始化的全局变量、静态变量（包括全局静态变量和局部静态变量）和常量数据（如字符串常量）**。
+
+> - 栈存储区：
+>
+> **通常存放程序临时创建的局部变量（但不包括static声明的变量，static意味着在数据段中存放变量）**，即函数括大括号 “{ }” 中定义的变量，其中还包括函数调用时其形参，调用后的返回值等。
+>
+> 最后栈还具有“小内存、自动化、可能会溢出”的特点。栈顶的地址和栈的最大容量一般是系统预先规定好的，通常不会太大。由于栈中主要存放的是局部变量，而局部变量的占用的内存空间是其所在的代码段或函数段结束时由系统回收重新利用，所以栈的空间是循环利用自动管理的，一般不需要人为操作。如果某次局部变量申请的空间超过栈的剩余空间时就有可能出现 “栈的溢出”，进而导致意想不到的后果。**所以一般不宜在栈中申请过大的空间，比如长度很大的数组、递归调用重复次数很多的函数等等**。
+>
+> - 堆存储区：
+>
+> **通常存放程序运行中动态分配的存储空间。**它的大小，并不固定，可动态扩张或缩放。当进程调用malloc/free等函数分配内存时，新分配的内存就被动态添加到堆上（堆被扩张）/释放的内存从堆中被提出（堆被缩减）。
+>
+> (堆是低地址向高地址扩展的数据结构，是一块不连续的内存区域。**在标准C语言上，使用malloc等内存分配函数是从堆中分配内存的**
+>
+> 堆具有“大内存、手工分配管理、申请大小随意、可能会泄露”的特点，堆内存是操作系统划分给堆管理器来管理的，管理器向使用者（用户进程）提供API（malloc和free等）来使用堆内存。需要程序员手动分配释放，如果程序员在使用完申请后的堆内存却没有及时把它释放掉，那么这块内存就丢失了（进程自身认为该内存没被使用，但是在堆内存记录中该内存仍然属于这个进程，所以当需要分配空间时又会重新去申请新的内存而不是重复利用这块内存），就是我们常说的内存泄漏，所以内存泄漏指的是堆内存被泄露了。
+
 <br>
 
-<h3 id="malloc-用法"><a href="#malloc-用法" class="headerlink" title="malloc()用法"></a>malloc()用法</h3><h4 id="malloc-函数的原型"><a href="#malloc-函数的原型" class="headerlink" title="malloc()函数的原型"></a>malloc()函数的原型</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">malloc</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="built_in">size</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+### malloc()用法
 
-<h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><p>size应该为整型</p>
-<p>分配一个size这么大的内存，返回一个指向这片内存空间的起始位置的一个指针，类型为void*、</p>
-<p>若空间不足则或者其他原因没有成功申请到内存则返回NULL</p>
-<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+#### malloc()函数的原型
 
-<p>它的意思是：请求系统分配 <strong>4 字节</strong>的内存空间，并<strong>返回第一字节的地址</strong>，然后赋给指针变量 p。</p>
-<blockquote>
-<p>位（bit）：是计算机 内部数据 储存的最小单位，11001100是一个八位二进制数。<br>字节（byte）：是计算机中 数据处理 的基本单位，习惯上用大写 B 来表示,1B（byte,字节）= 8bit（位）</p>
-</blockquote>
-<p>C 语言中，void* 型可以不经转换（系统自动转换）地直接赋给任何类型的指针变量（函数指针变量除外）。或者自己进行强制类型转换也可以</p>
-<p>void*与void不同，void* 是定义一个无类型的指针变量，它可以指向任何类型的数据。任何类型的指针变量都可以直接赋给 void* 型的指针变量，无需进行强制类型转换。</p>
-<p><strong>注意，不能对 void* 型的指针变量进行运算操作，如指针的运算、指针的移动等。原因很简单，前面讲int<em>型的指针变量加 1 就是移动 4 个单元，因为 int\</em> 型的指针变量指向的是 int 型数据；但是 void* 型可以指向任何类型的数据，所以无法知道“1”所表示的是几个内存单元。</strong></p>
-<h3 id="free"><a href="#free" class="headerlink" title="free()"></a>free()</h3><p>用于释放使用malloc动态分配的内存</p>
-<h4 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">free</span><span class="params">(<span class="keyword">void</span> *ptr)</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">malloc</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="built_in">size</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+#### 功能
+
+size应该为整型
+
+分配一个size这么大的内存，返回一个指向这片内存空间的起始位置的一个指针，类型为void*、
+
+若空间不足则或者其他原因没有成功申请到内存则返回NULL
+
+#### 如何使用
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+它的意思是：请求系统分配 **4 字节**的内存空间，并**返回第一字节的地址**，然后赋给指针变量 p。
+
+> 位（bit）：是计算机 内部数据 储存的最小单位，11001100是一个八位二进制数。
+> 字节（byte）：是计算机中 数据处理 的基本单位，习惯上用大写 B 来表示,1B（byte,字节）= 8bit（位）
+
+C 语言中，void* 型可以不经转换（系统自动转换）地直接赋给任何类型的指针变量（函数指针变量除外）。或者自己进行强制类型转换也可以
+
+void\*与void不同，void\* 是定义一个无类型的指针变量，它可以指向任何类型的数据。任何类型的指针变量都可以直接赋给 void* 型的指针变量，无需进行强制类型转换。
+
+**注意，不能对 void* 型的指针变量进行运算操作，如指针的运算、指针的移动等。原因很简单，前面讲int*型的指针变量加 1 就是移动 4 个单元，因为 int\* 型的指针变量指向的是 int 型数据；但是 void\* 型可以指向任何类型的数据，所以无法知道“1”所表示的是几个内存单元。**
+
+### free()
+
+用于释放使用malloc动态分配的内存
+
+#### 原型
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">free</span><span class="params">(<span class="keyword">void</span> *ptr)</span></span>;</span><br></pre></td></tr></table></figure>
 
 
 
 
 
-<p><strong>参考</strong>：<a href="http://c.biancheng.net/view/223.html" target="_blank" rel="noopener">http://c.biancheng.net/view/223.html</a></p>
-<p>​            <a href="https://blog.csdn.net/weixin_39371711/article/details/81783780" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39371711/article/details/81783780</a></p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2020/03/03/linerlist/">线性表</a><a class="next" href="/2020/03/02/and-in-C/">C语言中的*和&amp;</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://verge.ink"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/28/yiban-autocheck/">yiban_autocheck</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/21/algorithm/">算法学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/22/MyBatis/">MyBatis学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/01/DataSource/">数据库连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/01/cookie-session/">cookie&session</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/XML/">XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/Spring/">Spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/JDBC/">JDBC学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/Servlet/">Servlet学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/06/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">MySQL学习笔记</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Verge's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+**参考**：http://c.biancheng.net/view/223.html
+
+​		    https://blog.csdn.net/weixin_39371711/article/details/81783780</div></article></div><div class="block-sidebar column one-fourth"><div class="widget text-content"><p>Simple Block 是一个基于线框设计的简单的 Hexo 主题，拆分自 <a href="https://jysperm.me" target="_blank" rel="noopener">精子的博客</a>。
+支持使用 Jade 或 Markdown 来向边栏添加小部件，或向正文前添加横幅。</p>
+<p>技术栈：</p>
+<ul>
+<li>Jade - 页面模板</li>
+<li>Less/Sass - 页面样式</li>
+<li>Bower - 前端包管理器</li>
+<li>CoffeeScript - Hexo 拓展脚本</li>
+<li>Gulp - 编译工具</li>
+</ul>
+</div><div class="widget tags"></div><div class="widget archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li></ul></div><div class="widget text-content"><p>该博客使用基于 &nbsp;<a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>&nbsp; 的 &nbsp;<a href="https://github.com/jysperm/hexo-theme-simpleblock" target="_blank" rel="noopener">simpleblock</a>&nbsp; 主题。博客内容使用 &nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a>&nbsp; 授权发布。最后生成于 2020-08-05.</p></div></div></div></div></body></html>

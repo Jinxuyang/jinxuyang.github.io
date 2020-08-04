@@ -1,108 +1,144 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>算法学习笔记 | Verge's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">算法学习笔记</h1><a id="logo" href="/.">Verge's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">算法学习笔记</h1><div class="post-meta">2020-07-21</div><div class="post-content"><p>[TOC]</p>
-<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><ul>
-<li>一一列举</li>
-<li>不重复，不遗漏</li>
-</ul>
-<h3 id="优化枚举的基本思路"><a href="#优化枚举的基本思路" class="headerlink" title="优化枚举的基本思路"></a>优化枚举的基本思路</h3><p>减少枚举次数</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="alternate" type="application/rss+xml" title="Verge's Blog" href="https://jysperm.me/atom.xml"><link rel="stylesheet" href="/styles.css"><title>算法学习笔记 | Verge's Blog</title><meta name="generator" content="Hexo 4.2.1"></head><body><div class="container"><div class="columns page-header"><h1>Verge's Blog</h1></div><div class="columns"><div class="navigation"><nav class="menus-main"><a href="/" class="favicon"><img alt="Verge's Blog" src="/favicon.png"></a><a href="/">Home</a></nav><nav class="right menus-right"><a href="/atom.xml">RSS</a><a target="_blank" href="hexo-theme-simpleblock">fork on Github</a></nav></div></div><div class="columns"><div class="block-body column three-fourths"><div class="article-widget"><a href="https://github.com/jysperm/hexo-theme-simpleblock" target="_blank" rel="noopener">与精子同款的博客主题 simpleblock 现已发布！</a></div><article><header><small class="right"><a target="_blank" href="null_posts%2Falgorithm.md">查看源代码</a></small><h1>算法学习笔记</h1></header><div class="article-meta clearfix"><time class="left">2020-07-21</time><ul class="tags left"></ul><ul class="tags right"></ul></div><div class="markdown-body">
+[TOC]
+
+## 枚举
+
+- 一一列举
+- 不重复，不遗漏
+
+### 优化枚举的基本思路
+
+减少枚举次数
+
+- 选择合适的枚举对象
+- 选择合适的枚举方向 ——方便排除非法和不是最优的情况
+- 选择合适的数据维护方法 ——转化问题
+
+
+
+#### 例1.最大正方形
+
+题目
+
+在一个N*N（N<100）的矩阵中求一个最大的正方形使得该正方形的四个顶点是由“#”构成
+
+##**#
+
+\*\****
+
+\*\*##*
+
+#\*#\*#*
+
+\*#\*#*
+
+思路
+
+1. 几个点可以确定一个正方形？
+   - 对角线上的两个点确定一个正方形
+2. 明确思路使用枚举法，枚举所有两个点的组合，判断剩下两个点是否是#，是的话记录面积不是就继续枚举下一个组合，直至枚举完所有集合
+
+### 前缀和
+
+对于一个数列，再开一个数组，第n个数就存前n个数字的和
+
+#### 例2 数列求和问题
+
+给定一个数列{an}（1<= n <= 100000）,有q（1<= n <= 100000）次询问，每次询问从i到j的元素之和
+
+**思路**
+
+1. 暴力，直接算（范围大的话必超时）
+2. 先便利数据，求前缀和，存到数组中
+3. 使用时直接求aj-ai即可
+
+### 差分
+
+#### 例3 数列修改问题
+
+给定一个数列{an}（1<= n <= 100000）,有q（1<= n <= 100000）次修改，每次修改把从i到j的每个元素加上k，求所有修改之后的每个数值
+
+**思路**
+
+1. 暴力，每次修改都遍历区间（时间复杂度太大）
+2. 思考问题，进行修改时区间什么没有变，什么变了
+   1. 区间内各个元素之间的差值未变
+   2. 端点处的差值改变
+3. 把修改的地方从整个区间变到区间的端点，就可以大大减少时间复杂度
+   1. 当我们对第i到j个数加上k的话，i与i-1的差值增加了k，j与j加一的差值减少了k，区间内部相邻两数差值不变
+   2. 因此可以使用一个数组来维护第i个数和第i-1个数的差值（默认第一个数的前一个数是0），将[i,j]这个区间的每个数+1时，只需要修改i和j+1（i+k，j+1-k）
+   3. 对这个数组求前缀和，即可得到数列的值
+   4. 这种方法叫**差分**
+
+### 差分与前缀和的关系
+
+差分和前缀和是一对对称的操作
+
+差分数组求前缀和就是原数组，对前缀和求差分也能得到原数组
+
+### 尺取法
+
+给定长度为n的正整数数列以及整数S，求出总和不小于S的连续子串的长度的最小值，如果接不存在，输出0
+
+1. 暴力，枚举两个点的所有组合，选择和大于等于S的最短子串（时间复杂度爆炸）（O（n3））
+2. 优化，使用前缀和省去计算和的那一步复杂度变为（O（n2）），依然不低
+3. 使用尺取法（O（n））
+   1. 确定两个端点，从数组0开始
+   2. 首先向右移动右边的端点，判断和是否大于S，若大于S就移动左边的端点，一直移动直至再移动一次就不大于S时，记录长度
+   3. 继续移动右端点，重复2，直至数组结束
+   4. 得出最小距离
+
+
+
+## 贪心
+
+1. 对问题求解时，总是做出在当前看来最好的选择，不从整体上考虑，做出的选择是局部是上最优解
+2. 使用贪心算法解决的问题都是能够证贪心出的局部最优解是所求的全局最优解
+
+## STL
+
+### 算法类
+
+- **sort(beg,end,comp)**给数组排序，返回排号的数组,cmp可以不写，comp用来定义比较方法
+
+  - ```c++
+    int a[10]= {1, 5, 8, 9, 6, 7, 3, 4, 2, 0};
+    sort(a, a+10);
+    //两个参数，第一个是你要排的的开始位置的指针，第二个是结束处的指针的下一位
+    //可以理解为从a开始，要排几位
+    //STL遵循[a,b)原则，因此是a到a+10
+    ```
+
+- **search**
+  
+  - **binary_search(起始地址，结束地址，要查找的值)**，返回布尔值，匹配返回true
+  - **lower_bound(beg,end,val)**返回可插入的最小位置的迭代器（可以理解为指针）
+    - 例插入3
+    - 1 2 2 2 (可以被插到这) **3** 3 3 4 5
+    - 返回加粗3处的指针
+    - 第一个**大于等于**你查询的数的位置
+  - **upper_bound(beg,end,val)**返回可插入的最大位置的迭代器（可以理解为指针）
+    - 1 2 2 2  3 3 3 (可以被插到这) **4** 5
+    - 返回加粗4处的指针
+    - 第一个**大于**你查询的数的位置
+  - **使用前数组一定要排序**
+- **find(beg,end,val)**返回val第一次出现的地址
+- **count(beg,end,val)**返回val的出现次数 返回一个**ptrdiff_t**(typedef long long ptrdiff_t)我也不知道这是个啥
+- **swap(a,b)**交换两个数
+- 
+
+## 二分、三分
+
+### 二分查找
+
+</div></article></div><div class="block-sidebar column one-fourth"><div class="widget text-content"><p>Simple Block 是一个基于线框设计的简单的 Hexo 主题，拆分自 <a href="https://jysperm.me" target="_blank" rel="noopener">精子的博客</a>。
+支持使用 Jade 或 Markdown 来向边栏添加小部件，或向正文前添加横幅。</p>
+<p>技术栈：</p>
 <ul>
-<li>选择合适的枚举对象</li>
-<li>选择合适的枚举方向 ——方便排除非法和不是最优的情况</li>
-<li>选择合适的数据维护方法 ——转化问题</li>
+<li>Jade - 页面模板</li>
+<li>Less/Sass - 页面样式</li>
+<li>Bower - 前端包管理器</li>
+<li>CoffeeScript - Hexo 拓展脚本</li>
+<li>Gulp - 编译工具</li>
 </ul>
-<h4 id="例1-最大正方形"><a href="#例1-最大正方形" class="headerlink" title="例1.最大正方形"></a>例1.最大正方形</h4><p>题目</p>
-<p>在一个N*N（N&lt;100）的矩阵中求一个最大的正方形使得该正方形的四个顶点是由“#”构成</p>
-<p>##**#</p>
-<p>*****</p>
-<p>**##*</p>
-<p>#*#*#*</p>
-<p>*#*#*</p>
-<p>思路</p>
-<ol>
-<li>几个点可以确定一个正方形？<ul>
-<li>对角线上的两个点确定一个正方形</li>
-</ul>
-</li>
-<li>明确思路使用枚举法，枚举所有两个点的组合，判断剩下两个点是否是#，是的话记录面积不是就继续枚举下一个组合，直至枚举完所有集合</li>
-</ol>
-<h3 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h3><p>对于一个数列，再开一个数组，第n个数就存前n个数字的和</p>
-<h4 id="例2-数列求和问题"><a href="#例2-数列求和问题" class="headerlink" title="例2 数列求和问题"></a>例2 数列求和问题</h4><p>给定一个数列{an}（1&lt;= n &lt;= 100000）,有q（1&lt;= n &lt;= 100000）次询问，每次询问从i到j的元素之和</p>
-<p><strong>思路</strong></p>
-<ol>
-<li>暴力，直接算（范围大的话必超时）</li>
-<li>先便利数据，求前缀和，存到数组中</li>
-<li>使用时直接求aj-ai即可</li>
-</ol>
-<h3 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h3><h4 id="例3-数列修改问题"><a href="#例3-数列修改问题" class="headerlink" title="例3 数列修改问题"></a>例3 数列修改问题</h4><p>给定一个数列{an}（1&lt;= n &lt;= 100000）,有q（1&lt;= n &lt;= 100000）次修改，每次修改把从i到j的每个元素加上k，求所有修改之后的每个数值</p>
-<p><strong>思路</strong></p>
-<ol>
-<li>暴力，每次修改都遍历区间（时间复杂度太大）</li>
-<li>思考问题，进行修改时区间什么没有变，什么变了<ol>
-<li>区间内各个元素之间的差值未变</li>
-<li>端点处的差值改变</li>
-</ol>
-</li>
-<li>把修改的地方从整个区间变到区间的端点，就可以大大减少时间复杂度<ol>
-<li>当我们对第i到j个数加上k的话，i与i-1的差值增加了k，j与j加一的差值减少了k，区间内部相邻两数差值不变</li>
-<li>因此可以使用一个数组来维护第i个数和第i-1个数的差值（默认第一个数的前一个数是0），将[i,j]这个区间的每个数+1时，只需要修改i和j+1（i+k，j+1-k）</li>
-<li>对这个数组求前缀和，即可得到数列的值</li>
-<li>这种方法叫<strong>差分</strong></li>
-</ol>
-</li>
-</ol>
-<h3 id="差分与前缀和的关系"><a href="#差分与前缀和的关系" class="headerlink" title="差分与前缀和的关系"></a>差分与前缀和的关系</h3><p>差分和前缀和是一对对称的操作</p>
-<p>差分数组求前缀和就是原数组，对前缀和求差分也能得到原数组</p>
-<h3 id="尺取法"><a href="#尺取法" class="headerlink" title="尺取法"></a>尺取法</h3><p>给定长度为n的正整数数列以及整数S，求出总和不小于S的连续子串的长度的最小值，如果接不存在，输出0</p>
-<ol>
-<li>暴力，枚举两个点的所有组合，选择和大于等于S的最短子串（时间复杂度爆炸）（O（n3））</li>
-<li>优化，使用前缀和省去计算和的那一步复杂度变为（O（n2）），依然不低</li>
-<li>使用尺取法（O（n））<ol>
-<li>确定两个端点，从数组0开始</li>
-<li>首先向右移动右边的端点，判断和是否大于S，若大于S就移动左边的端点，一直移动直至再移动一次就不大于S时，记录长度</li>
-<li>继续移动右端点，重复2，直至数组结束</li>
-<li>得出最小距离</li>
-</ol>
-</li>
-</ol>
-<h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><ol>
-<li>对问题求解时，总是做出在当前看来最好的选择，不从整体上考虑，做出的选择是局部是上最优解</li>
-<li>使用贪心算法解决的问题都是能够证贪心出的局部最优解是所求的全局最优解</li>
-</ol>
-<h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><h3 id="算法类"><a href="#算法类" class="headerlink" title="算法类"></a>算法类</h3><ul>
-<li><p><strong>sort(beg,end,comp)</strong>给数组排序，返回排号的数组,cmp可以不写，comp用来定义比较方法</p>
-<ul>
-<li><pre><code class="c++"><span class="keyword">int</span> a[<span class="number">10</span>]= {<span class="number">1</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">0</span>};
-sort(a, a+<span class="number">10</span>);
-<span class="comment">//两个参数，第一个是你要排的的开始位置的指针，第二个是结束处的指针的下一位</span>
-<span class="comment">//可以理解为从a开始，要排几位</span>
-<span class="comment">//STL遵循[a,b)原则，因此是a到a+10</span></code></pre>
-</li>
-</ul>
-</li>
-<li><p><strong>search</strong></p>
-<ul>
-<li><strong>binary_search(起始地址，结束地址，要查找的值)</strong>，返回布尔值，匹配返回true</li>
-<li><strong>lower_bound(beg,end,val)</strong>返回可插入的最小位置的迭代器（可以理解为指针）<ul>
-<li>例插入3</li>
-<li>1 2 2 2 (可以被插到这) <strong>3</strong> 3 3 4 5</li>
-<li>返回加粗3处的指针</li>
-<li>第一个<strong>大于等于</strong>你查询的数的位置</li>
-</ul>
-</li>
-<li><strong>upper_bound(beg,end,val)</strong>返回可插入的最大位置的迭代器（可以理解为指针）<ul>
-<li>1 2 2 2  3 3 3 (可以被插到这) <strong>4</strong> 5</li>
-<li>返回加粗4处的指针</li>
-<li>第一个<strong>大于</strong>你查询的数的位置</li>
-</ul>
-</li>
-<li><strong>使用前数组一定要排序</strong></li>
-</ul>
-</li>
-<li><p><strong>find(beg,end,val)</strong>返回val第一次出现的地址</p>
-</li>
-<li><p><strong>count(beg,end,val)</strong>返回val的出现次数 返回一个<strong>ptrdiff_t</strong>(typedef long long ptrdiff_t)我也不知道这是个啥</p>
-</li>
-<li><p><strong>swap(a,b)</strong>交换两个数</p>
-</li>
-<li></li>
-</ul>
-<h2 id="二分、三分"><a href="#二分、三分" class="headerlink" title="二分、三分"></a>二分、三分</h2><h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3></div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2020/07/28/yiban-autocheck/">yiban_autocheck</a><a class="next" href="/2020/06/22/MyBatis/">MyBatis学习笔记</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://verge.ink"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/28/yiban-autocheck/">yiban_autocheck</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/21/algorithm/">算法学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/22/MyBatis/">MyBatis学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/01/DataSource/">数据库连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/01/cookie-session/">cookie&session</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/XML/">XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/Spring/">Spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/JDBC/">JDBC学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/Servlet/">Servlet学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/06/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">MySQL学习笔记</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Verge's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><div class="widget tags"></div><div class="widget archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li></ul></div><div class="widget text-content"><p>该博客使用基于 &nbsp;<a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>&nbsp; 的 &nbsp;<a href="https://github.com/jysperm/hexo-theme-simpleblock" target="_blank" rel="noopener">simpleblock</a>&nbsp; 主题。博客内容使用 &nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a>&nbsp; 授权发布。最后生成于 2020-08-05.</p></div></div></div></div></body></html>

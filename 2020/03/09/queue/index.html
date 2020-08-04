@@ -1,63 +1,96 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>队列 | Verge's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">队列</h1><a id="logo" href="/.">Verge's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">队列</h1><div class="post-meta">2020-03-09</div><div class="post-content"><h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>只能在一段插入另一端删除</p>
-<p>数据对象集：一个有0个或者多个元素的有穷线性表</p>
-<p>操作集：</p>
-<p>Queue Create(int MaxSize)</p>
-<p>int IsFull(Queue Q,int Maxsize)</p>
-<p>void Add(Queue Q,ElementType item)</p>
-<p>int IsEmpty(Queue Q)</p>
-<p>ElementType Delete(Queue Q)</p>
-<h4 id="队列的顺序存储实现"><a href="#队列的顺序存储实现" class="headerlink" title="队列的顺序存储实现"></a>队列的顺序存储实现</h4><p>为了使空间得到充分的使用<strong>循环队列（当数组满了之后，又从头开始）</strong></p>
-<ul>
-<li>如何实现？</li>
-</ul>
-<p>由一个一维数组和一个记录队列头元素位置的变量<strong>front</strong>和一个记录队列尾元素位置的变量<strong>rear</strong></p>
-<p>插入元素时rear前移一位，删除元素时front前移一位</p>
-<ul>
-<li>如何判断队列是空还是满？</li>
-</ul>
-<p>用front和rear之间的距离来判断，当front和rear相差1时，队列满</p>
-<p>为什么不是front和rear相等时未满？</p>
-<p>相等时由两种状态，有可能为空也有可能满。</p>
-<p>当然这个问题可以引入一个标记来解决：</p>
-<ol>
-<li>引入Size</li>
-</ol>
-<p>每次Add时+1，Delete时-1，当Size为0是队列为空</p>
-<ol start="2">
-<li>引入Tag</li>
-</ol>
-<p>Add时Tag = 1，Delete时Tag = 0，当front和rear相等时判断Tag的值即可</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="alternate" type="application/rss+xml" title="Verge's Blog" href="https://jysperm.me/atom.xml"><link rel="stylesheet" href="/styles.css"><title>队列 | Verge's Blog</title><meta name="generator" content="Hexo 4.2.1"></head><body><div class="container"><div class="columns page-header"><h1>Verge's Blog</h1></div><div class="columns"><div class="navigation"><nav class="menus-main"><a href="/" class="favicon"><img alt="Verge's Blog" src="/favicon.png"></a><a href="/">Home</a></nav><nav class="right menus-right"><a href="/atom.xml">RSS</a><a target="_blank" href="hexo-theme-simpleblock">fork on Github</a></nav></div></div><div class="columns"><div class="block-body column three-fourths"><div class="article-widget"><a href="https://github.com/jysperm/hexo-theme-simpleblock" target="_blank" rel="noopener">与精子同款的博客主题 simpleblock 现已发布！</a></div><article><header><small class="right"><a target="_blank" href="null_posts%2Fqueue.md">查看源代码</a></small><h1>队列</h1></header><div class="article-meta clearfix"><time class="left">2020-03-09</time><ul class="tags left"></ul><ul class="tags right"></ul></div><div class="markdown-body">
+### 队列
+
+只能在一段插入另一端删除
+
+数据对象集：一个有0个或者多个元素的有穷线性表
+
+操作集：
+
+Queue Create(int MaxSize)
+
+int IsFull(Queue Q,int Maxsize)
+
+void Add(Queue Q,ElementType item)
+
+int IsEmpty(Queue Q)
+
+ElementType Delete(Queue Q)
+
+#### 队列的顺序存储实现
+
+为了使空间得到充分的使用**循环队列（当数组满了之后，又从头开始）**
+
+- 如何实现？
+
+由一个一维数组和一个记录队列头元素位置的变量**front**和一个记录队列尾元素位置的变量**rear**
+
+插入元素时rear前移一位，删除元素时front前移一位
+
+- 如何判断队列是空还是满？
+
+用front和rear之间的距离来判断，当front和rear相差1时，队列满
+
+为什么不是front和rear相等时未满？
+
+相等时由两种状态，有可能为空也有可能满。
+
+当然这个问题可以引入一个标记来解决：
+
+1. 引入Size
+
+每次Add时+1，Delete时-1，当Size为0是队列为空
+
+2. 引入Tag
+
+Add时Tag = 1，Delete时Tag = 0，当front和rear相等时判断Tag的值即可
+
 <br>
 
-<p><strong>这里当rear与front相差1时就判断队列满</strong></p>
+**这里当rear与front相差1时就判断队列满**
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 元素最大数</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QNode</span>&#123;</span></span><br><span class="line">    ElementType Data[NaxSize];</span><br><span class="line">    <span class="keyword">int</span> rear;</span><br><span class="line">    <span class="keyword">int</span> front;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">Queue</span>;</span></span><br></pre></td></tr></table></figure>
 
-<p>1.Add</p>
-<p><strong>难点在于如何当rear到MaxSize时再+1就又返回起点</strong></p>
-<p><strong>这里使用取余，当rear到达最大值时取MaxSize的余，就得到0</strong></p>
+1.Add
+
+**难点在于如何当rear到MaxSize时再+1就又返回起点**
+
+**这里使用取余，当rear到达最大值时取MaxSize的余，就得到0**
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(Queue Q,ElementType item)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IsFull(Q))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队列满"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Q-&gt;rear = (Q-&gt;rear+<span class="number">1</span>) % MaxSize;</span><br><span class="line">        Q-&gt;Data[Q-&gt;rear] = item; <span class="comment">//把item放到数组里</span></span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>Delete</li>
-</ol>
+2. Delete
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Delete</span><span class="params">(Queue Q)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IsEmpty(Q))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队列空"</span>)；</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">		Q-&gt;front = (Q-&gt;front + <span class="number">1</span>) % MaxSize;</span><br><span class="line">        <span class="keyword">return</span> Q-&gt;Data[Q-&gt;front];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="队列的链式存储实现"><a href="#队列的链式存储实现" class="headerlink" title="队列的链式存储实现"></a>队列的链式存储实现</h4><p>使用一个<strong>单链表</strong>实现，插入和删除分别在两头进行，*<em>问题在于front和rear应该分别指向链表的哪一头 *</em></p>
-<p>rear需要插入数据需要放在链表的尾部，插入时只需要前一个节点的地址，front要在链表的头部的的下一个节点，方法与堆栈类似</p>
+#### 队列的链式存储实现
+
+使用一个**单链表**实现，插入和删除分别在两头进行，**问题在于front和rear应该分别指向链表的哪一头 **
+
+rear需要插入数据需要放在链表的尾部，插入时只需要前一个节点的地址，front要在链表的头部的的下一个节点，方法与堆栈类似
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">Next</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QNode</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">rear</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">front</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">Queue</span>;</span></span><br><span class="line">Queue PtrQ;</span><br></pre></td></tr></table></figure>
 
-<ol>
-<li>Delete</li>
-</ol>
+1. Delete
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Delete</span><span class="params">(Queue PtrQ)</span></span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">FrontCell</span>;</span></span><br><span class="line">    ElementType FrontElem;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(PtrQ-&gt;front == <span class="literal">NULL</span>)&#123;<span class="comment">//若头节点之后没有节点则队列时空的</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队列空"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    FrontCell = PtrQ-&gt;front;<span class="comment">//储存第二个节点</span></span><br><span class="line">    <span class="keyword">if</span>(PtrQ-&gt;front == PtrQ-&gt;rear) <span class="comment">//若队列只有一个元素</span></span><br><span class="line">        PtrQ-&gt;front = PtrQ-&gt;rear = <span class="literal">NULL</span>; <span class="comment">//则删除完后队列置空</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        PrtQ-&gt;front = ptrQ-&gt;rear-&gt;Next;<span class="comment">//</span></span><br><span class="line">    FrontElem = Front-&gt;Data;</span><br><span class="line">    <span class="built_in">free</span>(FrontCell);</span><br><span class="line">    <span class="keyword">return</span> FrontElem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>Add</li>
-</ol>
+2. Add
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(Queue PtrQ,ElementType item)</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> <span class="title">TempCell</span>;</span><span class="comment">//创建新节点</span></span><br><span class="line">    TempCell = (Queue)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));<span class="comment">//申请空间</span></span><br><span class="line">    TempCell-&gt;Data = item;</span><br><span class="line">    PtrQ-&gt;rear-&gt;Next = TempCell;<span class="comment">//将链表与新节点链接起来</span></span><br><span class="line">	PtrQ-&gt;rear = TempCell;<span class="comment">//移动rear </span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 
 
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2020/03/09/tree/">树（Tree）</a><a class="next" href="/2020/03/06/stack/">堆栈</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://verge.ink"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/07/28/yiban-autocheck/">yiban_autocheck</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/07/21/algorithm/">算法学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/22/MyBatis/">MyBatis学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/01/DataSource/">数据库连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/01/cookie-session/">cookie&session</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/31/XML/">XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/Spring/">Spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/JDBC/">JDBC学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/30/Servlet/">Servlet学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/06/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">MySQL学习笔记</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Verge's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div></article></div><div class="block-sidebar column one-fourth"><div class="widget text-content"><p>Simple Block 是一个基于线框设计的简单的 Hexo 主题，拆分自 <a href="https://jysperm.me" target="_blank" rel="noopener">精子的博客</a>。
+支持使用 Jade 或 Markdown 来向边栏添加小部件，或向正文前添加横幅。</p>
+<p>技术栈：</p>
+<ul>
+<li>Jade - 页面模板</li>
+<li>Less/Sass - 页面样式</li>
+<li>Bower - 前端包管理器</li>
+<li>CoffeeScript - Hexo 拓展脚本</li>
+<li>Gulp - 编译工具</li>
+</ul>
+</div><div class="widget tags"></div><div class="widget archives"><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li></ul></div><div class="widget text-content"><p>该博客使用基于 &nbsp;<a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>&nbsp; 的 &nbsp;<a href="https://github.com/jysperm/hexo-theme-simpleblock" target="_blank" rel="noopener">simpleblock</a>&nbsp; 主题。博客内容使用 &nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a>&nbsp; 授权发布。最后生成于 2020-08-05.</p></div></div></div></div></body></html>
