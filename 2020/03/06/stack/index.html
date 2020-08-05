@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>堆栈 | Verge&#39;s Blog</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="堆栈 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/03/06/stack/"><meta property="og:locale" content="zh-CN"><meta name="description" content="堆栈数据对象集：一个有0个或多个元素的有穷线性表 操作集：  Stack CreateStack(int MaxSize) bool IsFull(Stacak S,int MaxSize) void Push(Stack S,ElementType item) bool IsEmpty(Stack S) ElementType Pop(Stack S)    堆栈的顺序存储实现通常由一个一维数组 - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-03-06T02:29:13.000Z"><meta property="article:modified_time" content="2020-07-17T14:35:57.895Z"><meta property="og:updated_time" content="2020-07-17T14:35:57.895Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://verge.ink/2020/03/06/stack/">
+
+    <meta name="generator" content="Hexo 4.2.1">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://verge.ink/2020/03/06/stack/",
+    "@type": "BlogPosting",
+    "logo": "http://verge.ink/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://verge.ink/2020/03/06/stack/"
+    },
+    "headline": "堆栈 | Verge&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://verge.ink/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2020-03-06T02:29:13.000Z",
+    "dateModified": "2020-07-17T14:35:57.895Z",
+    "author": {
+        "@type": "Person",
+        "name": "JinXuyang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/default_avatar.png"
+        },
+        "description": "生命万岁."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Verge&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://verge.ink/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "",
+    "description": "堆栈数据对象集：一个有0个或多个元素的有穷线性表 操作集：  Stack CreateStack(int MaxSize) bool IsFull(Stacak S,int MaxSize) void Push(Stack S,ElementType item) bool IsEmpty(Stack S) ElementType Pop(Stack S)    堆栈的顺序存储实现通常由一个一维数组 - JinXuyang - Verge&#39;s Blog"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Verge&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                生命万岁.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Verge's Blog&url=http://verge.ink&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=Verge's Blog&url=http://verge.ink&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink&title=堆栈" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=堆栈&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://verge.ink&text=堆栈" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABgUlEQVR42u3bQY4CMQxE0b7/pWHFBqWr7ARCBf3eoEGt6I1kObYTrkfAc4EAAeIIxCWezjuv91rrgohFDINm8P3ru9Gid59qXRDZCLfoe8CpQKysC+K/ECPMKMGB+H+ECtK7d0Gci1CblS1YTYGzvIuC2I5QBenK58eqbRBbEZ2gu0tGX+/KQWxFqEDqNEWVwARxBqLT0KhGZ/S3KpRB5CK6Q7By0JkAB5GLmBl6dRoe2TyBiEVUC1YXuJUNDkQ+wgWQSzizA3gQ2Qi38ajkVS2GStU2iBhEZYjeKWArw1YQuYjOENUVte3DXhCRiOpBS6XhdYNUu4uCiEHMHsy7hrhV6IKIQ8wcrCh06XAXRDRCJhUxUFUXOuxFDxCRiE6TqxqgyjAexBmI6iVg1QypJFU+DQQRhZgdprtiRiU1EPkId9G3Ay3/AAHE8Qjb4IrLwh8LTBARCDdorQTjcmCC2I5wQ46Vwvb2HwIRi6gGlEtc6kBvqdoGsRXxywcECBDRiCdgfnjIR6x4gAAAAABJRU5ErkJggg==" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">堆栈</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="JinXuyang's Avatar">
+        <span>2020-03-06</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=堆栈&url=http://verge.ink/2020/03/06/stack/&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=堆栈&url=http://verge.ink/2020/03/06/stack/&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink/2020/03/06/stack/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://verge.ink/2020/03/06/stack/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink/2020/03/06/stack/&title=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Verge's Blog&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink/2020/03/06/stack/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://verge.ink/2020/03/06/stack/&text=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABgUlEQVR42u3bQY4CMQxE0b7/pWHFBqWr7ARCBf3eoEGt6I1kObYTrkfAc4EAAeIIxCWezjuv91rrgohFDINm8P3ru9Gid59qXRDZCLfoe8CpQKysC+K/ECPMKMGB+H+ECtK7d0Gci1CblS1YTYGzvIuC2I5QBenK58eqbRBbEZ2gu0tGX+/KQWxFqEDqNEWVwARxBqLT0KhGZ/S3KpRB5CK6Q7By0JkAB5GLmBl6dRoe2TyBiEVUC1YXuJUNDkQ+wgWQSzizA3gQ2Qi38ajkVS2GStU2iBhEZYjeKWArw1YQuYjOENUVte3DXhCRiOpBS6XhdYNUu4uCiEHMHsy7hrhV6IKIQ8wcrCh06XAXRDRCJhUxUFUXOuxFDxCRiE6TqxqgyjAexBmI6iVg1QypJFU+DQQRhZgdprtiRiU1EPkId9G3Ay3/AAHE8Qjb4IrLwh8LTBARCDdorQTjcmCC2I5wQ46Vwvb2HwIRi6gGlEtc6kBvqdoGsRXxywcECBDRiCdgfnjIR6x4gAAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#堆栈"><span class="post-toc-number">1.</span> <span class="post-toc-text">堆栈</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#堆栈的顺序存储实现"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">堆栈的顺序存储实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用一个数组实现两个堆栈"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">用一个数组实现两个堆栈</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#堆栈的链式存储实现"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">堆栈的链式存储实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#堆栈的应用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">堆栈的应用</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <h3 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h3><p>数据对象集：一个有0个或多个元素的有穷线性表</p>
+<p>操作集：</p>
+<ol>
+<li>Stack CreateStack(int MaxSize)</li>
+<li>bool IsFull(Stacak S,int MaxSize)</li>
+<li>void Push(Stack S,ElementType item)</li>
+<li>bool IsEmpty(Stack S)</li>
+<li>ElementType Pop(Stack S)</li>
+</ol>
+<br>
+
+<h4 id="堆栈的顺序存储实现"><a href="#堆栈的顺序存储实现" class="headerlink" title="堆栈的顺序存储实现"></a>堆栈的顺序存储实现</h4><p>通常由一个<strong>一维数组</strong>和一个<strong>记录栈顶元素位置的变量</strong>组组成</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 元素最大个数</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span>&#123;</span></span><br><span class="line">    ElementType *Data;</span><br><span class="line">    <span class="keyword">int</span> Top;</span><br><span class="line">    <span class="keyword">int</span> MaxSize;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>创建</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">(<span class="keyword">int</span> MaxSize)</span></span>&#123;</span><br><span class="line">	Stack S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));<span class="comment">//申请一块空间，存放Stack这个结构</span></span><br><span class="line">    S-&gt;Data = (ElementType *)<span class="built_in">malloc</span>(MaxSize * <span class="keyword">sizeof</span>(ElementType))<span class="comment">//申请一块空间存放MaxSize个ElementType</span></span><br><span class="line">    S-&gt;Top = <span class="number">-1</span>;<span class="comment">//初始状态栈顶为-1</span></span><br><span class="line">    S-&gt;MaxSize = MaxSize;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>栈是否满了</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsFull</span><span class="params">(Stack S,<span class="keyword">int</span> MaxSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S-&gt;Top == S-&gt;MaxSize - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.栈是否为空</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsEmpty</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S-&gt;Top == <span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>Push</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Push</span><span class="params">(Stack S,ElemenType item)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IsFull(S) == <span class="literal">true</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"栈满"</span>)；</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        S-&gt;Data[++(S-&gt;Top)] = item; <span class="comment">//Top先加一，在进行运算</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>++a是先自加再进行运算，a++是先运算再自加</strong></p>
+<ol start="5">
+<li>Pop</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">( Stack S )</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ( IsEmpty(S) )&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"栈空"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> s-&gt;Data[(S-&gt;Top)--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h4 id="用一个数组实现两个堆栈"><a href="#用一个数组实现两个堆栈" class="headerlink" title="用一个数组实现两个堆栈"></a>用一个数组实现两个堆栈</h4><p>思路：两个堆栈分别从数组头和尾开始，向中间，当两个顶指针相遇时，表示两个堆栈都满了</p>
+<p>​            —–&gt;    &lt;——-</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 元素最大个数</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DStack</span> *<span class="title">PtrS</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DStack</span>&#123;</span></span><br><span class="line">    ElementType *Data;</span><br><span class="line">    <span class="keyword">int</span> Top1;</span><br><span class="line">    <span class="keyword">int</span> Top2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>​    S.Top1 = -1    说明栈1空</p>
+<p>​    S.Top2 = MaxSize    说明栈2空</p>
+<ol>
+<li>Push</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(PtrS S,ElementType item,<span class="keyword">int</span> Tag)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(S-&gt;Top2 - S-&gt;Top1 == <span class="number">1</span>)&#123;<span class="comment">//两栈相遇时Top相差1</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"堆栈满"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(Tag == <span class="number">1</span>)</span><br><span class="line">        S-&gt;Data[++(S-&gt;Top1)] = item;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        S-&gt;Data[--(S-&gt;Top2)] = item;<span class="comment">//注意因为堆栈2是倒着来的，所以是--</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Pop</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">(PtrS S,<span class="keyword">int</span> Tag)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tag == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(S-&gt;Top1 == <span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"堆栈1空"</span>)；</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> S-&gt;Data[(S-&gt;Top1)--];</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(S-&gt;Top2 == MaxSize)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"堆栈1空"</span>)；</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> S-&gt;Data[(S-&gt;Top2)++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="堆栈的链式存储实现"><a href="#堆栈的链式存储实现" class="headerlink" title="堆栈的链式存储实现"></a>堆栈的链式存储实现</h4><p>实际上是单向链表，叫链栈。插入和删除操作只能再链栈的栈顶进行，<strong>栈顶指针应该在链表的表头后其他节点之前</strong>，否则无法进行删除操作，因为前一个节点无法保存上一个节点的指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span>&#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Next</span>;</span> <span class="comment">//记录下一个节点的指针</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Create</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">()</span></span>&#123;<span class="comment">//构建指针头节点</span></span><br><span class="line">    Stack S;</span><br><span class="line">    S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));</span><br><span class="line">    S-&gt;Next == <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.IsEmpty</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsEmpty</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (S-&gt;Next == <span class="literal">NULL</span>); <span class="comment">//若头节点的Next为NULL则堆栈为空</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>Push</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(ElementType item,Stack S)</span></span>&#123;</span><br><span class="line">    Stack TempCell;</span><br><span class="line">    TempCell = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Struct SNode));</span><br><span class="line">    TempCell-&gt;Data = item;</span><br><span class="line">    TempCell-&gt;Next = S-&gt;Next;</span><br><span class="line">    S-&gt;Next = TempCell; <span class="comment">//插到头节点之后其他节点之前</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="4">
+<li>Pop </li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IsEmpty(S))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"堆栈空"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Stack TopCell;<span class="comment">//为了找到第三个节点和释放空间而声明的</span></span><br><span class="line">        ElemtType TopElem;</span><br><span class="line">    	TopCell = S-&gt;Next;<span class="comment">//把第二个节点的地址给TopCell</span></span><br><span class="line">    	S-&gt;Next = TopCell-&gt;Next;<span class="comment">//把第三个节点给S的Next，就跳过了第二个节点即删除了第二个节点</span></span><br><span class="line">		TopElem = TopCell-&gt;Element;        </span><br><span class="line">        <span class="built_in">free</span>(TopCell);</span><br><span class="line">        <span class="keyword">return</span> TopElem;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="堆栈的应用"><a href="#堆栈的应用" class="headerlink" title="堆栈的应用"></a>堆栈的应用</h4><ul>
+<li>中缀表达式转后缀表达式</li>
+<li>函数调用及递归实现</li>
+<li>深度优先搜索</li>
+<li>回溯算法</li>
+<li>…….</li>
+</ul>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-07-17");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-03-06T02:29:13.000Z" itemprop="datePublished">2020-03-06</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-07-17T14:35:57.895Z" itemprop="dateModified">2020-07-17</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2020/03/09/queue/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">队列</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2020/03/03/linerlist/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">线性表</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://verge.ink">Verge's Blog</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+    </body>
+
+</html>

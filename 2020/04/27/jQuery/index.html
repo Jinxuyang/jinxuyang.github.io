@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>jQuery学习笔记 | Verge&#39;s Blog</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="jQuery学习笔记 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/04/27/jQuery/"><meta property="og:locale" content="zh-CN"><meta name="description" content="[TOC] 环境搭建123456789101112&amp;lt;!DOCTYPE HTML&amp;gt;&amp;lt;html&amp;gt;    &amp;lt;head&amp;gt;        &amp;lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot;&amp;gt;        &amp;lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src - JinXuyang - Verge&#39;s Blog"><meta property="og:image" content="http://img.mukewang.com/5590e98b0001f60d06130229.jpg"><meta property="og:image" content="http://img.mukewang.com/57cd1df2000146de06020498.jpg"><meta property="og:image" content="http://img.mukewang.com/57cd20bf0001a97f05290214.jpg"><meta property="og:image" content="http://img.mukewang.com/5590f6de0001e2b204460106.jpg"><meta property="og:image" content="http://img.mukewang.com/57d654200001c46507360560.jpg"><meta property="og:image" content="https://img3.mukewang.com/5bac45120001301105960331.jpg"><meta property="og:image" content="http://img.mukewang.com/5592040d0001f8eb04940441.jpg"><meta property="og:image" content="http://img.mukewang.com/55920c2f0001198b04940201.jpg"><meta property="og:image" content="http://img.mukewang.com/56cc12f800017b4104480146.jpg"><meta property="article:published_time" content="2020-04-27T08:04:06.000Z"><meta property="article:modified_time" content="2020-07-17T14:37:00.800Z"><meta property="og:updated_time" content="2020-07-17T14:37:00.800Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://verge.ink/2020/04/27/jQuery/">
+
+    <meta name="generator" content="Hexo 4.2.1">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://verge.ink/2020/04/27/jQuery/",
+    "@type": "BlogPosting",
+    "logo": "http://verge.ink/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://verge.ink/2020/04/27/jQuery/"
+    },
+    "headline": "jQuery学习笔记 | Verge&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://verge.ink/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2020-04-27T08:04:06.000Z",
+    "dateModified": "2020-07-17T14:37:00.800Z",
+    "author": {
+        "@type": "Person",
+        "name": "JinXuyang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/default_avatar.png"
+        },
+        "description": "生命万岁."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Verge&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://verge.ink/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "",
+    "description": "[TOC] 环境搭建123456789101112&amp;amp;lt;!DOCTYPE HTML&amp;amp;gt;&amp;amp;lt;html&amp;amp;gt;    &amp;amp;lt;head&amp;amp;gt;        &amp;amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=utf-8&amp;quot;&amp;amp;gt;        &amp;amp;lt;script type=&amp;quot;text/javascript&amp;quot; src - JinXuyang - Verge&#39;s Blog"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Verge&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                生命万岁.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Verge's Blog&url=http://verge.ink&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=Verge's Blog&url=http://verge.ink&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink&title=jQuery学习笔记" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=jQuery学习笔记&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://verge.ink&text=jQuery学习笔记" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABkElEQVR42u3aQY6DMBBEUe5/6WSLEK76hgjKUbFhMQZepB63u+3tE3BtRRRRxBKITVz7Mfv78dnjOPzeImIRp0Fz8kIyno4rIh9xDBwVjKP76PnRjyhiXQQJNjXBFfF/iDPM8aNnE1wRayNcQhq9mCSq21m0iMcRakF65/6z1XYRjyJs0WqC0SW3n1TlRTyKUIE0GkOKI/W+IvIRaqIihS557lICK+IVhGqIqSBVC173tyKyEaOAciBV/JAfUEQuQjXL6eTjGik2gRURhaCNkVHA0YLZNkmKiEKQjRa6+HHNVbnaLiICQYpgUvySScomsCIiEKpZTiYyksDQf0cRUYg7TXOSwC7t/BQRgaCFLC2Ipxa6RUQiXDE8u0mvFk1FrIFwAUo/qhbDeLIq4jXElQmJfBQ1ZouIRJCNdQUjmzSXN+KKeA1BD/bQpEeL4iKyEaj5aRqrLtDxyqqIJRDuAAc59INWVkUsgZgNPryZW0Q0wjXJyIGOmaZZEdmImQNfLtimNvKLiES8eRVRRBHRiC/75PoqQQHr9AAAAABJRU5ErkJggg==" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">jQuery学习笔记</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="JinXuyang's Avatar">
+        <span>2020-04-27</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=jQuery学习笔记&url=http://verge.ink/2020/04/27/jQuery/&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=jQuery学习笔记&url=http://verge.ink/2020/04/27/jQuery/&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink/2020/04/27/jQuery/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://verge.ink/2020/04/27/jQuery/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink/2020/04/27/jQuery/&title=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Verge's Blog&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink/2020/04/27/jQuery/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://verge.ink/2020/04/27/jQuery/&text=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABkElEQVR42u3aQY6DMBBEUe5/6WSLEK76hgjKUbFhMQZepB63u+3tE3BtRRRRxBKITVz7Mfv78dnjOPzeImIRp0Fz8kIyno4rIh9xDBwVjKP76PnRjyhiXQQJNjXBFfF/iDPM8aNnE1wRayNcQhq9mCSq21m0iMcRakF65/6z1XYRjyJs0WqC0SW3n1TlRTyKUIE0GkOKI/W+IvIRaqIihS557lICK+IVhGqIqSBVC173tyKyEaOAciBV/JAfUEQuQjXL6eTjGik2gRURhaCNkVHA0YLZNkmKiEKQjRa6+HHNVbnaLiICQYpgUvySScomsCIiEKpZTiYyksDQf0cRUYg7TXOSwC7t/BQRgaCFLC2Ipxa6RUQiXDE8u0mvFk1FrIFwAUo/qhbDeLIq4jXElQmJfBQ1ZouIRJCNdQUjmzSXN+KKeA1BD/bQpEeL4iKyEaj5aRqrLtDxyqqIJRDuAAc59INWVkUsgZgNPryZW0Q0wjXJyIGOmaZZEdmImQNfLtimNvKLiES8eRVRRBHRiC/75PoqQQHr9AAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-number">1.</span> <span class="post-toc-text">环境搭建</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择器"><span class="post-toc-number">2.</span> <span class="post-toc-text">选择器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#id选择器"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">id选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类选择器"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">类选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标签选择器"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">标签选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全能选择器"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">全能选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#层级选择器"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">层级选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本筛选选择器"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">基本筛选选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内容筛选选择器"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">内容筛选选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可见性筛选选择器"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">可见性筛选选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#属性筛选选择器"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">属性筛选选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#子元素筛选选择器"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">子元素筛选选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单元素选择器"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">表单元素选择器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表单对象属性筛选选择器"><span class="post-toc-number">2.11.1.</span> <span class="post-toc-text">表单对象属性筛选选择器</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#特殊选择器this"><span class="post-toc-number">2.12.</span> <span class="post-toc-text">特殊选择器this</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#属性与样式"><span class="post-toc-number">3.</span> <span class="post-toc-text">属性与样式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#attr-与-removeAttr"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">attr()与.removeAttr()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#html-及-text"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">.html()及.text()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#val"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">.val()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#addClass-和removeClass"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">.addClass()和removeClass()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#toggleClass"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">.toggleClass()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#css"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">.css()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结点创建与属性"><span class="post-toc-number">4.</span> <span class="post-toc-text">结点创建与属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">创建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">插入</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>[TOC]</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>环境搭建<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span> alert($)</span><br><span class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>想要使用jQuery只需要在&lt;head&gt;标签中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：一定千万不要在引用jquery的script标签里再写js了，重新写一个script标签</strong></p>
+<p>可以在这里<a href="https://jquery.com/download/下载使用jQuery的其他版本" target="_blank" rel="noopener">https://jquery.com/download/下载使用jQuery的其他版本</a></p>
+<p>网速慢的话</p>
+<p><a href="https://www.bootcdn.cn/jquery/" target="_blank" rel="noopener">https://www.bootcdn.cn/jquery/</a></p>
+<p>这样操作</p>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$( &quot;#id&quot; )</span><br></pre></td></tr></table></figure>
+
+<p>id若多个元素分配了相同的id，将只匹配该id选择集合的第一个DOM元素，按理来说id需要唯一</p>
+<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">".class"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>假如你想改变某一类标签内容的样式可以直接使用<code>$(.class).css()</code>,不再像原生js一样需要循环</p>
+<h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"tag"</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="全能选择器"><a href="#全能选择器" class="headerlink" title="全能选择器"></a>全能选择器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"*"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>获取文档中的所有元素</p>
+<h3 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h3><p>文档中的所有的节点之间都是有这样或者那样的关系。我们可以把节点之间的关系可以用传统的家族关系来描述，可以把文档树当作一个家谱，那么节点与节点直接就会存在父子，兄弟，祖孙的关系了。</p>
+<p><img src="http://img.mukewang.com/5590e98b0001f60d06130229.jpg" alt=""></p>
+<h3 id="基本筛选选择器"><a href="#基本筛选选择器" class="headerlink" title="基本筛选选择器"></a>基本筛选选择器</h3><p><img src="http://img.mukewang.com/57cd1df2000146de06020498.jpg" alt=""></p>
+<p>假如你使用标签选择器选取了所有div标签，但是你只想要第一个就可以这样</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"div:first"</span>)<span class="comment">//选择第一个</span></span><br><span class="line">$(<span class="string">"div:eq(0)"</span>)<span class="comment">//选择索引值为0的那个</span></span><br><span class="line">$(<span class="string">"div:lt(1)"</span>)<span class="comment">//选择索引值小于1的</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="内容筛选选择器"><a href="#内容筛选选择器" class="headerlink" title="内容筛选选择器"></a>内容筛选选择器</h3><p><img src="http://img.mukewang.com/57cd20bf0001a97f05290214.jpg" alt=""></p>
+<ol>
+<li>:contains与:has都有查找的意思，但是contains查找包含“<strong>指定文本</strong>”的元素，has查找包含“<strong>指定元素</strong>”的元素</li>
+<li>如果:contains匹配的文本包含在元素的子元素中，同样认为是符合条件的。</li>
+<li>:parent与:empty是相反的，两者所涉及的子元素，包括文本节点</li>
+</ol>
+<h3 id="可见性筛选选择器"><a href="#可见性筛选选择器" class="headerlink" title="可见性筛选选择器"></a>可见性筛选选择器</h3><p><img src="http://img.mukewang.com/5590f6de0001e2b204460106.jpg" alt=""></p>
+<p>我们有几种方式可以隐藏一个元素：</p>
+<ol>
+<li>CSS display的值是none。</li>
+<li>type=”hidden”的表单元素。</li>
+<li>宽度和高度都显式设置为0。</li>
+<li>一个祖先元素是隐藏的，该元素是不会在页面上显示</li>
+<li>CSS visibility的值是hidden</li>
+<li>CSS opacity的值是0</li>
+</ol>
+<h3 id="属性筛选选择器"><a href="#属性筛选选择器" class="headerlink" title="属性筛选选择器"></a>属性筛选选择器</h3><p><img src="http://img.mukewang.com/57d654200001c46507360560.jpg" alt=""></p>
+<p>用法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"一个元素集合[属性 | 属性 运算符 "</span>value<span class="string">"]"</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="子元素筛选选择器"><a href="#子元素筛选选择器" class="headerlink" title="子元素筛选选择器"></a>子元素筛选选择器</h3><p><img src="https://img3.mukewang.com/5bac45120001301105960331.jpg" alt=""></p>
+<ol>
+<li>:first只匹配一个单独的元素，但是:first-child选择器可以匹配多个：即为每个父级元素匹配第一个子元素。这相当于:nth-child(1)</li>
+<li>:last 只匹配一个单独的元素， :last-child 选择器可以匹配多个元素：即，为每个父级元素匹配最后一个子元素</li>
+<li>如果子元素只有一个的话，:first-child与:last-child是同一个</li>
+<li>:only-child匹配某个元素是父元素中唯一的子元素，就是说当前子元素是父元素中唯一的元素，则匹配</li>
+<li>jQuery实现:nth-child(n)是严格来自CSS规范，所以n值是“索引”，也就是说，从1开始计数，:nth-child(index)从1开始的，而eq(index)是从0开始的</li>
+<li>nth-child(n) 与 :nth-last-child(n) 的区别前者是从前往后计算，后者从后往前计算</li>
+</ol>
+<h3 id="表单元素选择器"><a href="#表单元素选择器" class="headerlink" title="表单元素选择器"></a>表单元素选择器</h3><p><img src="http://img.mukewang.com/5592040d0001f8eb04940441.jpg" alt="img"></p>
+<h4 id="表单对象属性筛选选择器"><a href="#表单对象属性筛选选择器" class="headerlink" title="表单对象属性筛选选择器"></a>表单对象属性筛选选择器</h4><p><img src="http://img.mukewang.com/55920c2f0001198b04940201.jpg" alt="img"></p>
+<h3 id="特殊选择器this"><a href="#特殊选择器this" class="headerlink" title="特殊选择器this"></a>特殊选择器this</h3><blockquote>
+<p>this，表示当前的上下文对象是一个html对象，可以调用html对象所拥有的属性和方法。<br>$(this),代表的上下文对象是一个jquery的上下文对象，可以调用jQuery的方法和属性值</p>
+</blockquote>
+<h2 id="属性与样式"><a href="#属性与样式" class="headerlink" title="属性与样式"></a>属性与样式</h2><h3 id="attr-与-removeAttr"><a href="#attr-与-removeAttr" class="headerlink" title="attr()与.removeAttr()"></a>attr()与.removeAttr()</h3><p>用来获取和设置元素属性</p>
+<p><strong>attr()有4个表达式</strong></p>
+<ol>
+<li>attr(传入属性名)：获取属性的值</li>
+<li>attr(属性名, 属性值)：设置属性的值</li>
+<li>attr(属性名,函数值)：设置属性的函数值</li>
+<li>attr(attributes)：给指定元素设置多个属性值，即：{属性名一: “属性值一” , 属性名二: “属性值二” , … … }</li>
+</ol>
+<p><strong>removeAttr()删除方法</strong></p>
+<p>.removeAttr( attributeName ) : 为匹配的元素集合中的每个元素中移除一个属性（attribute）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a id=<span class="string">"10086"</span>&gt;移动&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">$("#10086").attr(id,10001);</span></span><br><span class="line"><span class="regexp">$("#10001").attr(id);</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="html-及-text"><a href="#html-及-text" class="headerlink" title=".html()及.text()"></a>.html()及.text()</h3><p>.html() 获取集合中第一个匹配元素的HTML内容 或 设置每一个匹配元素的html内容，具体有3种用法：</p>
+<ol>
+<li>.html() 不传入值，就是获取集合中第一个匹配元素的HTML内容</li>
+<li>.html( htmlString ) 设置每一个匹配元素的html内容</li>
+<li>.html( function(index, oldhtml) ) 用来返回设置HTML内容的一个函数</li>
+</ol>
+<p>.text()</p>
+<p>得到匹配元素集合中每个元素的文本内容结合，包括他们的后代，或设置匹配元素集合中每个元素的文本内容为指定的文本内容。，具体有3种用法：</p>
+<ol>
+<li>.text() 得到匹配元素集合中每个元素的合并文本，包括他们的后代</li>
+<li>.text( textString ) 用于设置匹配元素内容的文本</li>
+<li>.text( function(index, text) ) 用来返回设置文本内容的一个函数</li>
+</ol>
+<p>.html处理的是元素内容，.text处理的是文本内容</p>
+<h3 id="val"><a href="#val" class="headerlink" title=".val()"></a>.val()</h3><p><strong>.val()方法</strong></p>
+<p>主要是用于处理表单元素的值，比如 input, select 和 textarea。</p>
+<ol>
+<li>.val()无参数，获取匹配的元素集合中第一个元素的当前值</li>
+<li>.val( value )，设置匹配的元素集合中每个元素的值</li>
+<li>.val( function ) ，一个用来返回设置值的函数</li>
+</ol>
+<p><strong>.html(),.text(),.val()三种方法都是用来读取选定元素的内容；只不过.html()是用来读取元素的html内容（包括html标签），.text()用来读取元素的纯文本内容，包括其后代元素，.val()是用来读取表单元素的”value”值。其中.html()和.text()方法不能使用在表单元素上,而.val()只能使用在表单元素上；另外.html()方法使用在多个元素上时，只读取第一个元素；.val()方法和.html()相同，如果其应用在多个元素上时，只能读取第一个表单元素的”value”值，但是.text()和他们不一样，如果.text()应用在多个元素上时，将会读取所有选中元素的文本内容</strong>。</p>
+<h3 id="addClass-和removeClass"><a href="#addClass-和removeClass" class="headerlink" title=".addClass()和removeClass()"></a>.addClass()和removeClass()</h3><p><strong>addClass( className )方法</strong></p>
+<ol>
+<li>.addClass( className ) : 为每个匹配元素所要增加的一个或多个样式名</li>
+<li>.addClass( function(index, currentClass) ) : 这个函数返回一个或更多用空格隔开的要增加的样式名</li>
+</ol>
+<p><strong>注意事项：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.addClass()方法不会替换一个样式类名。它只是简单的添加一个样式类名到元素上</span><br></pre></td></tr></table></figure>
+
+<p><strong>.removeClass( )方法</strong></p>
+<ol>
+<li>.removeClass( [className ] )：每个匹配元素移除的一个或多个用空格隔开的样式名</li>
+<li>.removeClass( function(index, class) ) ： 一个函数，返回一个或多个将要被移除的样式名</li>
+</ol>
+<p><strong>注意事项</strong></p>
+<p>如果一个样式类名作为一个参数,只有这样式类会被从匹配的元素集合中删除 。 如果没有样式名作为参数，那么所有的样式类将被移除</p>
+<h3 id="toggleClass"><a href="#toggleClass" class="headerlink" title=".toggleClass()"></a>.toggleClass()</h3><p>一次执行相当于addClass，再次执行相当于removeClass</p>
+<p><strong>.toggleClass( )方法：</strong>在匹配的元素集合中的每个元素上添加或删除一个或多个样式类,取决于这个样式类是否存在或值切换属性。即：如果存在（不存在）就删除（添加）一个类</p>
+<ol>
+<li>.toggleClass( className )：在匹配的元素集合中的每个元素上用来切换的一个或多个（用空格隔开）样式类名</li>
+<li>.toggleClass( className, switch )：一个布尔值，用于判断样式是否应该被添加或移除</li>
+<li>.toggleClass( [switch ] )：一个用来判断样式类添加还是移除的 布尔值</li>
+<li>.toggleClass( function(index, class, switch) [, switch ] )：用来返回在匹配的元素集合中的每个元素上用来切换的样式类名的一个函数。接收元素的索引位置和元素旧的样式类作为参数</li>
+</ol>
+<p><strong>注意事项：</strong></p>
+<ol>
+<li>toggleClass是一个互斥的逻辑，也就是通过判断对应的元素上是否存在指定的Class名，如果有就删除，如果没有就增加</li>
+</ol>
+<h3 id="css"><a href="#css" class="headerlink" title=".css()"></a>.css()</h3><p><strong>获取：</strong></p>
+<ol>
+<li>.css( propertyName ) ：获取匹配元素集合中的第一个元素的样式属性的计算值</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.css(<span class="string">"background-color"</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>.css( propertyNames )：传递一组数组，返回一个对象结果</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.css([<span class="string">'width'</span>,<span class="string">'height'</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>设置：</strong></p>
+<ol>
+<li><p>.css(propertyName, value )：设置CSS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.css(&quot;background-color&quot;,&quot;red&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>.css( propertyName, function )：可以传入一个回调函数，返回取到对应的值进行处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.css(&quot;width&quot;,function(index,value)&#123;</span><br><span class="line">            &#x2F;&#x2F;value带单位，先分解</span><br><span class="line">            value &#x3D; value.split(&#39;px&#39;);</span><br><span class="line">            &#x2F;&#x2F;返回一个新的值，在原有的值上，增加50px</span><br><span class="line">            return (Number(value[0]) + 50) + value[1];</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>.css( properties )：可以传一个对象，同时设置多个样式</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">css(&#123;</span><br><span class="line">            &#39;font-size&#39;        :&quot;15px&quot;,</span><br><span class="line">            &quot;background-color&quot; :&quot;#40E0D0&quot;,</span><br><span class="line">            &quot;border&quot;           :&quot;1px solid red&quot;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="结点创建与属性"><a href="#结点创建与属性" class="headerlink" title="结点创建与属性"></a>结点创建与属性</h2><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"&lt;div class='right'&gt;&lt;div class='aaron'&gt;动态创建DIV元素节点&lt;/div&gt;&lt;/div&gt;"</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p><img src="http://img.mukewang.com/56cc12f800017b4104480146.jpg" alt="img"></p>
+<p>.append(), 内容在方法的后面，参数是将要插入的内容。</p>
+<p>.appendTo()刚好相反，内容在方法前面，无论是一个选择器表达式 或创建作为标记上的标记它都将被插入到目标容器的末尾</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">append()前面是被插入的对象，后面是要在对象内插入的元素内容</span><br><span class="line">appendTo()前面是要插入的元素内容，而后面是被插入的对象</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用是一样的</strong></p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-07-17");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-04-27T08:04:06.000Z" itemprop="datePublished">2020-04-27</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-07-17T14:37:00.800Z" itemprop="dateModified">2020-07-17</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2020/04/29/PHP/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">PHP学习笔记</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2020/04/26/CSS/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">CSS学习笔记</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://verge.ink">Verge's Blog</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+    </body>
+
+</html>

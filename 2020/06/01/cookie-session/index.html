@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>cookie&amp;session | Verge&#39;s Blog</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="cookie&amp;session | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/06/01/cookie-session/"><meta property="og:locale" content="zh-CN"><meta name="description" content="会话什么是会话一次会话中包含多次请求和响应 一次会话：浏览器第一次给服务器发送请求，会话建立，指导一方断开为止 有什么用在一次会话范围内的多次请求共享数据 怎么实现 客户端会话技术（数据存放在客户端）：Cookie 服务端会话技术（数据存放在服务端）：Session  Cookie如何使用 创建Cookie对象】 new Cookie(String name,String value)   发送C - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-05-31T16:48:08.000Z"><meta property="article:modified_time" content="2020-06-02T06:02:30.227Z"><meta property="og:updated_time" content="2020-06-02T06:02:30.227Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://verge.ink/2020/06/01/cookie-session/">
+
+    <meta name="generator" content="Hexo 4.2.1">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://verge.ink/2020/06/01/cookie-session/",
+    "@type": "BlogPosting",
+    "logo": "http://verge.ink/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://verge.ink/2020/06/01/cookie-session/"
+    },
+    "headline": "cookie&amp;session | Verge&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://verge.ink/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2020-05-31T16:48:08.000Z",
+    "dateModified": "2020-06-02T06:02:30.227Z",
+    "author": {
+        "@type": "Person",
+        "name": "JinXuyang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/default_avatar.png"
+        },
+        "description": "生命万岁."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Verge&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://verge.ink/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "",
+    "description": "会话什么是会话一次会话中包含多次请求和响应 一次会话：浏览器第一次给服务器发送请求，会话建立，指导一方断开为止 有什么用在一次会话范围内的多次请求共享数据 怎么实现 客户端会话技术（数据存放在客户端）：Cookie 服务端会话技术（数据存放在服务端）：Session  Cookie如何使用 创建Cookie对象】 new Cookie(String name,String value)   发送C - JinXuyang - Verge&#39;s Blog"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Verge&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                生命万岁.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Verge's Blog&url=http://verge.ink&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=Verge's Blog&url=http://verge.ink&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink&title=cookie&amp;session" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=cookie&amp;session&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://verge.ink&text=cookie&amp;session" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB20lEQVR42u3by3KEMAxEUf7/p5NtirK6W4SFLS6bPGYGHVJ+SXaunw2vCxQoUKAWqEtc99eXN7q97/67NA6oWSgXbIVbYVaQNA6oeagqaBW46hD3gOnDgfoOSg525ntQoDoNvRpkVUcA9S2Umiirm1UdwD3Iv1cJoLZHucThra+vZjOgtkXZokPRQNPJWn3+cdUF1NaoakHmgihMNUmrmKBmojqJp0M8goMagXKJQJqEusVfUhQBNQuVFL1Wr6sG7oodcpUA6liUmnhVw0wGTDUYR8koqCNR1ZuTolg1mCqw/BnUCJTCJEUvNwh3ElRQM1BJA1QNvlvwlzFAjUElC/7W4SyTfJadC9RIVNIBkmQgeUhb3Ad1LMoF6ySd6eC7/COAGoNyyWdnE/vpAR5Qc1DdAzjufWljjw40gzoWpRpxspnkAscJB6gRqFay+OCQc7p5AGoWKv2nCrfB1IHbhg7qWJQa7KKihFnE2cOBoMahkgJYOsAmBTdVhAM1A5UcaJY3CibiZLMI1CyUauBq4d9dxLnPgJqFSgsc6WSddqBXimagjkKlSUS6kRQlo6A+g+ocuHEHDqMJGdTRqDcShqiALzbPQc1BdSbOdOHWwYCahdrpAgUKFKg/1y+bZM/vUxrEBgAAAABJRU5ErkJggg==" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">cookie&session</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="JinXuyang's Avatar">
+        <span>2020-06-01</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=cookie&amp;session&url=http://verge.ink/2020/06/01/cookie-session/&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=cookie&amp;session&url=http://verge.ink/2020/06/01/cookie-session/&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink/2020/06/01/cookie-session/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://verge.ink/2020/06/01/cookie-session/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink/2020/06/01/cookie-session/&title=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Verge's Blog&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink/2020/06/01/cookie-session/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://verge.ink/2020/06/01/cookie-session/&text=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB20lEQVR42u3by3KEMAxEUf7/p5NtirK6W4SFLS6bPGYGHVJ+SXaunw2vCxQoUKAWqEtc99eXN7q97/67NA6oWSgXbIVbYVaQNA6oeagqaBW46hD3gOnDgfoOSg525ntQoDoNvRpkVUcA9S2Umiirm1UdwD3Iv1cJoLZHucThra+vZjOgtkXZokPRQNPJWn3+cdUF1NaoakHmgihMNUmrmKBmojqJp0M8goMagXKJQJqEusVfUhQBNQuVFL1Wr6sG7oodcpUA6liUmnhVw0wGTDUYR8koqCNR1ZuTolg1mCqw/BnUCJTCJEUvNwh3ElRQM1BJA1QNvlvwlzFAjUElC/7W4SyTfJadC9RIVNIBkmQgeUhb3Ad1LMoF6ySd6eC7/COAGoNyyWdnE/vpAR5Qc1DdAzjufWljjw40gzoWpRpxspnkAscJB6gRqFay+OCQc7p5AGoWKv2nCrfB1IHbhg7qWJQa7KKihFnE2cOBoMahkgJYOsAmBTdVhAM1A5UcaJY3CibiZLMI1CyUauBq4d9dxLnPgJqFSgsc6WSddqBXimagjkKlSUS6kRQlo6A+g+ocuHEHDqMJGdTRqDcShqiALzbPQc1BdSbOdOHWwYCahdrpAgUKFKg/1y+bZM/vUxrEBgAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#会话"><span class="post-toc-number">1.</span> <span class="post-toc-text">会话</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是会话"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是会话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有什么用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">有什么用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#怎么实现"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">怎么实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cookie"><span class="post-toc-number">2.</span> <span class="post-toc-text">Cookie</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何使用"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">如何使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原理"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#细节"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">细节</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#特点和作用"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">特点和作用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Session"><span class="post-toc-number">3.</span> <span class="post-toc-text">Session</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原理-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#细节-1"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">细节</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#特点"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">特点</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <h2 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h2><h3 id="什么是会话"><a href="#什么是会话" class="headerlink" title="什么是会话"></a>什么是会话</h3><p>一次会话中包含多次请求和响应</p>
+<p>一次会话：浏览器第一次给服务器发送请求，会话建立，指导一方断开为止</p>
+<h3 id="有什么用"><a href="#有什么用" class="headerlink" title="有什么用"></a>有什么用</h3><p>在一次会话范围内的多次请求共享数据</p>
+<h3 id="怎么实现"><a href="#怎么实现" class="headerlink" title="怎么实现"></a>怎么实现</h3><ol>
+<li>客户端会话技术（数据存放在客户端）：Cookie</li>
+<li>服务端会话技术（数据存放在服务端）：Session</li>
+</ol>
+<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><ol>
+<li>创建Cookie对象】<ol>
+<li>new Cookie(String name,String value)</li>
+</ol>
+</li>
+<li>发送Ciookie对象<ol>
+<li>response.addCookie(Cookie cookie)</li>
+</ol>
+</li>
+<li>获取Cookie<ol>
+<li>Cookie[] request.getCookies()</li>
+</ol>
+</li>
+</ol>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li>基于请求头Cookie和响应头Set-Cookie实现</li>
+</ul>
+<h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><ol>
+<li><p>一次可以发送多个Cookie（创建多个Cookie对象，多次调用AddCookie）</p>
+</li>
+<li><p>Cookie可以保存多长时间</p>
+<ol>
+<li>默认情况下，浏览器关闭后Cookie销毁</li>
+<li>持久化存储<ol>
+<li>setMaxAge(int seconds)<ol>
+<li>正数，将Cookie数据写道硬盘中，设置Cookie存货时间，单位s</li>
+<li>负数，默认值，结束会话删除</li>
+<li>0，删除Cookie信息</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Cookie的获取范围</p>
+<ol>
+<li></li>
+</ol>
+</li>
+</ol>
+<h3 id="特点和作用"><a href="#特点和作用" class="headerlink" title="特点和作用"></a>特点和作用</h3><ol>
+<li>cookie储存在客户端</li>
+<li>浏览器对于单个Cookie大小有限制4kb，对一个域名下总cookie数量有限制20个</li>
+</ol>
+<ol>
+<li><h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2></li>
+</ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li><p>获取HttpSession对象(域对象)</p>
+<ol>
+<li>request.getSession()</li>
+</ol>
+</li>
+<li><p>方法</p>
+<ol>
+<li>Object getAttribute(String name)</li>
+<li>void setAttribute(String name,Object value)</li>
+<li>void removeAttribute(String name)</li>
+</ol>
+</li>
+</ol>
+<h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>Session的实现依赖于Cookie</p>
+<p>首次使用时服务器向浏览器发送一个Cookie包含一个JSESSIONID，再次访问时，浏览器向服务器发送JSESSIONID，服务器通过这个ID，确保两次访问使用的是同一个HttpSeesion对象</p>
+<h3 id="细节-1"><a href="#细节-1" class="headerlink" title="细节"></a>细节</h3><ol>
+<li>客户端关闭服务器不关闭，两次访问不是同一个Session<ol>
+<li>若需要相同可以设置Cookie的存活时间</li>
+</ol>
+</li>
+<li>服务器关闭客户端不关闭，两次访问不是同一个Session<ol>
+<li>session钝化：</li>
+<li>session活化</li>
+</ol>
+</li>
+<li>Session失效时间<ol>
+<li>服务器关闭</li>
+<li>调用一个自杀方法</li>
+<li>默认失效时间30min</li>
+</ol>
+</li>
+</ol>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>存储一次会话的数据，存在服务端</li>
+<li>可以存储任意类型数据，任意大小</li>
+<li>比Cookie安全</li>
+</ol>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-06-02");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-05-31T16:48:08.000Z" itemprop="datePublished">2020-06-01</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-06-02T06:02:30.227Z" itemprop="dateModified">2020-06-02</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2020/06/01/DataSource/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">数据库连接池</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2020/05/31/XML/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">XML</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://verge.ink">Verge's Blog</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+    </body>
+
+</html>

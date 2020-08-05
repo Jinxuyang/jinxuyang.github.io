@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>正则表达式 | Verge&#39;s Blog</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="正则表达式 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/04/23/Regular-expression/"><meta property="og:locale" content="zh-CN"><meta name="description" content="[TOC] 123var string &#x3D; &amp;apos;a1b2c3&amp;apos;;string &#x3D; string.replace(&#x2F;[abc]&#x2F;g, &amp;apos;X&amp;apos;);console.log(string);    在JavaScript中创建一个正则表达式对象 12var a &#x3D; new RegExp();var b &#x3D; &#x2F;表达式&#x2F;属性(g&#x2F;i&#x2F;m)  正则表达式由两种基本字符类型组成  原义文本字符  代表要查找文本的原 - JinXuyang - Verge&#39;s Blog"><meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4866277-b79894ead9358586.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/553/format/webp"><meta property="article:published_time" content="2020-04-23T15:44:33.000Z"><meta property="article:modified_time" content="2020-05-31T17:00:23.833Z"><meta property="og:updated_time" content="2020-05-31T17:00:23.833Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://verge.ink/2020/04/23/Regular-expression/">
+
+    <meta name="generator" content="Hexo 4.2.1">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://verge.ink/2020/04/23/Regular-expression/",
+    "@type": "BlogPosting",
+    "logo": "http://verge.ink/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://verge.ink/2020/04/23/Regular-expression/"
+    },
+    "headline": "正则表达式 | Verge&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://verge.ink/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2020-04-23T15:44:33.000Z",
+    "dateModified": "2020-05-31T17:00:23.833Z",
+    "author": {
+        "@type": "Person",
+        "name": "JinXuyang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/default_avatar.png"
+        },
+        "description": "生命万岁."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Verge&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://verge.ink/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "",
+    "description": "[TOC] 123var string = &amp;apos;a1b2c3&amp;apos;;string = string.replace(/[abc]/g, &amp;apos;X&amp;apos;);console.log(string);    在JavaScript中创建一个正则表达式对象 12var a = new RegExp();var b = /表达式/属性(g/i/m)  正则表达式由两种基本字符类型组成  原义文本字符  代表要查找文本的原 - JinXuyang - Verge&#39;s Blog"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Verge&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                生命万岁.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Verge's Blog&url=http://verge.ink&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=Verge's Blog&url=http://verge.ink&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink&title=正则表达式" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=正则表达式&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://verge.ink&text=正则表达式" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB30lEQVR42u2awW6EMBBD+f+fbk+VEGJsZ8uBeB+XraAkL9KQmbFz/LzwOoACCiigbqAOcV2fT+/83Ts/O99L5gGqC+o26C73FeQ06fU9Nw9QXVDTYCrY3bM7KDkPUF8BpQJ1CnoV0EABlSZatxCgvg9KBaZ7Nm2cKsH/q0oA6vVQrnF46vfRbgao10KlidT9rRb0uOoC1KuhVppO14AmH49sMoCqg0oSrCr+7oq+tIEFqgfKBWecTEWzmhaQQHVAJRvkanMwgS8bRkBtCTUNriZINsdPQIHqgJomSJNrYky6xgOoPqjEuF4N7El0lQsDqgLKCe/JJOoDcQUfUJ1QLnEmJve0mNR4AqoHygZfYBypJO6SN1CdUEkyVoO6/3tE4ABqG6gVkdWZi6m4GxV5QFVArRjTLvid0CsNI6C2hnIHRVWiTd934wHVBaVErUT0Ss3tJOED1QXlhK9U1E8WM44DVAWUG2jlgI0TY51wBlQHlDWbQ2NoxViyhhFQW0MlB5oTAyk9bB8LsUBtDZUUfKnwb4WxNCEDtT2UO2TjRNV0IUsCB1CVUJHRExRyH22eQFVDrQgeqQgiizygtodKTGu3KaYCCVD9UEnjkIodbqOUHwtQFVBvuoACCiigTtcvFH/+zsuj+XwAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">正则表达式</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="JinXuyang's Avatar">
+        <span>2020-04-23</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=正则表达式&url=http://verge.ink/2020/04/23/Regular-expression/&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=正则表达式&url=http://verge.ink/2020/04/23/Regular-expression/&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink/2020/04/23/Regular-expression/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://verge.ink/2020/04/23/Regular-expression/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink/2020/04/23/Regular-expression/&title=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Verge's Blog&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink/2020/04/23/Regular-expression/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://verge.ink/2020/04/23/Regular-expression/&text=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB30lEQVR42u2awW6EMBBD+f+fbk+VEGJsZ8uBeB+XraAkL9KQmbFz/LzwOoACCiigbqAOcV2fT+/83Ts/O99L5gGqC+o26C73FeQ06fU9Nw9QXVDTYCrY3bM7KDkPUF8BpQJ1CnoV0EABlSZatxCgvg9KBaZ7Nm2cKsH/q0oA6vVQrnF46vfRbgao10KlidT9rRb0uOoC1KuhVppO14AmH49sMoCqg0oSrCr+7oq+tIEFqgfKBWecTEWzmhaQQHVAJRvkanMwgS8bRkBtCTUNriZINsdPQIHqgJomSJNrYky6xgOoPqjEuF4N7El0lQsDqgLKCe/JJOoDcQUfUJ1QLnEmJve0mNR4AqoHygZfYBypJO6SN1CdUEkyVoO6/3tE4ABqG6gVkdWZi6m4GxV5QFVArRjTLvid0CsNI6C2hnIHRVWiTd934wHVBaVErUT0Ss3tJOED1QXlhK9U1E8WM44DVAWUG2jlgI0TY51wBlQHlDWbQ2NoxViyhhFQW0MlB5oTAyk9bB8LsUBtDZUUfKnwb4WxNCEDtT2UO2TjRNV0IUsCB1CVUJHRExRyH22eQFVDrQgeqQgiizygtodKTGu3KaYCCVD9UEnjkIodbqOUHwtQFVBvuoACCiigTtcvFH/+zsuj+XwAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符类"><span class="post-toc-number">1.</span> <span class="post-toc-text">字符类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范围类"><span class="post-toc-number">2.</span> <span class="post-toc-text">范围类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预定义类"><span class="post-toc-number">3.</span> <span class="post-toc-text">预定义类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#边界"><span class="post-toc-number">4.</span> <span class="post-toc-text">边界</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#量词"><span class="post-toc-number">5.</span> <span class="post-toc-text">量词</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#贪婪模式"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">贪婪模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非贪婪模式"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">非贪婪模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分组"><span class="post-toc-number">6.</span> <span class="post-toc-text">分组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#或"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">或</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#反向引用"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">反向引用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#忽略分组"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">忽略分组</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前瞻-amp-后顾"><span class="post-toc-number">7.</span> <span class="post-toc-text">前瞻&amp;后顾</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RegExp对象属性"><span class="post-toc-number">8.</span> <span class="post-toc-text">RegExp对象属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RegExp对象方法"><span class="post-toc-number">9.</span> <span class="post-toc-text">RegExp对象方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#test-方法"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">test()方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#exec-方法"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">exec()方法</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>[TOC]</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string = <span class="string">'a1b2c3'</span>;</span><br><span class="line">string = string.replace(<span class="regexp">/[abc]/g</span>, <span class="string">'X'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(string);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在JavaScript中创建一个正则表达式对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">RegExp</span>();</span><br><span class="line"><span class="keyword">var</span> b = <span class="regexp">/表达式/</span>属性(g/i/m)</span><br></pre></td></tr></table></figure>
+
+<p>正则表达式由两种基本字符类型组成</p>
+<ul>
+<li><p>原义文本字符</p>
+<ul>
+<li>代表要查找文本的原本意思的字符</li>
+</ul>
+</li>
+<li><p>元字符</p>
+<ul>
+<li><p>在正则表达式中有特殊含义的非字母字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*+?$^.|\()[]&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><ul>
+<li><p>一般情况下正则表达式一个字符对应字符串一个字符</p>
+</li>
+<li><p>要匹配某类字符使用<code>[]</code>构建一个类</p>
+<ul>
+<li>类指符合某些特征的对象</li>
+<li><code>[abc]</code>意思就是把abc归为一类，匹配这类字符</li>
+<li><code>[^abc]</code>就是匹配出除abc以外的字符</li>
+</ul>
+</li>
+</ul>
+<h3 id="范围类"><a href="#范围类" class="headerlink" title="范围类"></a>范围类</h3><ul>
+<li>可以使用<code>[a-z]</code>表示匹配a到z的任意字符</li>
+<li><code>[a-zA-Z]</code>表示匹配a到z和A到Z的任意字符</li>
+</ul>
+<h3 id="预定义类"><a href="#预定义类" class="headerlink" title="预定义类"></a>预定义类</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>等价类</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>[^\r\n]</td>
+<td>除了回车、换行符之外的其他字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>[0-9]</td>
+<td>数字字符</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>[^0-9]</td>
+<td>非数字字符</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>[\t\n\x0B\f\r]</td>
+<td>空白符</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>[^\t\n\x0B\f\r]</td>
+<td>非空白符</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>[a-zA-Z_0-9]</td>
+<td>单词字符(字母、数字、下划线)</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>[^a-zA-Z_0-9]</td>
+<td>非单词字符</td>
+</tr>
+</tbody></table>
+<h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><ul>
+<li><code>\b</code>单词边界,<code>\B</code>非单词边界</li>
+<li><code>^</code>表示以…开始，<code>$</code>表示以…结束</li>
+</ul>
+<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>?</td>
+<td>0或1 次</td>
+</tr>
+<tr>
+<td>+</td>
+<td>≥1 次</td>
+</tr>
+<tr>
+<td>*</td>
+<td>≥0 次（任意次）</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>n 次</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>n到m 次</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>≥n 次</td>
+</tr>
+</tbody></table>
+<h4 id="贪婪模式"><a href="#贪婪模式" class="headerlink" title="贪婪模式"></a>贪婪模式</h4><p>尽可能多的匹配</p>
+<p>例如有一个字符串12345678</p>
+<p><code>\d{3,6}</code>这样进行匹配的话结果是123456，并非123或1234或….</p>
+<h4 id="非贪婪模式"><a href="#非贪婪模式" class="headerlink" title="非贪婪模式"></a>非贪婪模式</h4><p>尽量少的匹配，一旦匹配成功就不再继续尝试</p>
+<p><code>\d{3,6}</code>结果是123，456</p>
+<p><strong>JS默认使用贪婪模式，想使用非贪婪模式在量词后加上<code>?</code>即可</strong></p>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p>使用<code>()</code>进行分组</p>
+<p>假如你想匹配一个小写字母加数字连续出现3次就可以这样写<code>([a-z]\d){3}</code>,而这样是不行的<code>[a-z]\d{3}</code>这样结果是匹配一个字母加三个数字</p>
+<h4 id="或"><a href="#或" class="headerlink" title="或"></a>或</h4><p><code>|</code>表示或</p>
+<p>假如想匹配123345和124445就可以这样写<code>12(33|44)45</code></p>
+<p>感觉功能上和<code>[]</code>有<strong>一点点</strong>重叠</p>
+<h4 id="反向引用"><a href="#反向引用" class="headerlink" title="反向引用"></a>反向引用</h4><p>假如你想把2020-4-24变为24/4/2020就可以这样写<code>(\d{4})-(\d{2}|\d{1})-(\d{2}|\d{1})</code></p>
+<p>然后使用<code>$1$2$3</code>捕获分组写成<code>$3/$2/$1</code></p>
+<h4 id="忽略分组"><a href="#忽略分组" class="headerlink" title="忽略分组"></a>忽略分组</h4><p>假如你不想捕获某个分组就可以</p>
+<p>这样<code>(\d{4})-(\d{2}|\d{1})-(?:\d{2}|\d{1})</code>这样就匹配不到日期了,$3就是没内容的</p>
+<h3 id="前瞻-amp-后顾"><a href="#前瞻-amp-后顾" class="headerlink" title="前瞻&amp;后顾"></a>前瞻&amp;后顾</h3><p>文本头叫前文本尾部叫后</p>
+<p>前瞻就是在正则表达式匹配带规则时，向前检查是否符合断言，后顾与之相反</p>
+<p><strong>JS不支持后顾</strong></p>
+<p>既要符合exp正则，又要满足断言要求</p>
+<p><strong>正向/肯定 匹配</strong>：符合特定断言<br><strong>负向/否定 匹配</strong>：不符合特定断言</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>正则写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正向前瞻</td>
+<td>exp(?=assert)</td>
+<td>符合exp正则，且符合设置的断言</td>
+</tr>
+<tr>
+<td>负向前瞻</td>
+<td>exp(?!assert)</td>
+<td>符合exp正则，且不符合设置的断言</td>
+</tr>
+</tbody></table>
+<p><strong>断言部分只作为约束条件而存在，并不会参与字符本身的匹配和替换，匹配字符的是exp正则部分</strong></p>
+<p>假如你想匹配一个字母后加一个数字，但是只替换字母就可以</p>
+<p>这样<code>a1aaa3</code>一个字符串<code>[a-z](?=\d)</code></p>
+<h3 id="RegExp对象属性"><a href="#RegExp对象属性" class="headerlink" title="RegExp对象属性"></a>RegExp对象属性</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>global</td>
+<td><code>g</code>：全文搜索，默认false</td>
+</tr>
+<tr>
+<td>ignoreCase</td>
+<td><code>i</code>：大小写敏感，默认false</td>
+</tr>
+<tr>
+<td>multiline</td>
+<td><code>m</code>：多行搜索，默认false</td>
+</tr>
+<tr>
+<td>lastIndex</td>
+<td>下次匹配的起始位置 该属性只有设置标志<code>g</code>才能使用，实现遍历检索匹配</td>
+</tr>
+<tr>
+<td>source</td>
+<td>正则的文本字符串（正则主体）</td>
+</tr>
+</tbody></table>
+<p>gim这三个对象都是只读的</p>
+<h3 id="RegExp对象方法"><a href="#RegExp对象方法" class="headerlink" title="RegExp对象方法"></a>RegExp对象方法</h3><h4 id="test-方法"><a href="#test-方法" class="headerlink" title="test()方法"></a>test()方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg1.test(字符串)</span><br></pre></td></tr></table></figure>
+
+<p>返回true或false，测试字符串参数中是否存在所匹配正则的字符串</p>
+<p>非全局调用</p>
+<p>默认从字符串第一个字符出发，找到第一个符合条件的子字符串就停止</p>
+<p>全局调用</p>
+<p>如果reg1标志g的话，lastIndex就会起作用，可以通过不断调用reg1.test()对字符串进行遍历，找出所有符合条件的子字符串</p>
+<p>每调用一次reg1.test()就会使lastIndex移动到上一次找出的字符串的最后一个字符的下一个字符上，当找不到符合条件的子字符串时，会将lastIndex重置为0</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4866277-b79894ead9358586.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/553/format/webp" alt=""></p>
+<h4 id="exec-方法"><a href="#exec-方法" class="headerlink" title="exec()方法"></a>exec()方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg1.exec(字符串);</span><br></pre></td></tr></table></figure>
+
+<p>全局调用</p>
+<p>返回一个数组，包含额外的属性 <code>index</code> 和 <code>input</code>，找不到返回null</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/quick\s(brown).+?(jumps)/ig</span>;</span><br><span class="line"><span class="keyword">var</span> result = re.exec(<span class="string">'The Quick Brown Fox Jumps Over The Lazy Dog'</span>);</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>属性/索引</th>
+<th>描述</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[0]</code></td>
+<td>匹配的全部字符串</td>
+<td><code>Quick Brown Fox Jumps</code></td>
+</tr>
+<tr>
+<td><code>[1], ...[*n* ]</code></td>
+<td>括号中的分组捕获</td>
+<td><code>[1] = Brown[2] = Jumps</code></td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>匹配到的字符位于原始字符串的基于0的索引值</td>
+<td><code>4</code></td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td>原始字符串</td>
+<td><code>The Quick Brown Fox Jumps Over The Lazy Dog</code></td>
+</tr>
+</tbody></table>
+<p>非全局调用</p>
+<p>与test()方法类似</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-06-01");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-04-23T15:44:33.000Z" itemprop="datePublished">2020-04-23</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-05-31T17:00:23.833Z" itemprop="dateModified">2020-06-01</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2020/04/26/graph/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">图（Graph）</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2020/03/30/JavaScript/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">JavaScript学习笔记</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://verge.ink">Verge's Blog</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+    </body>
+
+</html>

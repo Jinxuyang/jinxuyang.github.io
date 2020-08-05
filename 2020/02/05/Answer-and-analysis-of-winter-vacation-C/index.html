@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>寒假C语言作业参考答案 | Verge&#39;s Blog</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="寒假C语言作业参考答案 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/"><meta property="og:locale" content="zh-CN"><meta name="description" content="按作业发布时间排序（顺序） 0218  1 阅读程序，写出程序所完成的功能。 12345678&amp;gt;#include &amp;lt;stdio.h&amp;gt;&amp;gt;int main ( )&amp;#123;   int i, s&#x3D;1;  for (i&#x3D;1;i&amp;lt;&#x3D;7;i++) &#x2F;&#x2F;1到7循环7次    		s&#x3D;s*i; &#x2F;&#x2F;i从1开始变化直到7 printf (&quot; %d &quot;, s);  return 0; - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-02-05T06:37:44.000Z"><meta property="article:modified_time" content="2020-02-25T06:25:44.430Z"><meta property="og:updated_time" content="2020-02-25T06:25:44.430Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/">
+
+    <meta name="generator" content="Hexo 4.2.1">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/",
+    "@type": "BlogPosting",
+    "logo": "http://verge.ink/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/"
+    },
+    "headline": "寒假C语言作业参考答案 | Verge&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://verge.ink/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2020-02-05T06:37:44.000Z",
+    "dateModified": "2020-02-25T06:25:44.430Z",
+    "author": {
+        "@type": "Person",
+        "name": "JinXuyang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/default_avatar.png"
+        },
+        "description": "生命万岁."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Verge&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://verge.ink/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "",
+    "description": "按作业发布时间排序（顺序） 0218  1 阅读程序，写出程序所完成的功能。 12345678&amp;amp;gt;#include &amp;amp;lt;stdio.h&amp;amp;gt;&amp;amp;gt;int main ( )&amp;amp;#123;   int i, s=1;  for (i=1;i&amp;amp;lt;=7;i++) //1到7循环7次    		s=s*i; //i从1开始变化直到7 printf (&amp;quot; %d &amp;quot;, s);  return 0; - JinXuyang - Verge&#39;s Blog"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Verge&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                生命万岁.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Verge's Blog&url=http://verge.ink&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=Verge's Blog&url=http://verge.ink&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink&title=寒假C语言作业参考答案" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=寒假C语言作业参考答案&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://verge.ink&text=寒假C语言作业参考答案" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACMUlEQVR42u2cMW7DQAwE9f9PJ1Uaw+QOLw5ii6NGhSVqBIh35C7h6+sDjktIIYUU8g0gr+b4+f3Zubr38bcSIDxXyN2QVZDHYOkh6frqZZ9dJ6SQKWGqD7+KU70Qfa6QQrYXN9ek5CGbhJBCThMnFRsVZLpHSCFPCoxJ4pwU0S+pgoS8HeRJI/aK8593i0J+JCQSjkKwKtnofS9R1YS8DeQ0cCVKTRKObBRC7oXsCoouUAc+acZaUUFIIYuEoOLBVHBIxbCQOyHbxXQgUHUvTWPFHUfIFZApSGdCkYQj8cuNQciVkMk4p4UqMeuTeV8WGEKuguwW44lYmszPaUEs5F7IKiG6xZsOh3SLOhHChNwLSaDIYkyvT/BC7oZsi044KEcNzmR+tu6DkGsgk6BJBzZJgzVNKCGFPBGikmlKRYPx4LGQqyCTcE+Mp7Twk4VdyJ2Q5CMnEEk4oE2ZkEKeFA9kKOlkiAQL+0LeGjI1WcQoSgNKXaLh4SUhV0GeCPlpKIkOkYwmUYVcAUmMeGKCpkU7JaeQQtKGKgWbDpeQITshhUwmehp0SiYSNVqFFDI1/qRxosl0VJwIuRKSCPQTcz69WLdJtKqakGsg6YdMm6yTeEhVE3IVJEkYMmRMRICUOEIKSRt7Yop2hTMeNhZSSFjoJnN0MnTcggkpJBgUoQ9MZgAqdIUU8sp/eJWEqlMhNi7sQq6FTI0TMY/i0AcYZP5VtyjkbSDf+RBSSCGF/MfjG1y8eLc9ilBRAAAAAElFTkSuQmCC" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">寒假C语言作业参考答案</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="JinXuyang's Avatar">
+        <span>2020-02-05</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=寒假C语言作业参考答案&url=http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=寒假C语言作业参考答案&url=http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/&title=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Verge's Blog&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/&text=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACMUlEQVR42u2cMW7DQAwE9f9PJ1Uaw+QOLw5ii6NGhSVqBIh35C7h6+sDjktIIYUU8g0gr+b4+f3Zubr38bcSIDxXyN2QVZDHYOkh6frqZZ9dJ6SQKWGqD7+KU70Qfa6QQrYXN9ek5CGbhJBCThMnFRsVZLpHSCFPCoxJ4pwU0S+pgoS8HeRJI/aK8593i0J+JCQSjkKwKtnofS9R1YS8DeQ0cCVKTRKObBRC7oXsCoouUAc+acZaUUFIIYuEoOLBVHBIxbCQOyHbxXQgUHUvTWPFHUfIFZApSGdCkYQj8cuNQciVkMk4p4UqMeuTeV8WGEKuguwW44lYmszPaUEs5F7IKiG6xZsOh3SLOhHChNwLSaDIYkyvT/BC7oZsi044KEcNzmR+tu6DkGsgk6BJBzZJgzVNKCGFPBGikmlKRYPx4LGQqyCTcE+Mp7Twk4VdyJ2Q5CMnEEk4oE2ZkEKeFA9kKOlkiAQL+0LeGjI1WcQoSgNKXaLh4SUhV0GeCPlpKIkOkYwmUYVcAUmMeGKCpkU7JaeQQtKGKgWbDpeQITshhUwmehp0SiYSNVqFFDI1/qRxosl0VJwIuRKSCPQTcz69WLdJtKqakGsg6YdMm6yTeEhVE3IVJEkYMmRMRICUOEIKSRt7Yop2hTMeNhZSSFjoJnN0MnTcggkpJBgUoQ9MZgAqdIUU8sp/eJWEqlMhNi7sQq6FTI0TMY/i0AcYZP5VtyjkbSDf+RBSSCGF/MfjG1y8eLc9ilBRAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#作业20200212"><span class="post-toc-number">1.</span> <span class="post-toc-text">作业20200212</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#作业20200201"><span class="post-toc-number">2.</span> <span class="post-toc-text">作业20200201</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p><strong>按作业发布时间排序（顺序）</strong></p>
+<p><strong>0218</strong></p>
+<blockquote>
+<p>1 阅读程序，写出程序所完成的功能。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">&gt;<span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i, s=<span class="number">1</span>;  </span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=<span class="number">7</span>;i++) <span class="comment">//1到7循环7次  </span></span><br><span class="line">  		s=s*i; <span class="comment">//i从1开始变化直到7 </span></span><br><span class="line"><span class="built_in">printf</span> (<span class="string">" %d "</span>, s);  </span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&gt;&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>计算1x1x2x3x4x5x6x7</p>
+<p>即计算7！</p>
+<blockquote>
+<p>2 阅读程序，写出程序所完成的功能。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt; </span></span></span><br><span class="line">&gt;<span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span></span>&#123;   </span><br><span class="line">   <span class="keyword">int</span> digit, i, letter, other; </span><br><span class="line">	<span class="keyword">char</span> ch; </span><br><span class="line">   digit = letter = other = <span class="number">0</span>; </span><br><span class="line">   <span class="built_in">printf</span> (<span class="string">"Enter 20 characters: "</span>);</span><br><span class="line">   <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= <span class="number">20</span>; i++) <span class="comment">//循环20次&#123;   </span></span><br><span class="line">       ch = getchar(); <span class="comment">//依次读取每个字符</span></span><br><span class="line">   	<span class="keyword">if</span> ((ch&gt;= <span class="string">'a'</span>&amp;&amp;ch&lt;= <span class="string">'z'</span>)||(ch&gt;= <span class="string">'A'</span>&amp;&amp;ch&lt;= <span class="string">'Z'</span>)) <span class="comment">//判断是否属于大写或小写字母</span></span><br><span class="line">       	letter ++; </span><br><span class="line">   	<span class="keyword">else</span> <span class="keyword">if</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>) <span class="comment">//是否为数字</span></span><br><span class="line">       	digit ++;</span><br><span class="line">   	<span class="keyword">else</span>  </span><br><span class="line">           other ++; </span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">printf</span>( <span class="string">"%d, %d, %d\n"</span>, letter, digit, other);   </span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&gt;&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>统计20个字符中字母和数字以及其他的个数</p>
+<blockquote>
+<p>3 阅读程序，写出程序所完成的功能。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">&gt;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( )</span></span>&#123;  </span><br><span class="line"><span class="keyword">int</span> count, num;	  </span><br><span class="line"><span class="keyword">double</span> grade, total;   </span><br><span class="line">num = <span class="number">0</span>;  total = <span class="number">0</span>;  count = <span class="number">0</span>;  			<span class="built_in">printf</span>(<span class="string">"Enter grades: "</span>);	   </span><br><span class="line">	<span class="built_in">scanf</span> (<span class="string">"%lf"</span>, &amp;grade);   </span><br><span class="line">	<span class="keyword">while</span>(grade &gt;= <span class="number">0</span>)&#123; <span class="comment">//输入一个负数就停止输入 </span></span><br><span class="line">	total = total + grade;	<span class="comment">//计算总成绩	</span></span><br><span class="line">    	num++;	<span class="comment">//计算人数	  </span></span><br><span class="line">   	<span class="keyword">if</span> (grade &lt; <span class="number">60</span>)</span><br><span class="line">           count++;   <span class="comment">//计算小于60分的人数 </span></span><br><span class="line">		<span class="built_in">scanf</span> (<span class="string">"%lf"</span>, &amp;grade);	   </span><br><span class="line">   &#125;  </span><br><span class="line">	<span class="keyword">if</span>(num != <span class="number">0</span>)&#123;  </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">" %.2f\n"</span>, total / num);   </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">" %d\n"</span>, count);  </span><br><span class="line">   &#125;   </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&gt;&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>计算平均成绩和低于60分的人数</p>
+<blockquote>
+<p>4 阅读程序，写出程序所完成的功能。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt; </span></span></span><br><span class="line">&gt;<span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i, n;  </span><br><span class="line"><span class="keyword">double</span> power;  </span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= <span class="number">15</span> ; i++)&#123; <span class="comment">//从0到15</span></span><br><span class="line">       power = <span class="built_in">pow</span>(<span class="number">2</span>,i); <span class="comment">//计算2的i次方    </span></span><br><span class="line">  		<span class="built_in">printf</span> (<span class="string">"pow(2,%d)= %.0f\n"</span>, i,power);  </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<p>计算2的0到15次方并打印</p>
+<h5 id="作业20200212"><a href="#作业20200212" class="headerlink" title="作业20200212"></a>作业20200212</h5><blockquote>
+<p>1.从键盘输入一个正整数，判断是几位数？并输出其最高位的数字。</p>
+<p> 例如输入： 362 输出 3位数，最高位是3</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,c = <span class="number">0</span>,high;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">    <span class="keyword">if</span>(x == <span class="number">0</span>)&#123;<span class="comment">//对0进行特殊化</span></span><br><span class="line">    	c = <span class="number">1</span>;</span><br><span class="line">    	high = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(x)&#123;<span class="comment">//循环直至x为0时停止</span></span><br><span class="line">			<span class="keyword">if</span>(x &lt; <span class="number">10</span> )&#123;<span class="comment">//当x只剩下一位时，这一位即为最高位</span></span><br><span class="line">	            high = x;</span><br><span class="line">        	&#125;</span><br><span class="line">	        x /= <span class="number">10</span>; <span class="comment">//去掉数字的末尾位</span></span><br><span class="line">	        c++; <span class="comment">//数字位数+1</span></span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d位数，最高位是%d"</span>,c,high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2.猜棋子游戏。桌子上有25颗棋子。游戏双方分别是计算机和参与人。</p>
+<p>轮流取子，每方每次最少取走一颗棋子，最多可取走3颗棋子。</p>
+<p>双方一直轮流直到棋子取完。最终哪方所取得棋子数是偶数则胜出。</p>
+<p>计算机取子数量由程序控制随机选取，参与人取子则键盘输入。</p>
+<p>若由参与人先取，请编写程序完成游戏过程，显示计算机每次的取值。</p>
+<p>计算机是否可以是“常胜将军”？</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p,r;</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">25</span>,pt = <span class="number">0</span>,rt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"请输入1-3中的一个数\n"</span>);</span><br><span class="line">		start:</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;p);</span><br><span class="line">		<span class="keyword">if</span>(p &gt;= <span class="number">1</span> &amp;&amp; p &lt;= <span class="number">3</span> &amp;&amp; p &lt;= x)&#123; <span class="comment">//确保p在1-3之间且避免出现有两个棋子拿3个的情况</span></span><br><span class="line">			x -= p; <span class="comment">//棋子数-p</span></span><br><span class="line">			pt += p; <span class="comment">//你拥有的棋子火速+p</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"现在还剩%d个棋子,你共有%d个棋子\n"</span>,x,pt);</span><br><span class="line">			 </span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"数据超出范围,请重新输入\n"</span>);</span><br><span class="line">			<span class="keyword">goto</span> start; <span class="comment">//我觉得用goto不太好，但是没想到更好的办法</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(x == <span class="number">0</span>) <span class="comment">//防止出现棋子都取完了，计算机还再取一次的情况</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			srand(time(<span class="literal">NULL</span>));<span class="comment">// 播种</span></span><br><span class="line">			r = rand() % <span class="number">3</span> + <span class="number">1</span>; <span class="comment">//取一个1-3之间的随机数</span></span><br><span class="line">		&#125;<span class="keyword">while</span>(r &gt; x); <span class="comment">//若这个数大于总数则重新取</span></span><br><span class="line">		rt += r;	</span><br><span class="line">		x -= r;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"计算机取走%d个棋子,现在还剩%d个棋子,计算机共有%d个棋子\n"</span>,r,x,rt);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n你共取走%d个棋子，计算机共取走%d个棋子\n"</span>,pt,rt);</span><br><span class="line">	<span class="keyword">if</span>(pt % <span class="number">2</span> == <span class="number">0</span>)&#123;<span class="comment">//判断你手上的棋子是否位偶数</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n你获胜了"</span>); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n计算机获胜"</span>); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>计算机是否为常胜将军涉及到了博弈论，不会</strong></p>
+<hr>
+
+
+<h5 id="作业20200201"><a href="#作业20200201" class="headerlink" title="作业20200201"></a>作业20200201</h5><p>题目</p>
+<blockquote>
+<p>1.编写程序，对于给定的一个百分制整数成绩，输出相应的五等级成绩。</p>
+<p>设：90–100为‘A’；80–89分为 ‘B’；70–79分为‘C’；60–69分为‘D’;60分以下为 ‘E’。</p>
+<p>例如：输入 75 则输出 C</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一题可以使用if判断成绩的范围输出相应结果，也可使用switch，这里使用swiitch</span></span><br><span class="line"><span class="comment">//原谅我乱七八糟的变量名</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,temp;</span><br><span class="line">	<span class="keyword">char</span> g; <span class="comment">//定义变量g，用于储存成绩的等级</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x); <span class="comment">//输入成绩</span></span><br><span class="line">	temp = x / <span class="number">10</span>; <span class="comment">//取成绩的十位数字</span></span><br><span class="line">	<span class="keyword">if</span>(x &gt; <span class="number">100</span> || x &lt;<span class="number">0</span>)&#123; <span class="comment">//判断输入成绩是否越界</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"error"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">switch</span>(temp)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">            g = <span class="string">'A'</span>;  <span class="comment">//判断成绩，并将等级赋给g</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">        	g = <span class="string">'B'</span>;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">        	g = <span class="string">'C'</span>;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">        	g = <span class="string">'D'</span>;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        	g = <span class="string">'E'</span>;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c"</span>,g); <span class="comment">//输出等级</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2.编写程序，用户输入星期的数字1—7，输出相应的英文表示.</p>
+<p>例如：输入 1 则输出 Monday</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 与第一题思路相同，可以使用switch也可以使用if</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">    <span class="keyword">if</span>(x == <span class="number">1</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Monday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">2</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Tusday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">3</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Wednesday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">4</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Thursday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">5</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Friday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">6</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Saturday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">7</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Sunday"</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"error"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>3.编写程序，输入x op y，x和y是运算数据，op是运算符，然后输出该运算的结果。设定只能识别 + - * /四种运算。</p>
+<p> 例如：输入3+5 则输出 8</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 思路大概就是将输入拆分，分别对应x，op，y，xy储存两个数字，op储存运算符号，用if进行判断做出相应运算</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">char</span> op,<span class="keyword">int</span> y)</span></span>&#123; <span class="comment">//此函数用于判断和计算</span></span><br><span class="line">    <span class="keyword">int</span> res;</span><br><span class="line">    <span class="keyword">if</span>(op == <span class="string">'+'</span>)</span><br><span class="line">    	res = x + y;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="string">'-'</span>)</span><br><span class="line">    	res = x - y;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="string">'*'</span>)</span><br><span class="line">    	res = x * y;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="string">'/'</span>)</span><br><span class="line">    	res = x / y;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,y,op;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%c%d"</span>,&amp;x,&amp;op,&amp;y);<span class="comment">//读取数字和运算符</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,sum(x,op,y)); <span class="comment">//输出答案</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这题还有跟简单的做法，只不过我不会</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>4.编写程序，输出分数序列：2/1，3/2，5/3，8/5，…… 的前20项.</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可以看出这是一道找规律的题</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,x = <span class="number">2</span>,y = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">20</span>;i++)&#123; <span class="comment">//for循环输出前20项</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d/%d "</span>,x,y);</span><br><span class="line">        x += y; <span class="comment">//这两句就是规律</span></span><br><span class="line">        y++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>5.如果密码组成只能用a,b,c,d,e,f,g,h共8个字符，可以组成哪些4位的密码，共有多少个？编写程序进行解答。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用四重for循环，应该是对的</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> x[<span class="number">9</span>] = &#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>,<span class="string">'f'</span>,<span class="string">'g'</span>,<span class="string">'h'</span>&#125;; <span class="comment">//用一个数组把这几个数存起来</span></span><br><span class="line">    <span class="keyword">int</span> a,b,c,d,num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>;a &lt; <span class="number">8</span>;a++)&#123; <span class="comment">//遍历数组下标</span></span><br><span class="line">    	<span class="keyword">for</span>(b = <span class="number">0</span>;b &lt; <span class="number">8</span>;b++)&#123;</span><br><span class="line">    		<span class="keyword">for</span>(c = <span class="number">0</span>;c &lt; <span class="number">8</span>;c++)&#123;</span><br><span class="line">    			<span class="keyword">for</span>(d = <span class="number">0</span>;d &lt; <span class="number">8</span>;d++)&#123;</span><br><span class="line">    				<span class="built_in">printf</span>(<span class="string">"%c%c%c%c "</span>,x[a],x[b],x[c],x[d]);</span><br><span class="line">    				num++; <span class="comment">//计数</span></span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n共计%d种组合"</span>,num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//应该也有更简单的方法</span></span><br></pre></td></tr></table></figure>
+
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-02-25");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-02-05T06:37:44.000Z" itemprop="datePublished">2020-02-05</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-02-25T06:25:44.430Z" itemprop="dateModified">2020-02-25</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2020/02/13/struct/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">结构</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2020/02/05/markdown-Grammatical-summary/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">markdown基础语法</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://verge.ink">Verge's Blog</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+    </body>
+
+</html>
