@@ -28,6 +28,8 @@
 
 <!-- analytics -->
 
+    <link rel="dns-prefetch" href="//hm.baidu.com">
+
 
 
 
@@ -148,13 +150,11 @@
     <!-- ### Site Verification ### -->
     
 
-    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
-
 
     <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="正则表达式 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/04/23/Regular-expression/"><meta property="og:locale" content="zh-CN"><meta name="description" content="[TOC] 123var string &#x3D; &amp;apos;a1b2c3&amp;apos;;string &#x3D; string.replace(&#x2F;[abc]&#x2F;g, &amp;apos;X&amp;apos;);console.log(string);    在JavaScript中创建一个正则表达式对象 12var a &#x3D; new RegExp();var b &#x3D; &#x2F;表达式&#x2F;属性(g&#x2F;i&#x2F;m)  正则表达式由两种基本字符类型组成  原义文本字符  代表要查找文本的原 - JinXuyang - Verge&#39;s Blog"><meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4866277-b79894ead9358586.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/553/format/webp"><meta property="article:published_time" content="2020-04-23T15:44:33.000Z"><meta property="article:modified_time" content="2020-05-31T17:00:23.833Z"><meta property="og:updated_time" content="2020-05-31T17:00:23.833Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+    <meta property="og:title" content="正则表达式 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/04/23/Regular-expression/"><meta property="og:locale" content="zh-CN"><meta name="description" content="[TOC] 123var string &#x3D; &amp;apos;a1b2c3&amp;apos;;string &#x3D; string.replace(&#x2F;[abc]&#x2F;g, &amp;apos;X&amp;apos;);console.log(string); 在JavaScript中创建一个正则表达式对象 12var a &#x3D; new RegExp();var b &#x3D; &#x2F;表达式&#x2F;属性(g&#x2F;i&#x2F;m) 正则表达式由两种基本字符类型组成   原义文本字符  代表要查找文本的原本意思 - JinXuyang - Verge&#39;s Blog"><meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4866277-b79894ead9358586.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/553/format/webp"><meta property="article:published_time" content="2020-04-23T15:44:33.000Z"><meta property="article:modified_time" content="2020-05-31T17:00:23.833Z"><meta property="og:updated_time" content="2020-05-31T17:00:23.833Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
 
     
 
@@ -166,6 +166,15 @@
     <!-- ### Analytics ### -->
     
 
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ab2c3f0f8d8c3db192ee50c2eea8075f';
+    var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 
 
@@ -221,7 +230,7 @@
     },
     
     "keywords": "",
-    "description": "[TOC] 123var string = &amp;apos;a1b2c3&amp;apos;;string = string.replace(/[abc]/g, &amp;apos;X&amp;apos;);console.log(string);    在JavaScript中创建一个正则表达式对象 12var a = new RegExp();var b = /表达式/属性(g/i/m)  正则表达式由两种基本字符类型组成  原义文本字符  代表要查找文本的原 - JinXuyang - Verge&#39;s Blog"
+    "description": "[TOC] 123var string = &amp;apos;a1b2c3&amp;apos;;string = string.replace(/[abc]/g, &amp;apos;X&amp;apos;);console.log(string); 在JavaScript中创建一个正则表达式对象 12var a = new RegExp();var b = /表达式/属性(g/i/m) 正则表达式由两种基本字符类型组成   原义文本字符  代表要查找文本的原本意思 - JinXuyang - Verge&#39;s Blog"
 }
 </script>
 
@@ -257,6 +266,10 @@
     
         <a href="/search" class="navbar-link">搜索</a>
     
+    
+        <a href="/about/" class="navbar-link">About</a>
+    
+        <a href="/links/" class="navbar-link">Friends</a>
     
     
         <div class="dropdown dropdown-right">
@@ -322,6 +335,8 @@
     </ul>
 </div>
     
+    
+        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
     
 </nav>
 </header>
@@ -428,40 +443,39 @@
                     
                         
                         
-                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符类"><span class="post-toc-number">1.</span> <span class="post-toc-text">字符类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范围类"><span class="post-toc-number">2.</span> <span class="post-toc-text">范围类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预定义类"><span class="post-toc-number">3.</span> <span class="post-toc-text">预定义类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#边界"><span class="post-toc-number">4.</span> <span class="post-toc-text">边界</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#量词"><span class="post-toc-number">5.</span> <span class="post-toc-text">量词</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#贪婪模式"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">贪婪模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非贪婪模式"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">非贪婪模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分组"><span class="post-toc-number">6.</span> <span class="post-toc-text">分组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#或"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">或</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#反向引用"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">反向引用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#忽略分组"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">忽略分组</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前瞻-amp-后顾"><span class="post-toc-number">7.</span> <span class="post-toc-text">前瞻&amp;后顾</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RegExp对象属性"><span class="post-toc-number">8.</span> <span class="post-toc-text">RegExp对象属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RegExp对象方法"><span class="post-toc-number">9.</span> <span class="post-toc-text">RegExp对象方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#test-方法"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">test()方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#exec-方法"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">exec()方法</span></a></li></ol></li></ol></div>
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符类"><span class="post-toc-number">1.</span> <span class="post-toc-text">字符类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范围类"><span class="post-toc-number">2.</span> <span class="post-toc-text">范围类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预定义类"><span class="post-toc-number">3.</span> <span class="post-toc-text">预定义类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#边界"><span class="post-toc-number">4.</span> <span class="post-toc-text">边界</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#量词"><span class="post-toc-number">5.</span> <span class="post-toc-text">量词</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#贪婪模式"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">贪婪模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非贪婪模式"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">非贪婪模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分组"><span class="post-toc-number">6.</span> <span class="post-toc-text">分组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#或"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">或</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#反向引用"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">反向引用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#忽略分组"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">忽略分组</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前瞻-后顾"><span class="post-toc-number">7.</span> <span class="post-toc-text">前瞻&amp;后顾</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RegExp对象属性"><span class="post-toc-number">8.</span> <span class="post-toc-text">RegExp对象属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RegExp对象方法"><span class="post-toc-number">9.</span> <span class="post-toc-text">RegExp对象方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#test-方法"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">test()方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#exec-方法"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">exec()方法</span></a></li></ol></li></ol></div>
                         
                     
                     <article id="post-content">
                         <p>[TOC]</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string = <span class="string">'a1b2c3'</span>;</span><br><span class="line">string = string.replace(<span class="regexp">/[abc]/g</span>, <span class="string">'X'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(string);</span><br></pre></td></tr></table></figure>
-
-
-
 <p>在JavaScript中创建一个正则表达式对象</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">RegExp</span>();</span><br><span class="line"><span class="keyword">var</span> b = <span class="regexp">/表达式/</span>属性(g/i/m)</span><br></pre></td></tr></table></figure>
-
 <p>正则表达式由两种基本字符类型组成</p>
 <ul>
-<li><p>原义文本字符</p>
+<li>
+<p>原义文本字符</p>
 <ul>
 <li>代表要查找文本的原本意思的字符</li>
 </ul>
 </li>
-<li><p>元字符</p>
+<li>
+<p>元字符</p>
 <ul>
-<li><p>在正则表达式中有特殊含义的非字母字符</p>
+<li>
+<p>在正则表达式中有特殊含义的非字母字符</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*+?$^.|\()[]&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><ul>
-<li><p>一般情况下正则表达式一个字符对应字符串一个字符</p>
+<h3 id="字符类">字符类</h3>
+<ul>
+<li>
+<p>一般情况下正则表达式一个字符对应字符串一个字符</p>
 </li>
-<li><p>要匹配某类字符使用<code>[]</code>构建一个类</p>
+<li>
+<p>要匹配某类字符使用<code>[]</code>构建一个类</p>
 <ul>
 <li>类指符合某些特征的对象</li>
 <li><code>[abc]</code>意思就是把abc归为一类，匹配这类字符</li>
@@ -469,11 +483,13 @@
 </ul>
 </li>
 </ul>
-<h3 id="范围类"><a href="#范围类" class="headerlink" title="范围类"></a>范围类</h3><ul>
+<h3 id="范围类">范围类</h3>
+<ul>
 <li>可以使用<code>[a-z]</code>表示匹配a到z的任意字符</li>
 <li><code>[a-zA-Z]</code>表示匹配a到z和A到Z的任意字符</li>
 </ul>
-<h3 id="预定义类"><a href="#预定义类" class="headerlink" title="预定义类"></a>预定义类</h3><table>
+<h3 id="预定义类">预定义类</h3>
+<table>
 <thead>
 <tr>
 <th>字符</th>
@@ -481,7 +497,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>.</td>
 <td>[^\r\n]</td>
 <td>除了回车、换行符之外的其他字符</td>
@@ -516,19 +533,23 @@
 <td>[^a-zA-Z_0-9]</td>
 <td>非单词字符</td>
 </tr>
-</tbody></table>
-<h3 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h3><ul>
+</tbody>
+</table>
+<h3 id="边界">边界</h3>
+<ul>
 <li><code>\b</code>单词边界,<code>\B</code>非单词边界</li>
 <li><code>^</code>表示以…开始，<code>$</code>表示以…结束</li>
 </ul>
-<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><table>
+<h3 id="量词">量词</h3>
+<table>
 <thead>
 <tr>
 <th>字符</th>
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>?</td>
 <td>0或1 次</td>
 </tr>
@@ -552,27 +573,36 @@
 <td>{n,}</td>
 <td>≥n 次</td>
 </tr>
-</tbody></table>
-<h4 id="贪婪模式"><a href="#贪婪模式" class="headerlink" title="贪婪模式"></a>贪婪模式</h4><p>尽可能多的匹配</p>
+</tbody>
+</table>
+<h4 id="贪婪模式">贪婪模式</h4>
+<p>尽可能多的匹配</p>
 <p>例如有一个字符串12345678</p>
-<p><code>\d{3,6}</code>这样进行匹配的话结果是123456，并非123或1234或….</p>
-<h4 id="非贪婪模式"><a href="#非贪婪模式" class="headerlink" title="非贪婪模式"></a>非贪婪模式</h4><p>尽量少的匹配，一旦匹配成功就不再继续尝试</p>
+<p><code>\d{3,6}</code>这样进行匹配的话结果是123456，并非123或1234或…</p>
+<h4 id="非贪婪模式">非贪婪模式</h4>
+<p>尽量少的匹配，一旦匹配成功就不再继续尝试</p>
 <p><code>\d{3,6}</code>结果是123，456</p>
 <p><strong>JS默认使用贪婪模式，想使用非贪婪模式在量词后加上<code>?</code>即可</strong></p>
-<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p>使用<code>()</code>进行分组</p>
+<h3 id="分组">分组</h3>
+<p>使用<code>()</code>进行分组</p>
 <p>假如你想匹配一个小写字母加数字连续出现3次就可以这样写<code>([a-z]\d){3}</code>,而这样是不行的<code>[a-z]\d{3}</code>这样结果是匹配一个字母加三个数字</p>
-<h4 id="或"><a href="#或" class="headerlink" title="或"></a>或</h4><p><code>|</code>表示或</p>
+<h4 id="或">或</h4>
+<p><code>|</code>表示或</p>
 <p>假如想匹配123345和124445就可以这样写<code>12(33|44)45</code></p>
 <p>感觉功能上和<code>[]</code>有<strong>一点点</strong>重叠</p>
-<h4 id="反向引用"><a href="#反向引用" class="headerlink" title="反向引用"></a>反向引用</h4><p>假如你想把2020-4-24变为24/4/2020就可以这样写<code>(\d{4})-(\d{2}|\d{1})-(\d{2}|\d{1})</code></p>
+<h4 id="反向引用">反向引用</h4>
+<p>假如你想把2020-4-24变为24/4/2020就可以这样写<code>(\d{4})-(\d{2}|\d{1})-(\d{2}|\d{1})</code></p>
 <p>然后使用<code>$1$2$3</code>捕获分组写成<code>$3/$2/$1</code></p>
-<h4 id="忽略分组"><a href="#忽略分组" class="headerlink" title="忽略分组"></a>忽略分组</h4><p>假如你不想捕获某个分组就可以</p>
+<h4 id="忽略分组">忽略分组</h4>
+<p>假如你不想捕获某个分组就可以</p>
 <p>这样<code>(\d{4})-(\d{2}|\d{1})-(?:\d{2}|\d{1})</code>这样就匹配不到日期了,$3就是没内容的</p>
-<h3 id="前瞻-amp-后顾"><a href="#前瞻-amp-后顾" class="headerlink" title="前瞻&amp;后顾"></a>前瞻&amp;后顾</h3><p>文本头叫前文本尾部叫后</p>
+<h3 id="前瞻-后顾">前瞻&amp;后顾</h3>
+<p>文本头叫前文本尾部叫后</p>
 <p>前瞻就是在正则表达式匹配带规则时，向前检查是否符合断言，后顾与之相反</p>
 <p><strong>JS不支持后顾</strong></p>
 <p>既要符合exp正则，又要满足断言要求</p>
-<p><strong>正向/肯定 匹配</strong>：符合特定断言<br><strong>负向/否定 匹配</strong>：不符合特定断言</p>
+<p><strong>正向/肯定 匹配</strong>：符合特定断言<br>
+<strong>负向/否定 匹配</strong>：不符合特定断言</p>
 <table>
 <thead>
 <tr>
@@ -581,7 +611,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>正向前瞻</td>
 <td>exp(?=assert)</td>
 <td>符合exp正则，且符合设置的断言</td>
@@ -591,18 +622,21 @@
 <td>exp(?!assert)</td>
 <td>符合exp正则，且不符合设置的断言</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><strong>断言部分只作为约束条件而存在，并不会参与字符本身的匹配和替换，匹配字符的是exp正则部分</strong></p>
 <p>假如你想匹配一个字母后加一个数字，但是只替换字母就可以</p>
 <p>这样<code>a1aaa3</code>一个字符串<code>[a-z](?=\d)</code></p>
-<h3 id="RegExp对象属性"><a href="#RegExp对象属性" class="headerlink" title="RegExp对象属性"></a>RegExp对象属性</h3><table>
+<h3 id="RegExp对象属性">RegExp对象属性</h3>
+<table>
 <thead>
 <tr>
 <th>名称</th>
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>global</td>
 <td><code>g</code>：全文搜索，默认false</td>
 </tr>
@@ -622,10 +656,12 @@
 <td>source</td>
 <td>正则的文本字符串（正则主体）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>gim这三个对象都是只读的</p>
-<h3 id="RegExp对象方法"><a href="#RegExp对象方法" class="headerlink" title="RegExp对象方法"></a>RegExp对象方法</h3><h4 id="test-方法"><a href="#test-方法" class="headerlink" title="test()方法"></a>test()方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg1.test(字符串)</span><br></pre></td></tr></table></figure>
-
+<h3 id="RegExp对象方法">RegExp对象方法</h3>
+<h4 id="test-方法">test()方法</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg1.test(字符串)</span><br></pre></td></tr></table></figure>
 <p>返回true或false，测试字符串参数中是否存在所匹配正则的字符串</p>
 <p>非全局调用</p>
 <p>默认从字符串第一个字符出发，找到第一个符合条件的子字符串就停止</p>
@@ -633,46 +669,35 @@
 <p>如果reg1标志g的话，lastIndex就会起作用，可以通过不断调用reg1.test()对字符串进行遍历，找出所有符合条件的子字符串</p>
 <p>每调用一次reg1.test()就会使lastIndex移动到上一次找出的字符串的最后一个字符的下一个字符上，当找不到符合条件的子字符串时，会将lastIndex重置为0</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/4866277-b79894ead9358586.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/553/format/webp" alt=""></p>
-<h4 id="exec-方法"><a href="#exec-方法" class="headerlink" title="exec()方法"></a>exec()方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg1.exec(字符串);</span><br></pre></td></tr></table></figure>
-
+<h4 id="exec-方法">exec()方法</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg1.exec(字符串);</span><br></pre></td></tr></table></figure>
 <p>全局调用</p>
 <p>返回一个数组，包含额外的属性 <code>index</code> 和 <code>input</code>，找不到返回null</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/quick\s(brown).+?(jumps)/ig</span>;</span><br><span class="line"><span class="keyword">var</span> result = re.exec(<span class="string">'The Quick Brown Fox Jumps Over The Lazy Dog'</span>);</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>属性/索引</th>
-<th>描述</th>
-<th>例子</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>[0]</code></td>
-<td>匹配的全部字符串</td>
-<td><code>Quick Brown Fox Jumps</code></td>
-</tr>
-<tr>
-<td><code>[1], ...[*n* ]</code></td>
-<td>括号中的分组捕获</td>
-<td><code>[1] = Brown[2] = Jumps</code></td>
-</tr>
-<tr>
-<td><code>index</code></td>
-<td>匹配到的字符位于原始字符串的基于0的索引值</td>
-<td><code>4</code></td>
-</tr>
-<tr>
-<td><code>input</code></td>
-<td>原始字符串</td>
-<td><code>The Quick Brown Fox Jumps Over The Lazy Dog</code></td>
-</tr>
-</tbody></table>
+<p>| 属性/索引         |描述                                | 例子                                                |<br>
+| ---------------- | ------------------  ------------- | ------------------------------------------------- |<br>
+|<code>[0]</code>             |匹配的全部字符串                      |<code>Quick Brown Fox Jumps</code>                             |<br>
+| <code>[1], ...[*n* ]</code> |括号中的分组捕获                      |<code>[1] = Brown[2] = Jumps</code>                           |<br>
+|<code>index</code>           |匹配到的字符位于原始字符串的基于0的索引值 | <code>4</code>                                                |<br>
+| <code>input</code>          |原始字符串                           | <code>The Quick Brown Fox Jumps Over The Lazy Dog</code> |</p>
 <p>非全局调用</p>
 <p>与test()方法类似</p>
 
                     </article>
                     
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;JinXuyang</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://verge.ink/2020/04/23/Regular-expression/">http://verge.ink/2020/04/23/Regular-expression/</a>
+        </p>
+    </blockquote>
+
 
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
@@ -748,7 +773,7 @@
 
     <!-- footer custom text -->
     <p class="footer-text mb-0">
-    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
     </p>
     <!-- footer develop info -->
     <p class="footer-develop mb-0">
@@ -763,6 +788,14 @@
         
     </span>
 
+
+    <!-- Busuanzi Post Views -->
+    <span id="busuanzi_container_site_pv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_pv"></span>
+        <span>Views</span>
+        
+    </span>
 
 
 

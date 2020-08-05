@@ -28,6 +28,8 @@
 
 <!-- analytics -->
 
+    <link rel="dns-prefetch" href="//hm.baidu.com">
+
 
 
 
@@ -148,13 +150,11 @@
     <!-- ### Site Verification ### -->
     
 
-    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
-
 
     <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="图（Graph） | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/04/26/graph/"><meta property="og:locale" content="zh-CN"><meta name="description" content="[TOC] 图（Graph） 表示多对多的关系 包含 一组顶点:通常用V（Vertex）表示顶点集合 一组边：通常用E（Edge）表示边的集合 边是顶点对：（v,w）属于E，v,w属于V 有向边&amp;lt;v,w&amp;gt;表示从v指向w的边（单行线） 不考虑重边和自回路      抽象数据类型定义 类型名称：图（Graph） 操作对象集：G（V，E）由一个非空的有限顶点集合V和一个有限边集合E组成 操作 - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-04-26T01:40:33.000Z"><meta property="article:modified_time" content="2020-07-17T14:35:15.360Z"><meta property="og:updated_time" content="2020-07-17T14:35:15.360Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+    <meta property="og:title" content="图（Graph） | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/04/26/graph/"><meta property="og:locale" content="zh-CN"><meta name="description" content="[TOC] 图（Graph）  表示多对多的关系 包含  一组顶点:通常用V（Vertex）表示顶点集合 一组边：通常用E（Edge）表示边的集合  边是顶点对：（v,w）属于E，v,w属于V 有向边&amp;lt;v,w&amp;gt;表示从v指向w的边（单行线） 不考虑重边和自回路      抽象数据类型定义  类型名称：图（Graph） 操作对象集：G（V，E）由一个非空的有限顶点集合V和一个有限边集合E组 - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-04-26T01:40:33.000Z"><meta property="article:modified_time" content="2020-07-17T14:35:15.360Z"><meta property="og:updated_time" content="2020-07-17T14:35:15.360Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
 
     
 
@@ -166,6 +166,15 @@
     <!-- ### Analytics ### -->
     
 
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ab2c3f0f8d8c3db192ee50c2eea8075f';
+    var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 
 
@@ -221,7 +230,7 @@
     },
     
     "keywords": "",
-    "description": "[TOC] 图（Graph） 表示多对多的关系 包含 一组顶点:通常用V（Vertex）表示顶点集合 一组边：通常用E（Edge）表示边的集合 边是顶点对：（v,w）属于E，v,w属于V 有向边&amp;amp;lt;v,w&amp;amp;gt;表示从v指向w的边（单行线） 不考虑重边和自回路      抽象数据类型定义 类型名称：图（Graph） 操作对象集：G（V，E）由一个非空的有限顶点集合V和一个有限边集合E组成 操作 - JinXuyang - Verge&#39;s Blog"
+    "description": "[TOC] 图（Graph）  表示多对多的关系 包含  一组顶点:通常用V（Vertex）表示顶点集合 一组边：通常用E（Edge）表示边的集合  边是顶点对：（v,w）属于E，v,w属于V 有向边&amp;amp;lt;v,w&amp;amp;gt;表示从v指向w的边（单行线） 不考虑重边和自回路      抽象数据类型定义  类型名称：图（Graph） 操作对象集：G（V，E）由一个非空的有限顶点集合V和一个有限边集合E组 - JinXuyang - Verge&#39;s Blog"
 }
 </script>
 
@@ -257,6 +266,10 @@
     
         <a href="/search" class="navbar-link">搜索</a>
     
+    
+        <a href="/about/" class="navbar-link">About</a>
+    
+        <a href="/links/" class="navbar-link">Friends</a>
     
     
         <div class="dropdown dropdown-right">
@@ -322,6 +335,8 @@
     </ul>
 </div>
     
+    
+        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
     
 </nav>
 </header>
@@ -433,11 +448,14 @@
                     
                     <article id="post-content">
                         <p>[TOC]</p>
-<h3 id="图（Graph）"><a href="#图（Graph）" class="headerlink" title="图（Graph）"></a>图（Graph）</h3><ul>
+<h3 id="图（Graph）">图（Graph）</h3>
+<ul>
 <li>表示多对多的关系</li>
-<li>包含<ul>
+<li>包含
+<ul>
 <li>一组顶点:通常用V（Vertex）表示顶点集合</li>
-<li>一组边：通常用E（Edge）表示边的集合<ul>
+<li>一组边：通常用E（Edge）表示边的集合
+<ul>
 <li>边是顶点对：（v,w）属于E，v,w属于V</li>
 <li>有向边&lt;v,w&gt;表示从v指向w的边（单行线）</li>
 <li>不考虑重边和自回路</li>
@@ -446,10 +464,12 @@
 </ul>
 </li>
 </ul>
-<h4 id="抽象数据类型定义"><a href="#抽象数据类型定义" class="headerlink" title="抽象数据类型定义"></a>抽象数据类型定义</h4><ul>
+<h4 id="抽象数据类型定义">抽象数据类型定义</h4>
+<ul>
 <li>类型名称：图（Graph）</li>
 <li>操作对象集：G（V，E）由一个非空的有限顶点集合V和一个有限边集合E组成</li>
-<li>操作集<ul>
+<li>操作集
+<ul>
 <li>Graph Create()</li>
 <li>Graph InsertVertex(Graph G,Vertex V)</li>
 <li>Graph InsertEdge(Graph G,Edge e)</li>
@@ -460,12 +480,16 @@
 </ul>
 </li>
 </ul>
-<h4 id="如何表示一个图"><a href="#如何表示一个图" class="headerlink" title="如何表示一个图"></a>如何表示一个图</h4><ul>
-<li>邻接矩阵<ul>
+<h4 id="如何表示一个图">如何表示一个图</h4>
+<ul>
+<li>邻接矩阵
+<ul>
 <li>有边记为1</li>
-<li>优缺点<ul>
+<li>优缺点
+<ul>
 <li>直观简单，方便查找任意一对顶点之间是否有边，方便查找任一顶点的所有邻接点（有边直接相连的顶点）</li>
-<li>方便计算任意顶点的度<ul>
+<li>方便计算任意顶点的度
+<ul>
 <li>无向图：对应行或列非零元素个数</li>
 <li>有向图：非零行是出度，非零列的入度</li>
 </ul>
@@ -477,24 +501,24 @@
 </li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> *<span class="title">PtrToGNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> Nv;<span class="comment">//定点数</span></span><br><span class="line">    <span class="keyword">int</span> Ne;<span class="comment">//边数</span></span><br><span class="line">    WeightType G[MaxVertexNum][MaxVertexNum];</span><br><span class="line">    DataType Data[MaxVertexNum]; <span class="comment">//顶点包含的数据</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">typedef</span> PtrToGNode MGraph;</span><br></pre></td></tr></table></figure>
-
 <p>MGraph创建并初始化</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Vertex;</span><br><span class="line"><span class="function">MGraph <span class="title">CreateGraph</span><span class="params">(<span class="keyword">int</span> VertexNum)</span></span>&#123;</span><br><span class="line">    Vertex V,W;</span><br><span class="line">    MGraph Graph;</span><br><span class="line">    Graph = (MGraph)mallcon(<span class="keyword">sizeof</span>(struct GNode));</span><br><span class="line">    Graph-&gt;Nv = VertexNum;</span><br><span class="line">    Graph-&gt;Ne = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//把Graph全部置为0</span></span><br><span class="line">    <span class="keyword">for</span>(V = <span class="number">0</span>;V &lt; Graph-&gt;Nv;V++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(W = <span class="number">0</span>;W &lt; Graph-&gt;Nv;W++)&#123;</span><br><span class="line">            Graph-&gt;G[V][W] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>向MGraph插入边</p>
  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">ENode</span> *<span class="title">PtrToENode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ENode</span>&#123;</span></span><br><span class="line">	Vertex V1,V2;</span><br><span class="line">    WeightType Weight;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToENode Edge;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertEdge</span><span class="params">(MGraph Graph,Edge E)</span></span>&#123;</span><br><span class="line">	Graph-&gt;G[E-&gt;V1][E-&gt;V2] = E-&gt;Weight;</span><br><span class="line">    <span class="comment">//若为无向图，则还要插入边（V2，V1）</span></span><br><span class="line">    Graph-&gt;G[E-&gt;V2][E-&gt;V1] = E-&gt;Weight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>建立完整的MGraph</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">MGraph <span class="title">BuildGraph</span><span class="params">()</span></span>&#123;</span><br><span class="line">	MGraph Grpah;</span><br><span class="line">    Edge E;</span><br><span class="line">    Vertex V;</span><br><span class="line">    <span class="keyword">int</span> Nv,i;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;Nv);</span><br><span class="line">    Graph = CreateGraph(Nv);</span><br><span class="line">    scnaf(<span class="string">"%d"</span>,&amp;(Graph-&gt;Ne));</span><br><span class="line">    <span class="keyword">if</span>(Graph-&gt;Ne != <span class="number">0</span>)&#123;</span><br><span class="line">		E = (Edge)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct ENode));</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; Graph-&gt;Ne;i++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;E-&gt;V1,&amp;E-&gt;V2,&amp;E-&gt;Weight);</span><br><span class="line">            InsertEdge(Graph,E);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//读入数据</span></span><br><span class="line">        <span class="keyword">for</span>(V = <span class="number">0</span>;V &lt; Graph-&gt;Nv;V++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;(Graph-&gt;Data[V]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Graph;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>这个矩阵存的是顶点与顶点间的关系</strong></p>
 <ul>
-<li>邻接表<ul>
-<li>用一个指针数组，对应矩阵每行一个元素，只存非零元素<ul>
-<li>优缺点<ul>
+<li>邻接表
+<ul>
+<li>用一个指针数组，对应矩阵每行一个元素，只存非零元素
+<ul>
+<li>优缺点
+<ul>
 <li>对于稀疏矩阵在时间和空间上的表现都比较好</li>
 <li>方便找任意顶点的邻接点</li>
-<li>方便计算任一顶点的度<ul>
+<li>方便计算任一顶点的度
+<ul>
 <li>无向图：是</li>
 <li>有向图：否，只能计算出度，需要构造逆邻接表</li>
 </ul>
@@ -506,46 +530,50 @@
 </li>
 </ul>
 </li>
-<li>用一个长为N(N+1)/2的一维数组表示<ul>
-<li>Gij在这个数组中对应的下标为(i*(i+1)/2+j) </li>
+<li>用一个长为N(N+1)/2的一维数组表示
+<ul>
+<li>Gij在这个数组中对应的下标为(i*(i+1)/2+j)</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> struct <span class="title">Vnode</span><span class="params">()</span></span>&#123;</span><br><span class="line">	PtrToAdjVNode FirstEdge;</span><br><span class="line">    DataType Data;</span><br><span class="line">&#125;AdjList[MaxVertexNum];</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> *<span class="title">PtrToGNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GNode</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> Nv;</span><br><span class="line">    <span class="keyword">int</span> Ne;</span><br><span class="line">    AdjList G;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToGNode LGraph;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h4><h5 id="深度优先搜索-Depth-First-Search-DFS"><a href="#深度优先搜索-Depth-First-Search-DFS" class="headerlink" title="深度优先搜索(Depth First Search,DFS)"></a>深度优先搜索(Depth First Search,DFS)</h5><p>思路:从起点出发，挑视线内一盏灯点亮，然后走到刚刚点亮的等上，继续重复，如果视线内所有灯都被点亮，就原路返回，退后一格，然后继续看，直到退到起点</p>
+<h4 id="图的遍历">图的遍历</h4>
+<h5 id="深度优先搜索-Depth-First-Search-DFS">深度优先搜索(Depth First Search,DFS)</h5>
+<p>思路:从起点出发，挑视线内一盏灯点亮，然后走到刚刚点亮的等上，继续重复，如果视线内所有灯都被点亮，就原路返回，退后一格，然后继续看，直到退到起点</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Vertex V)</span></span>&#123;</span><br><span class="line">	visited[V] = ture;</span><br><span class="line">    <span class="keyword">for</span>(V的每个邻接点W)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!visited[W]) DFS(W);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="广度优先搜素-Breath-First-Search-BFS"><a href="#广度优先搜素-Breath-First-Search-BFS" class="headerlink" title="广度优先搜素(Breath First Search,BFS)"></a>广度优先搜素(Breath First Search,BFS)</h5><p>与树的层序遍历类似</p>
+<h5 id="广度优先搜素-Breath-First-Search-BFS">广度优先搜素(Breath First Search,BFS)</h5>
+<p>与树的层序遍历类似</p>
 <p>思路：从起点开始，把所有邻接点压入队列，然后弹出一个，再把这的结点的所有邻接点压入队列，重复直至队列空</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Vertex V)</span></span>&#123;</span><br><span class="line">    visited[V] = <span class="literal">true</span>;</span><br><span class="line">    Enqueue(V,Q);</span><br><span class="line">    <span class="keyword">while</span>(!IsEmpty(Q))&#123;</span><br><span class="line">        V = Dequeue(Q);</span><br><span class="line">        <span class="keyword">for</span>(V的每个邻接点W)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!visited[W])&#123;</span><br><span class="line">				visited[W] = <span class="literal">true</span>;</span><br><span class="line">                Enqueue(W,Q);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="最短路问题"><a href="#最短路问题" class="headerlink" title="最短路问题"></a>最短路问题</h4><p>分类：</p>
+<h4 id="最短路问题">最短路问题</h4>
+<p>分类：</p>
 <ul>
-<li>单源最短路径问题：从某固定点出发，求其到所有其他顶点的最短路径<ul>
+<li>单源最短路径问题：从某固定点出发，求其到所有其他顶点的最短路径
+<ul>
 <li>有向无权图</li>
 <li>有向有权图</li>
 </ul>
 </li>
 <li>多源最短路问题：求任意两顶点间的最短路径</li>
 </ul>
-<h5 id="单源有向无权图的最短路"><a href="#单源有向无权图的最短路" class="headerlink" title="单源有向无权图的最短路"></a>单源有向无权图的最短路</h5><p><strong>无权图的最短路可以认为是，从起点到终点经过的顶点数最少的路</strong></p>
+<h5 id="单源有向无权图的最短路">单源有向无权图的最短路</h5>
+<p><strong>无权图的最短路可以认为是，从起点到终点经过的顶点数最少的路</strong></p>
 <p>与BFS有点类似</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Unweighted</span><span class="params">(Vertex S)</span></span>&#123;</span><br><span class="line">	Enqueue(S,Q);<span class="comment">//先把这个结点入队</span></span><br><span class="line">    <span class="keyword">while</span>(!IsEmpty(Q))&#123;</span><br><span class="line">		 V = Dequeue(Q);<span class="comment">//弹出一个元素</span></span><br><span class="line">    	<span class="keyword">for</span>(V 的每个邻接点 W)<span class="comment">//遍历V的每个邻接点</span></span><br><span class="line">        <span class="keyword">if</span>(dist[W] == <span class="number">-1</span>)&#123;<span class="comment">//如果W没有被访问过就执行以下操作</span></span><br><span class="line">			dist[W] = dist[V]+<span class="number">1</span>;<span class="comment">//S到W的距离变成，S到他前一个结点V的距离+1</span></span><br><span class="line">            path[W] = V;<span class="comment">//要到达W就要经过V，把v存起来</span></span><br><span class="line">            Enqueue(W,Q);<span class="comment">//把这个结点入队</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>因为每次找的都是这个结点的邻接点，因此最后出来的结果是最短的</p>
 <p>path存储来这个结点的结点，只要一直网下推，就能推出整条最短路</p>
-<h5 id="单源有向有权图"><a href="#单源有向有权图" class="headerlink" title="单源有向有权图"></a>单源有向有权图</h5><p>*<em>权重和最小 *</em></p>
+<h5 id="单源有向有权图">单源有向有权图</h5>
+<p>**权重和最小 **</p>
 <p><strong>Dijkatra算法</strong></p>
 <ul>
 <li>令s = {源点s + 已经确定了从s到的最短路径的顶点v}</li>
-<li>对于任何一个没有收录的顶点v，定义dist[v]为s到v的最短路径长度，但该路径<strong>仅经过s中的顶点</strong>，即{s -&gt; (v属于s) -&gt; v}的最小长度(这个最小长度不是最终的最小长度)<ul>
+<li>对于任何一个没有收录的顶点v，定义dist[v]为s到v的最短路径长度，但该路径<strong>仅经过s中的顶点</strong>，即{s -&gt; (v属于s) -&gt; v}的最小长度(这个最小长度不是最终的最小长度)
+<ul>
 <li>前提条件：路径是按照递增的顺序生成的</li>
 <li>真正的最短路必须只经过s中的顶点，因为，假设一个顶点不在s中，但从源点到v经过他，这时就产生了矛盾，因为路径书按照递增顺序生成的</li>
 <li>每次从未收录的顶点中选一个dist最小的收录</li>
-<li>增加一个v进入s，可能会影响另外一个w的dist值 <ul>
+<li>增加一个v进入s，可能会影响另外一个w的dist值
+<ul>
 <li>要产生这样的结果要满足</li>
 <li>v在s到w的路径上</li>
 <li>v到w一定有一条直接的边，因为路径按照递增顺序生成</li>
@@ -556,9 +584,21 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(Vertex s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        V = 为收录顶点中dist最小者;</span><br><span class="line">        <span class="keyword">if</span>(这样的V不存在) <span class="keyword">break</span>;</span><br><span class="line">        collected[V] = <span class="literal">true</span>;<span class="comment">//用来标记结点是否被收录</span></span><br><span class="line">        <span class="keyword">for</span>(V 的每个邻接点 W)</span><br><span class="line">            <span class="keyword">if</span>(collected[W] == <span class="literal">false</span>)</span><br><span class="line">                <span class="keyword">if</span>(dist[V] + E(v到w的距离) &lt; dist[W])&#123;<span class="comment">//如果原来s到w的距离大于，s到v加上v到w的距离那么就改变s到w的最短路径</span></span><br><span class="line">                    dist[W] = dist[V]+E(V到W的距离);</span><br><span class="line">                    path[W] = V;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
                     </article>
                     
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;JinXuyang</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://verge.ink/2020/04/26/graph/">http://verge.ink/2020/04/26/graph/</a>
+        </p>
+    </blockquote>
+
 
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
@@ -634,7 +674,7 @@
 
     <!-- footer custom text -->
     <p class="footer-text mb-0">
-    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
     </p>
     <!-- footer develop info -->
     <p class="footer-develop mb-0">
@@ -649,6 +689,14 @@
         
     </span>
 
+
+    <!-- Busuanzi Post Views -->
+    <span id="busuanzi_container_site_pv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_pv"></span>
+        <span>Views</span>
+        
+    </span>
 
 
 

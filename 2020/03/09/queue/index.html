@@ -28,6 +28,8 @@
 
 <!-- analytics -->
 
+    <link rel="dns-prefetch" href="//hm.baidu.com">
+
 
 
 
@@ -148,13 +150,11 @@
     <!-- ### Site Verification ### -->
     
 
-    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
-
 
     <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="队列 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/03/09/queue/"><meta property="og:locale" content="zh-CN"><meta name="description" content="队列只能在一段插入另一端删除 数据对象集：一个有0个或者多个元素的有穷线性表 操作集： Queue Create(int MaxSize) int IsFull(Queue Q,int Maxsize) void Add(Queue Q,ElementType item) int IsEmpty(Queue Q) ElementType Delete(Queue Q) 队列的顺序存储实现为了使空间 - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-03-09T03:05:14.000Z"><meta property="article:modified_time" content="2020-07-17T14:36:21.372Z"><meta property="og:updated_time" content="2020-07-17T14:36:21.372Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+    <meta property="og:title" content="队列 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/03/09/queue/"><meta property="og:locale" content="zh-CN"><meta name="description" content="队列 只能在一段插入另一端删除 数据对象集：一个有0个或者多个元素的有穷线性表 操作集： Queue Create(int MaxSize) int IsFull(Queue Q,int Maxsize) void Add(Queue Q,ElementType item) int IsEmpty(Queue Q) ElementType Delete(Queue Q) 队列的顺序存储实现 为了使 - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-03-09T03:05:14.000Z"><meta property="article:modified_time" content="2020-07-17T14:36:21.372Z"><meta property="og:updated_time" content="2020-07-17T14:36:21.372Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
 
     
 
@@ -166,6 +166,15 @@
     <!-- ### Analytics ### -->
     
 
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ab2c3f0f8d8c3db192ee50c2eea8075f';
+    var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 
 
@@ -221,7 +230,7 @@
     },
     
     "keywords": "",
-    "description": "队列只能在一段插入另一端删除 数据对象集：一个有0个或者多个元素的有穷线性表 操作集： Queue Create(int MaxSize) int IsFull(Queue Q,int Maxsize) void Add(Queue Q,ElementType item) int IsEmpty(Queue Q) ElementType Delete(Queue Q) 队列的顺序存储实现为了使空间 - JinXuyang - Verge&#39;s Blog"
+    "description": "队列 只能在一段插入另一端删除 数据对象集：一个有0个或者多个元素的有穷线性表 操作集： Queue Create(int MaxSize) int IsFull(Queue Q,int Maxsize) void Add(Queue Q,ElementType item) int IsEmpty(Queue Q) ElementType Delete(Queue Q) 队列的顺序存储实现 为了使 - JinXuyang - Verge&#39;s Blog"
 }
 </script>
 
@@ -257,6 +266,10 @@
     
         <a href="/search" class="navbar-link">搜索</a>
     
+    
+        <a href="/about/" class="navbar-link">About</a>
+    
+        <a href="/links/" class="navbar-link">Friends</a>
     
     
         <div class="dropdown dropdown-right">
@@ -322,6 +335,8 @@
     </ul>
 </div>
     
+    
+        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
     
 </nav>
 </header>
@@ -432,7 +447,8 @@
                         
                     
                     <article id="post-content">
-                        <h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>只能在一段插入另一端删除</p>
+                        <h3 id="队列">队列</h3>
+<p>只能在一段插入另一端删除</p>
 <p>数据对象集：一个有0个或者多个元素的有穷线性表</p>
 <p>操作集：</p>
 <p>Queue Create(int MaxSize)</p>
@@ -440,7 +456,8 @@
 <p>void Add(Queue Q,ElementType item)</p>
 <p>int IsEmpty(Queue Q)</p>
 <p>ElementType Delete(Queue Q)</p>
-<h4 id="队列的顺序存储实现"><a href="#队列的顺序存储实现" class="headerlink" title="队列的顺序存储实现"></a>队列的顺序存储实现</h4><p>为了使空间得到充分的使用<strong>循环队列（当数组满了之后，又从头开始）</strong></p>
+<h4 id="队列的顺序存储实现">队列的顺序存储实现</h4>
+<p>为了使空间得到充分的使用<strong>循环队列（当数组满了之后，又从头开始）</strong></p>
 <ul>
 <li>如何实现？</li>
 </ul>
@@ -462,41 +479,44 @@
 </ol>
 <p>Add时Tag = 1，Delete时Tag = 0，当front和rear相等时判断Tag的值即可</p>
 <br>
-
 <p><strong>这里当rear与front相差1时就判断队列满</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 元素最大数</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QNode</span>&#123;</span></span><br><span class="line">    ElementType Data[NaxSize];</span><br><span class="line">    <span class="keyword">int</span> rear;</span><br><span class="line">    <span class="keyword">int</span> front;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">Queue</span>;</span></span><br></pre></td></tr></table></figure>
-
 <p>1.Add</p>
 <p><strong>难点在于如何当rear到MaxSize时再+1就又返回起点</strong></p>
 <p><strong>这里使用取余，当rear到达最大值时取MaxSize的余，就得到0</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(Queue Q,ElementType item)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IsFull(Q))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队列满"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Q-&gt;rear = (Q-&gt;rear+<span class="number">1</span>) % MaxSize;</span><br><span class="line">        Q-&gt;Data[Q-&gt;rear] = item; <span class="comment">//把item放到数组里</span></span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ol start="2">
 <li>Delete</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Delete</span><span class="params">(Queue Q)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(IsEmpty(Q))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队列空"</span>)；</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">		Q-&gt;front = (Q-&gt;front + <span class="number">1</span>) % MaxSize;</span><br><span class="line">        <span class="keyword">return</span> Q-&gt;Data[Q-&gt;front];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="队列的链式存储实现"><a href="#队列的链式存储实现" class="headerlink" title="队列的链式存储实现"></a>队列的链式存储实现</h4><p>使用一个<strong>单链表</strong>实现，插入和删除分别在两头进行，*<em>问题在于front和rear应该分别指向链表的哪一头 *</em></p>
+<h4 id="队列的链式存储实现">队列的链式存储实现</h4>
+<p>使用一个<strong>单链表</strong>实现，插入和删除分别在两头进行，**问题在于front和rear应该分别指向链表的哪一头 **</p>
 <p>rear需要插入数据需要放在链表的尾部，插入时只需要前一个节点的地址，front要在链表的头部的的下一个节点，方法与堆栈类似</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">Next</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QNode</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">rear</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">front</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">Queue</span>;</span></span><br><span class="line">Queue PtrQ;</span><br></pre></td></tr></table></figure>
-
 <ol>
 <li>Delete</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Delete</span><span class="params">(Queue PtrQ)</span></span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">FrontCell</span>;</span></span><br><span class="line">    ElementType FrontElem;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(PtrQ-&gt;front == <span class="literal">NULL</span>)&#123;<span class="comment">//若头节点之后没有节点则队列时空的</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队列空"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    FrontCell = PtrQ-&gt;front;<span class="comment">//储存第二个节点</span></span><br><span class="line">    <span class="keyword">if</span>(PtrQ-&gt;front == PtrQ-&gt;rear) <span class="comment">//若队列只有一个元素</span></span><br><span class="line">        PtrQ-&gt;front = PtrQ-&gt;rear = <span class="literal">NULL</span>; <span class="comment">//则删除完后队列置空</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        PrtQ-&gt;front = ptrQ-&gt;rear-&gt;Next;<span class="comment">//</span></span><br><span class="line">    FrontElem = Front-&gt;Data;</span><br><span class="line">    <span class="built_in">free</span>(FrontCell);</span><br><span class="line">    <span class="keyword">return</span> FrontElem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ol start="2">
 <li>Add</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(Queue PtrQ,ElementType item)</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> <span class="title">TempCell</span>;</span><span class="comment">//创建新节点</span></span><br><span class="line">    TempCell = (Queue)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));<span class="comment">//申请空间</span></span><br><span class="line">    TempCell-&gt;Data = item;</span><br><span class="line">    PtrQ-&gt;rear-&gt;Next = TempCell;<span class="comment">//将链表与新节点链接起来</span></span><br><span class="line">	PtrQ-&gt;rear = TempCell;<span class="comment">//移动rear </span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
                     </article>
                     
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;JinXuyang</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://verge.ink/2020/03/09/queue/">http://verge.ink/2020/03/09/queue/</a>
+        </p>
+    </blockquote>
+
 
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
@@ -572,7 +592,7 @@
 
     <!-- footer custom text -->
     <p class="footer-text mb-0">
-    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
     </p>
     <!-- footer develop info -->
     <p class="footer-develop mb-0">
@@ -587,6 +607,14 @@
         
     </span>
 
+
+    <!-- Busuanzi Post Views -->
+    <span id="busuanzi_container_site_pv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_pv"></span>
+        <span>Views</span>
+        
+    </span>
 
 
 

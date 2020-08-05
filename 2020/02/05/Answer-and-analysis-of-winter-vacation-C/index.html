@@ -28,6 +28,8 @@
 
 <!-- analytics -->
 
+    <link rel="dns-prefetch" href="//hm.baidu.com">
+
 
 
 
@@ -148,8 +150,6 @@
     <!-- ### Site Verification ### -->
     
 
-    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
-
 
     <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -166,6 +166,15 @@
     <!-- ### Analytics ### -->
     
 
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ab2c3f0f8d8c3db192ee50c2eea8075f';
+    var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 
 
@@ -258,6 +267,10 @@
         <a href="/search" class="navbar-link">搜索</a>
     
     
+        <a href="/about/" class="navbar-link">About</a>
+    
+        <a href="/links/" class="navbar-link">Friends</a>
+    
     
         <div class="dropdown dropdown-right">
     <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
@@ -322,6 +335,8 @@
     </ul>
 </div>
     
+    
+        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
     
 </nav>
 </header>
@@ -453,16 +468,14 @@
 <blockquote>
 <p>4 阅读程序，写出程序所完成的功能。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">&gt;<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt; </span></span></span><br><span class="line">&gt;<span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i, n;  </span><br><span class="line"><span class="keyword">double</span> power;  </span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= <span class="number">15</span> ; i++)&#123; <span class="comment">//从0到15</span></span><br><span class="line">       power = <span class="built_in">pow</span>(<span class="number">2</span>,i); <span class="comment">//计算2的i次方    </span></span><br><span class="line">  		<span class="built_in">printf</span> (<span class="string">"pow(2,%d)= %.0f\n"</span>, i,power);  </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&gt;&#125;</span><br></pre></td></tr></table></figure>
-
-
 </blockquote>
 <p>计算2的0到15次方并打印</p>
-<h5 id="作业20200212"><a href="#作业20200212" class="headerlink" title="作业20200212"></a>作业20200212</h5><blockquote>
+<h5 id="作业20200212">作业20200212</h5>
+<blockquote>
 <p>1.从键盘输入一个正整数，判断是几位数？并输出其最高位的数字。</p>
-<p> 例如输入： 362 输出 3位数，最高位是3</p>
+<p>例如输入： 362 输出 3位数，最高位是3</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,c = <span class="number">0</span>,high;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">    <span class="keyword">if</span>(x == <span class="number">0</span>)&#123;<span class="comment">//对0进行特殊化</span></span><br><span class="line">    	c = <span class="number">1</span>;</span><br><span class="line">    	high = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(x)&#123;<span class="comment">//循环直至x为0时停止</span></span><br><span class="line">			<span class="keyword">if</span>(x &lt; <span class="number">10</span> )&#123;<span class="comment">//当x只剩下一位时，这一位即为最高位</span></span><br><span class="line">	            high = x;</span><br><span class="line">        	&#125;</span><br><span class="line">	        x /= <span class="number">10</span>; <span class="comment">//去掉数字的末尾位</span></span><br><span class="line">	        c++; <span class="comment">//数字位数+1</span></span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d位数，最高位是%d"</span>,c,high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>2.猜棋子游戏。桌子上有25颗棋子。游戏双方分别是计算机和参与人。</p>
 <p>轮流取子，每方每次最少取走一颗棋子，最多可取走3颗棋子。</p>
@@ -472,44 +485,50 @@
 <p>计算机是否可以是“常胜将军”？</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p,r;</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">25</span>,pt = <span class="number">0</span>,rt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"请输入1-3中的一个数\n"</span>);</span><br><span class="line">		start:</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;p);</span><br><span class="line">		<span class="keyword">if</span>(p &gt;= <span class="number">1</span> &amp;&amp; p &lt;= <span class="number">3</span> &amp;&amp; p &lt;= x)&#123; <span class="comment">//确保p在1-3之间且避免出现有两个棋子拿3个的情况</span></span><br><span class="line">			x -= p; <span class="comment">//棋子数-p</span></span><br><span class="line">			pt += p; <span class="comment">//你拥有的棋子火速+p</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"现在还剩%d个棋子,你共有%d个棋子\n"</span>,x,pt);</span><br><span class="line">			 </span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"数据超出范围,请重新输入\n"</span>);</span><br><span class="line">			<span class="keyword">goto</span> start; <span class="comment">//我觉得用goto不太好，但是没想到更好的办法</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(x == <span class="number">0</span>) <span class="comment">//防止出现棋子都取完了，计算机还再取一次的情况</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			srand(time(<span class="literal">NULL</span>));<span class="comment">// 播种</span></span><br><span class="line">			r = rand() % <span class="number">3</span> + <span class="number">1</span>; <span class="comment">//取一个1-3之间的随机数</span></span><br><span class="line">		&#125;<span class="keyword">while</span>(r &gt; x); <span class="comment">//若这个数大于总数则重新取</span></span><br><span class="line">		rt += r;	</span><br><span class="line">		x -= r;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"计算机取走%d个棋子,现在还剩%d个棋子,计算机共有%d个棋子\n"</span>,r,x,rt);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n你共取走%d个棋子，计算机共取走%d个棋子\n"</span>,pt,rt);</span><br><span class="line">	<span class="keyword">if</span>(pt % <span class="number">2</span> == <span class="number">0</span>)&#123;<span class="comment">//判断你手上的棋子是否位偶数</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n你获胜了"</span>); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n计算机获胜"</span>); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>计算机是否为常胜将军涉及到了博弈论，不会</strong></p>
 <hr>
-
-
-<h5 id="作业20200201"><a href="#作业20200201" class="headerlink" title="作业20200201"></a>作业20200201</h5><p>题目</p>
+<h5 id="作业20200201">作业20200201</h5>
+<p>题目</p>
 <blockquote>
 <p>1.编写程序，对于给定的一个百分制整数成绩，输出相应的五等级成绩。</p>
 <p>设：90–100为‘A’；80–89分为 ‘B’；70–79分为‘C’；60–69分为‘D’;60分以下为 ‘E’。</p>
 <p>例如：输入 75 则输出 C</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一题可以使用if判断成绩的范围输出相应结果，也可使用switch，这里使用swiitch</span></span><br><span class="line"><span class="comment">//原谅我乱七八糟的变量名</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,temp;</span><br><span class="line">	<span class="keyword">char</span> g; <span class="comment">//定义变量g，用于储存成绩的等级</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x); <span class="comment">//输入成绩</span></span><br><span class="line">	temp = x / <span class="number">10</span>; <span class="comment">//取成绩的十位数字</span></span><br><span class="line">	<span class="keyword">if</span>(x &gt; <span class="number">100</span> || x &lt;<span class="number">0</span>)&#123; <span class="comment">//判断输入成绩是否越界</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"error"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">switch</span>(temp)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">            g = <span class="string">'A'</span>;  <span class="comment">//判断成绩，并将等级赋给g</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">        	g = <span class="string">'B'</span>;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">        	g = <span class="string">'C'</span>;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">        	g = <span class="string">'D'</span>;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        	g = <span class="string">'E'</span>;</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c"</span>,g); <span class="comment">//输出等级</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>2.编写程序，用户输入星期的数字1—7，输出相应的英文表示.</p>
 <p>例如：输入 1 则输出 Monday</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 与第一题思路相同，可以使用switch也可以使用if</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">    <span class="keyword">if</span>(x == <span class="number">1</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Monday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">2</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Tusday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">3</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Wednesday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">4</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Thursday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">5</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Friday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">6</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Saturday"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x == <span class="number">7</span>)</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"Sunday"</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">"error"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>3.编写程序，输入x op y，x和y是运算数据，op是运算符，然后输出该运算的结果。设定只能识别 + - * /四种运算。</p>
-<p> 例如：输入3+5 则输出 8</p>
+<p>例如：输入3+5 则输出 8</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 思路大概就是将输入拆分，分别对应x，op，y，xy储存两个数字，op储存运算符号，用if进行判断做出相应运算</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">char</span> op,<span class="keyword">int</span> y)</span></span>&#123; <span class="comment">//此函数用于判断和计算</span></span><br><span class="line">    <span class="keyword">int</span> res;</span><br><span class="line">    <span class="keyword">if</span>(op == <span class="string">'+'</span>)</span><br><span class="line">    	res = x + y;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="string">'-'</span>)</span><br><span class="line">    	res = x - y;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="string">'*'</span>)</span><br><span class="line">    	res = x * y;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="string">'/'</span>)</span><br><span class="line">    	res = x / y;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,y,op;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%c%d"</span>,&amp;x,&amp;op,&amp;y);<span class="comment">//读取数字和运算符</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,sum(x,op,y)); <span class="comment">//输出答案</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这题还有跟简单的做法，只不过我不会</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>4.编写程序，输出分数序列：2/1，3/2，5/3，8/5，…… 的前20项.</p>
+<p>4.编写程序，输出分数序列：2/1，3/2，5/3，8/5，… 的前20项.</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可以看出这是一道找规律的题</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,x = <span class="number">2</span>,y = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">20</span>;i++)&#123; <span class="comment">//for循环输出前20项</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d/%d "</span>,x,y);</span><br><span class="line">        x += y; <span class="comment">//这两句就是规律</span></span><br><span class="line">        y++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>5.如果密码组成只能用a,b,c,d,e,f,g,h共8个字符，可以组成哪些4位的密码，共有多少个？编写程序进行解答。</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用四重for循环，应该是对的</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> x[<span class="number">9</span>] = &#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>,<span class="string">'f'</span>,<span class="string">'g'</span>,<span class="string">'h'</span>&#125;; <span class="comment">//用一个数组把这几个数存起来</span></span><br><span class="line">    <span class="keyword">int</span> a,b,c,d,num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(a = <span class="number">0</span>;a &lt; <span class="number">8</span>;a++)&#123; <span class="comment">//遍历数组下标</span></span><br><span class="line">    	<span class="keyword">for</span>(b = <span class="number">0</span>;b &lt; <span class="number">8</span>;b++)&#123;</span><br><span class="line">    		<span class="keyword">for</span>(c = <span class="number">0</span>;c &lt; <span class="number">8</span>;c++)&#123;</span><br><span class="line">    			<span class="keyword">for</span>(d = <span class="number">0</span>;d &lt; <span class="number">8</span>;d++)&#123;</span><br><span class="line">    				<span class="built_in">printf</span>(<span class="string">"%c%c%c%c "</span>,x[a],x[b],x[c],x[d]);</span><br><span class="line">    				num++; <span class="comment">//计数</span></span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n共计%d种组合"</span>,num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//应该也有更简单的方法</span></span><br></pre></td></tr></table></figure>
 
-
                     </article>
                     
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;JinXuyang</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/">http://verge.ink/2020/02/05/Answer-and-analysis-of-winter-vacation-C/</a>
+        </p>
+    </blockquote>
+
 
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
@@ -585,7 +604,7 @@
 
     <!-- footer custom text -->
     <p class="footer-text mb-0">
-    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
     </p>
     <!-- footer develop info -->
     <p class="footer-develop mb-0">
@@ -600,6 +619,14 @@
         
     </span>
 
+
+    <!-- Busuanzi Post Views -->
+    <span id="busuanzi_container_site_pv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_pv"></span>
+        <span>Views</span>
+        
+    </span>
 
 
 

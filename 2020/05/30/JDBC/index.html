@@ -28,6 +28,8 @@
 
 <!-- analytics -->
 
+    <link rel="dns-prefetch" href="//hm.baidu.com">
+
 
 
 
@@ -148,13 +150,11 @@
     <!-- ### Site Verification ### -->
     
 
-    <meta name="baidu-site-verification" content="ab2c3f0f8d8c3db192ee50c2eea8075f" />
-
 
     <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="JDBC学习笔记 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/05/30/JDBC/"><meta property="og:locale" content="zh-CN"><meta name="description" content="JDBC是啥JDBC(Java DataBase connectivity)(Java 数据库连接) 由SUN公司定义的一系列操作关系型数据库的接口，后由数据库厂商对接口进行实现，提供数据库驱动jar包 使用导入jar包加载驱动1Class.forName(&quot;com.mysql.jdbc.Driver&quot;);&#x2F;&#x2F;把com.mysql.jdbc.Driver这个字节码文件加载到内存里  连接数据库ho - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-05-29T17:04:43.000Z"><meta property="article:modified_time" content="2020-07-17T14:35:42.590Z"><meta property="og:updated_time" content="2020-07-17T14:35:42.590Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+    <meta property="og:title" content="JDBC学习笔记 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/05/30/JDBC/"><meta property="og:locale" content="zh-CN"><meta name="description" content="JDBC是啥 JDBC(Java DataBase connectivity)(Java 数据库连接) 由SUN公司定义的一系列操作关系型数据库的接口，后由数据库厂商对接口进行实现，提供数据库驱动jar包 使用 导入jar包 加载驱动 1Class.forName(&quot;com.mysql.jdbc.Driver&quot;);&#x2F;&#x2F;把com.mysql.jdbc.Driver这个字节码文件加载到内存里 连接数据 - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-05-29T17:04:43.000Z"><meta property="article:modified_time" content="2020-07-17T14:35:42.590Z"><meta property="og:updated_time" content="2020-07-17T14:35:42.590Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
 
     
 
@@ -166,6 +166,15 @@
     <!-- ### Analytics ### -->
     
 
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ab2c3f0f8d8c3db192ee50c2eea8075f';
+    var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 
 
@@ -221,7 +230,7 @@
     },
     
     "keywords": "",
-    "description": "JDBC是啥JDBC(Java DataBase connectivity)(Java 数据库连接) 由SUN公司定义的一系列操作关系型数据库的接口，后由数据库厂商对接口进行实现，提供数据库驱动jar包 使用导入jar包加载驱动1Class.forName(&amp;quot;com.mysql.jdbc.Driver&amp;quot;);//把com.mysql.jdbc.Driver这个字节码文件加载到内存里  连接数据库ho - JinXuyang - Verge&#39;s Blog"
+    "description": "JDBC是啥 JDBC(Java DataBase connectivity)(Java 数据库连接) 由SUN公司定义的一系列操作关系型数据库的接口，后由数据库厂商对接口进行实现，提供数据库驱动jar包 使用 导入jar包 加载驱动 1Class.forName(&amp;quot;com.mysql.jdbc.Driver&amp;quot;);//把com.mysql.jdbc.Driver这个字节码文件加载到内存里 连接数据 - JinXuyang - Verge&#39;s Blog"
 }
 </script>
 
@@ -257,6 +266,10 @@
     
         <a href="/search" class="navbar-link">搜索</a>
     
+    
+        <a href="/about/" class="navbar-link">About</a>
+    
+        <a href="/links/" class="navbar-link">Friends</a>
     
     
         <div class="dropdown dropdown-right">
@@ -322,6 +335,8 @@
     </ul>
 </div>
     
+    
+        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
     
 </nav>
 </header>
@@ -428,38 +443,47 @@
                     
                         
                         
-                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JDBC是啥"><span class="post-toc-number">1.</span> <span class="post-toc-text">JDBC是啥</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用"><span class="post-toc-number"></span> <span class="post-toc-text">使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#导入jar包"><span class="post-toc-number">1.</span> <span class="post-toc-text">导入jar包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加载驱动"><span class="post-toc-number">2.</span> <span class="post-toc-text">加载驱动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#连接数据库"><span class="post-toc-number">3.</span> <span class="post-toc-text">连接数据库</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象详解"><span class="post-toc-number"></span> <span class="post-toc-text">对象详解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spring-JDBC"><span class="post-toc-number"></span> <span class="post-toc-text">Spring JDBC</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用-1"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用</span></a></li></ol></div>
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JDBC是啥"><span class="post-toc-number">1.</span> <span class="post-toc-text">JDBC是啥</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用"><span class="post-toc-number"></span> <span class="post-toc-text">使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#导入jar包"><span class="post-toc-number">1.</span> <span class="post-toc-text">导入jar包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加载驱动"><span class="post-toc-number">2.</span> <span class="post-toc-text">加载驱动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#连接数据库"><span class="post-toc-number">3.</span> <span class="post-toc-text">连接数据库</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象详解"><span class="post-toc-number"></span> <span class="post-toc-text">对象详解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spring-JDBC"><span class="post-toc-number"></span> <span class="post-toc-text">Spring JDBC</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用-2"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用</span></a></li></ol></div>
                         
                     
                     <article id="post-content">
-                        <h3 id="JDBC是啥"><a href="#JDBC是啥" class="headerlink" title="JDBC是啥"></a>JDBC是啥</h3><p>JDBC(Java DataBase connectivity)(Java 数据库连接)</p>
+                        <h3 id="JDBC是啥">JDBC是啥</h3>
+<p>JDBC(Java DataBase connectivity)(Java 数据库连接)</p>
 <p>由SUN公司定义的一系列操作关系型数据库的接口，后由数据库厂商对接口进行实现，提供数据库驱动jar包</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="导入jar包"><a href="#导入jar包" class="headerlink" title="导入jar包"></a>导入jar包</h3><h3 id="加载驱动"><a href="#加载驱动" class="headerlink" title="加载驱动"></a>加载驱动</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);<span class="comment">//把com.mysql.jdbc.Driver这个字节码文件加载到内存里</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><p><code>host = jdbc:mysql://host /db</code></p>
+<h2 id="使用">使用</h2>
+<h3 id="导入jar包">导入jar包</h3>
+<h3 id="加载驱动">加载驱动</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);<span class="comment">//把com.mysql.jdbc.Driver这个字节码文件加载到内存里</span></span><br></pre></td></tr></table></figure>
+<h3 id="连接数据库">连接数据库</h3>
+<p><code>host = jdbc:mysql://host /db</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection conn = DriverManager.getConnection(host,username,passwd);</span><br></pre></td></tr></table></figure>
-
 <p>连接时发现报错</p>
 <blockquote>
 <p>The server time zone value ‘�й���׼ʱ��’ is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.</p>
 </blockquote>
 <p>解决方法</p>
 <p>host后加上<code>?serverTimezone=UTC</code></p>
-<h2 id="对象详解"><a href="#对象详解" class="headerlink" title="对象详解"></a>对象详解</h2><ol>
-<li>DriverManage驱动管理<ul>
-<li>注册驱动<ul>
+<h2 id="对象详解">对象详解</h2>
+<ol>
+<li>DriverManage驱动管理
+<ul>
+<li>注册驱动
+<ul>
 <li>MySQL5以后可以自动注册</li>
 </ul>
 </li>
-<li>获取数据库连接<ul>
+<li>获取数据库连接
+<ul>
 <li>static getConnection(String url,String user,String password)</li>
 <li>url = jdbc:mysql://ip地址:端口号/数据库名</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Connection数据库连接对象<ol>
-<li>获取执行sql语句的对象<ul>
+<li>Connection数据库连接对象
+<ol>
+<li>获取执行sql语句的对象
+<ul>
 <li>Statement CreateStatement(String sql)</li>
 <li>Prestatement prepareStatement(String sql)</li>
 </ul>
@@ -467,9 +491,12 @@
 <li>管理事务</li>
 </ol>
 </li>
-<li>Statement执行sql语句<ol>
-<li>执行sql<ol>
-<li>int executeUpdate(String sql)：执行DML(insert,update,delete)，DDL(create,alter,drop)<ul>
+<li>Statement执行sql语句
+<ol>
+<li>执行sql
+<ol>
+<li>int executeUpdate(String sql)：执行DML(insert,update,delete)，DDL(create,alter,drop)
+<ul>
 <li>返回值是操作后影响的行数</li>
 <li>可以用来判断成功与否</li>
 </ul>
@@ -479,14 +506,17 @@
 </li>
 </ol>
 </li>
-<li>ResultSet查询结果的封装<ul>
+<li>ResultSet查询结果的封装
+<ul>
 <li>boolean next()游标向下移动一行(默认指向表头)，判断是否有数据</li>
 <li>getXxx(“列名/列的编号，从1开始”)获取数据Xxx代表类型</li>
 </ul>
 </li>
-<li>PreparedStatement<ol>
+<li>PreparedStatement
+<ol>
 <li>SQL注入问题:在拼接sql‘语句时，有一些特殊的词参与拼接会造成安全问题</li>
-<li>使用PreparedStatem对象解决问题<ol>
+<li>使用PreparedStatem对象解决问题
+<ol>
 <li>定义sql语句时使用<code>?</code>作为占位符，替换参数</li>
 <li>使用setXxx(？的编号从1开始，参数的值)</li>
 <li>执行sql语句时不再需要传参</li>
@@ -495,15 +525,19 @@
 </ol>
 </li>
 </ol>
-<h2 id="Spring-JDBC"><a href="#Spring-JDBC" class="headerlink" title="Spring JDBC"></a>Spring JDBC</h2><p>Spring框架提供的JDBC简单封装</p>
+<h2 id="Spring-JDBC">Spring JDBC</h2>
+<p>Spring框架提供的JDBC简单封装</p>
 <p>提供一个JDBCTemplate</p>
-<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ol>
+<h3 id="使用-2">使用</h3>
+<ol>
 <li>导入jar包</li>
-<li>创建JdbcTemplate，依赖于DataSource<ol>
+<li>创建JdbcTemplate，依赖于DataSource
+<ol>
 <li>JdbcTemplate template = new JdbcTemplate</li>
 </ol>
 </li>
-<li>调用JdbcTemplate的方法完成CRUD操作<ol>
+<li>调用JdbcTemplate的方法完成CRUD操作
+<ol>
 <li>update()增删改</li>
 <li>queryForMap()将查询结果封装为map集合</li>
 <li>queryForList()将查询结果封装为list集合</li>
@@ -515,6 +549,19 @@
 
                     </article>
                     
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;JinXuyang</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://verge.ink/2020/05/30/JDBC/">http://verge.ink/2020/05/30/JDBC/</a>
+        </p>
+    </blockquote>
+
 
 
     <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
@@ -590,7 +637,7 @@
 
     <!-- footer custom text -->
     <p class="footer-text mb-0">
-    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
     </p>
     <!-- footer develop info -->
     <p class="footer-develop mb-0">
@@ -605,6 +652,14 @@
         
     </span>
 
+
+    <!-- Busuanzi Post Views -->
+    <span id="busuanzi_container_site_pv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_pv"></span>
+        <span>Views</span>
+        
+    </span>
 
 
 
