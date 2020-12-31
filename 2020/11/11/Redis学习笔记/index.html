@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+    <link rel="dns-prefetch" href="//hm.baidu.com">
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>Redis学习笔记 | Verge&#39;s Blog</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="Redis学习笔记 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="og:locale" content="zh-CN"><meta name="description" content="Redis学习笔记 NoSQL（Not only SQL） 泛指非关系型数据库 Redis数据类型 String 一个 key 对应一个 value，二进制安全，可以存放jpg图片或者序列化的对象 123set key valueget keykeys * &amp;#x2F;&amp;#x2F; 获取所有key 1234incr key 自增1decr key 自减1INCRBY key 10 增10DECRB - JinXuyang - Verge&#39;s Blog"><meta property="article:published_time" content="2020-11-11T04:41:51.792Z"><meta property="article:modified_time" content="2020-12-14T09:02:23.322Z"><meta property="og:updated_time" content="2020-12-14T09:02:23.322Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <meta name="generator" content="Hexo 4.2.1">
+
+    <!-- ### Analytics ### -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ab2c3f0f8d8c3db192ee50c2eea8075f';
+    var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/",
+    "@type": "BlogPosting",
+    "logo": "http://verge.ink/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+    },
+    "headline": "Redis学习笔记 | Verge&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://verge.ink/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2020-11-11T04:41:51.792Z",
+    "dateModified": "2020-12-14T09:02:23.322Z",
+    "author": {
+        "@type": "Person",
+        "name": "JinXuyang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/default_avatar.png"
+        },
+        "description": "生命万岁."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Verge&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://verge.ink/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "",
+    "description": "Redis学习笔记 NoSQL（Not only SQL） 泛指非关系型数据库 Redis数据类型 String 一个 key 对应一个 value，二进制安全，可以存放jpg图片或者序列化的对象 123set key valueget keykeys * &amp;amp;#x2F;&amp;amp;#x2F; 获取所有key 1234incr key 自增1decr key 自减1INCRBY key 10 增10DECRB - JinXuyang - Verge&#39;s Blog"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Verge&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                生命万岁.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a href="/about/" class="navbar-link">About</a>
+    
+        <a href="/links/" class="navbar-link">Friends</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Verge's Blog&url=http://verge.ink&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=Verge's Blog&url=http://verge.ink&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink&title=Redis学习笔记" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Redis学习笔记&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://verge.ink&text=Redis学习笔记" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACN0lEQVR42u3a204CURBEUf7/p/XVmDlduxEjTm1eTECZhaHP9O3x8Q8eD5EiRYp8A+RjeHx//fKNvjz/7O9eXVdkN5K+4dfnrzD0NXxdkdXIq4A5fclPX/wJm37n8roiRYIAoYd9ei+RIn+KJK+n50WK3CBPN/qEJsnDlHC8JAsSeTtkKsR+6+dLq0WRt0HGptFQONFEdgqUl3TVRN4KmQp8GlAJty3iRHYjp5t/alxNQZSCZ0p4RfYiSUJ7uiApuk5/n5Jikb3IqRlPmvVkUEUTlTG6RdYgp0DYFP4pwSUHfSzERFYgyfB9eziTGwNKWkTWIk9F1ZQAk2JsGoBOH0ZkN5I02jfDejoUTf8AkSJRo336koeLp6WRVRYk8tZIUjylIIlFPhj2owRDZBVyGsZvF0W2w9R4mIusRU4Bs1kEIY0EtEwishZJA2AbXKlhtR7Ki6xAkgb7VLCRQXwaDsSFOpF1yJSAbpNfMiRNh7vIXuTpYCZDqO2S3aaBKrIXmQr2NNCcEodNAzZ21UTWIGnTNCWrdNmO/ANEdiOnQz0NPdNAnyx5joMukfVIAksHMQ0StEgqshKZEoAUNNsApB9QZC8yNjJhs4ksMG0PdJGdSHIgky/8ZmFkSlREikyHcmoGpEUQumQX7zgi65BkqYM2B7YJxrHxL1IkTIDpQh1deDoGpkiRw82eHOQkcSCLyyJFPptg0IAhSyZooU5kDZIUYgT8TIE2LkGJrES+80OkSJEi//DxCeqQ90ZaKeiiAAAAAElFTkSuQmCC" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">Redis学习笔记</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="JinXuyang's Avatar">
+        <span>2020-11-11</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=Redis学习笔记&url=http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=Redis学习笔记&url=http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Verge's Blog&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACN0lEQVR42u3a204CURBEUf7/p/XVmDlduxEjTm1eTECZhaHP9O3x8Q8eD5EiRYp8A+RjeHx//fKNvjz/7O9eXVdkN5K+4dfnrzD0NXxdkdXIq4A5fclPX/wJm37n8roiRYIAoYd9ei+RIn+KJK+n50WK3CBPN/qEJsnDlHC8JAsSeTtkKsR+6+dLq0WRt0HGptFQONFEdgqUl3TVRN4KmQp8GlAJty3iRHYjp5t/alxNQZSCZ0p4RfYiSUJ7uiApuk5/n5Jikb3IqRlPmvVkUEUTlTG6RdYgp0DYFP4pwSUHfSzERFYgyfB9eziTGwNKWkTWIk9F1ZQAk2JsGoBOH0ZkN5I02jfDejoUTf8AkSJRo336koeLp6WRVRYk8tZIUjylIIlFPhj2owRDZBVyGsZvF0W2w9R4mIusRU4Bs1kEIY0EtEwishZJA2AbXKlhtR7Ki6xAkgb7VLCRQXwaDsSFOpF1yJSAbpNfMiRNh7vIXuTpYCZDqO2S3aaBKrIXmQr2NNCcEodNAzZ21UTWIGnTNCWrdNmO/ANEdiOnQz0NPdNAnyx5joMukfVIAksHMQ0StEgqshKZEoAUNNsApB9QZC8yNjJhs4ksMG0PdJGdSHIgky/8ZmFkSlREikyHcmoGpEUQumQX7zgi65BkqYM2B7YJxrHxL1IkTIDpQh1deDoGpkiRw82eHOQkcSCLyyJFPptg0IAhSyZooU5kDZIUYgT8TIE2LkGJrES+80OkSJEi//DxCeqQ90ZaKeiiAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Redis学习笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">Redis学习笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis数据类型"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Redis数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#String"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">String</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#List"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">List</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Set"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">Set</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hash"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">Hash</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事务"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">事务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redis实现乐观锁"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Redis实现乐观锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Jedis"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Jedis</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <h2 id="Redis学习笔记">Redis学习笔记</h2>
+<p>NoSQL（Not only SQL）</p>
+<p>泛指非关系型数据库</p>
+<h3 id="Redis数据类型">Redis数据类型</h3>
+<h4 id="String">String</h4>
+<p>一个 key 对应一个 value，二进制安全，可以存放jpg图片或者序列化的对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set key value</span><br><span class="line">get key</span><br><span class="line">keys * &#x2F;&#x2F; 获取所有key</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">incr key 自增1</span><br><span class="line">decr key 自减1</span><br><span class="line">INCRBY key 10 增10</span><br><span class="line">DECRBY key 10 减10</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GETRANGE key 0 3 获取字符串的0-3</span><br><span class="line">GETRANGE key 0 -1 获取整个字符串</span><br><span class="line">SETRANGE key 1 xxxxx 替换指定开始位置字符串</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setex(set with expire)设置过期时间</span><br><span class="line">setnx(set if not exist)不存在在设置</span><br><span class="line"></span><br><span class="line">setex key 30 &quot;xxx&quot;设置字符串过期时间30s</span><br><span class="line">setnx key &quot;xxx&quot;当可以不存在时设置，否则创建失败</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mset k1 v1 k2 v2 k3 v3 一次设置多个值</span><br><span class="line">msetnx k1 v1 k2 v2 设置k1 k2时同时成功同时失败</span><br><span class="line"></span><br><span class="line">mget k1 k2 k3 一次获取多个值</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set user:1 &#123;name:zhangsan,age:18&#125; 设置一个user:1 对象，值为json字符串</span><br><span class="line">mset user:1:name zhangsan user:1:age 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getset 先get再set</span><br></pre></td></tr></table></figure>
+<h4 id="List">List</h4>
+<p>所有List命令都是l开头</p>
+<p>List中的值可以重复</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">LPUSH list xxx 向列表头部插或多个</span><br><span class="line">RPUSH list xxx 向尾部插</span><br><span class="line">LANGE</span><br><span class="line">LPOP list移除头</span><br><span class="line">RPOP list移除尾</span><br><span class="line"></span><br><span class="line">Lindex list 1 获取第一个（通过下标获取值）</span><br><span class="line">Llen list 返回列表长度</span><br><span class="line"></span><br><span class="line">Lrem list 1 one 移除列表中的一个one</span><br><span class="line">Lrem list 2 three 移除列表中的两个three</span><br><span class="line"></span><br><span class="line">trim list 1 2修剪，只要1到2的值</span><br><span class="line"></span><br><span class="line">rpoplpush list newlist 从list pop,push到newlist</span><br><span class="line"></span><br><span class="line">lset list 0 xxx 往0处插xxx</span><br><span class="line"></span><br><span class="line">LINSERT list before &quot;xxx&quot; &quot;yyy&quot; </span><br><span class="line">LINSERT list after &quot;xxx&quot; &quot;yyy&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="Set">Set</h4>
+<p>set中的值不可重复</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sadd <span class="built_in">set</span> <span class="string">"xxx"</span></span><br><span class="line">smembers <span class="built_in">set</span> 查看所有value</span><br><span class="line">smember <span class="built_in">set</span> xxx 判断xxx是否在<span class="built_in">set</span>中</span><br><span class="line">scard <span class="built_in">set</span> 获取<span class="built_in">set</span>中元素个数</span><br><span class="line">srem <span class="built_in">set</span> xxx 移除xxx</span><br><span class="line"></span><br><span class="line">srandmember <span class="built_in">set</span> 随机抽出元素</span><br><span class="line">srandmember <span class="built_in">set</span> 2 随机抽出2个元素</span><br><span class="line"></span><br><span class="line">smove <span class="built_in">set</span> newset xxx 将xxx从<span class="built_in">set</span>移动到newset</span><br><span class="line"></span><br><span class="line">spop随机删除一个元素</span><br><span class="line"></span><br><span class="line">sdiff set1 set2 看两个<span class="built_in">set</span>的不同元素</span><br><span class="line">sinter set1 set2 看交集 </span><br><span class="line">sunion set1 set2 看并集</span><br></pre></td></tr></table></figure>
+<h4 id="Hash">Hash</h4>
+<p>key-map</p>
+<p>key-&lt;key,map&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hset</span><br><span class="line">hmset</span><br><span class="line">hget</span><br><span class="line">hmget</span><br><span class="line">hdel</span><br><span class="line">hgetall</span><br><span class="line">hlen</span><br></pre></td></tr></table></figure>
+<p>Zset</p>
+<p>在set的基础上增加了一个值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zset</span><br><span class="line">zadd zset 1000 xxx</span><br><span class="line">zrangescore zset -inf +inf 排序</span><br></pre></td></tr></table></figure>
+<h3 id="事务">事务</h3>
+<p>Redis单条命令保存原子性，事务不保证原子性</p>
+<p>Redis没有隔离级别的概念</p>
+<p>Redis事务本质一组命令的集合 ；一个事务中所有命令都会被序列化，在事务执行过程中，会按顺序执行；一次性顺序性排他性</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">multi 开启事务，下面输入的命令都会暂时放在队列里</span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span>执行队列中的命令</span><br><span class="line">discard取消事务</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>有错误的命令（例如getset）其他所有的命令都不会执行</p>
+</li>
+<li>
+<p>命令不存在语法性错误，命令执行时其他命令是我可以执行的</p>
+</li>
+</ul>
+<h3 id="Redis实现乐观锁">Redis实现乐观锁</h3>
+<ul>
+<li>
+<p>乐观锁</p>
+<p>认为什么时候都不会出现问题，不会上锁，更新数据时判断，在此期间是否有人修改过这个数据，数据被更改事务执行失败</p>
+</li>
+<li>
+<p>悲观锁</p>
+<p>认为什么时候都会出现问题，无论做什么都加锁</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">watch xxx 监视xxx</span><br><span class="line">multi </span><br><span class="line">命令</span><br><span class="line"><span class="built_in">exec</span> 若xxx在事务期间改变会执行失败</span><br></pre></td></tr></table></figure>
+<h3 id="Jedis">Jedis</h3>
+<p>pom</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Jedis jedis &#x3D; new Jedis(&quot;host&quot;,6379);</span><br></pre></td></tr></table></figure>
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;JinXuyang</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">http://verge.ink/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-12-14");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-11-11T04:41:51.792Z" itemprop="datePublished">2020-11-11</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-12-14T09:02:23.322Z" itemprop="dateModified">2020-12-14</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2020/11/28/Neo4j%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Neo4j学习笔记</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Spring Cloud 学习笔记</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://verge.ink">Verge's Blog</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+    <!-- Busuanzi Post Views -->
+    <span id="busuanzi_container_site_pv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_pv"></span>
+        <span>Views</span>
+        
+    </span>
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+    </body>
+
+</html>

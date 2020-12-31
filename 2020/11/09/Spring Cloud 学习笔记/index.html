@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+    <link rel="dns-prefetch" href="//hm.baidu.com">
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>Spring Cloud 学习笔记 | Verge&#39;s Blog</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="Spring Cloud 学习笔记 | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="og:locale" content="zh-CN"><meta name="description" content="[TOC] Spring Cloud 学习笔记 版本选择 通过访问https:&#x2F;&#x2F;start.spring.io&#x2F;actuator&#x2F;info 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869 - JinXuyang - Verge&#39;s Blog"><meta property="og:image" content="D:%5CPersonal%5CBlog%5Csource_posts%5Cimg%5C84@_NEV9%5B%5DLIK_WB9~WV%7BVI.png"><meta property="og:image" content="d:%5CPersonal%5CBlog%5Csource_posts%5Cimg%5C1.png"><meta property="article:published_time" content="2020-11-09T12:21:16.502Z"><meta property="article:modified_time" content="2020-12-21T09:13:34.985Z"><meta property="og:updated_time" content="2020-12-21T09:13:34.985Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <meta name="generator" content="Hexo 4.2.1">
+
+    <!-- ### Analytics ### -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?ab2c3f0f8d8c3db192ee50c2eea8075f';
+    var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/",
+    "@type": "BlogPosting",
+    "logo": "http://verge.ink/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+    },
+    "headline": "Spring Cloud 学习笔记 | Verge&#39;s Blog",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://verge.ink/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2020-11-09T12:21:16.502Z",
+    "dateModified": "2020-12-21T09:13:34.985Z",
+    "author": {
+        "@type": "Person",
+        "name": "JinXuyang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/default_avatar.png"
+        },
+        "description": "生命万岁."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Verge&#39;s Blog",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://verge.ink/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://verge.ink/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "",
+    "description": "[TOC] Spring Cloud 学习笔记 版本选择 通过访问https://start.spring.io/actuator/info 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869 - JinXuyang - Verge&#39;s Blog"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Verge&#39;s Blog</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                生命万岁.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a href="/about/" class="navbar-link">About</a>
+    
+        <a href="/links/" class="navbar-link">Friends</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Verge's Blog&url=http://verge.ink&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=Verge's Blog&url=http://verge.ink&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink&title=Spring Cloud 学习笔记" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Spring Cloud 学习笔记&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://verge.ink&text=Spring Cloud 学习笔记" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACMElEQVR42u3awXKDMAxFUf7/p9tVNwTrXRFmklqXTZtA8EkGGyHp+PkH2yFSpEiRX4A8iu1v//nY8+eu9r0MeNqXxhU5G3l50QLc1cDn4ytkHFfkaCSZMC8X9gKc/sfjihRZTAY6QVaTLb0nUmQXWV34V4szDVxEiuwGGHSyXC32q8Dh8ShI5HZIeoE//ffxp0WRWyBj0qhYzKsBq8nxeFZN5FbI6iGewro3gXKykDuOyO2RdxIDKSCpAmW8X+RIZDVhUqIgLfQpgFhhRYqsDq5ep+RqJ9l/uV/kWGQaKF7gxSRKX658T+RIZMJVD1kksU9xKAoSOQJZNXZQIEnY03FEiqwKnWlRp4UogkbNSyJHIlNTHAlGOhOxXaUVOQbZGezJZCmOgkSOQd5JUpHEaKeYuvxBRI5GdpPxJCAhk6UMZESORHYbgkmjB01YtYryIkchaWI/LewpadU5v8i5yG5TSBXcpoC2Sny9XWwSuTWSBqXp83eTDSJnIztFJNJMlwoAJIElUmTn5r9MLoFmJlJwjcUmkdsjU7KJPEzRQlUn4BUpkk6YNDgJhklALHIukiThabMwWfxvF0BFjkHGRCZMCpAmvGpBby/mIrdF0gu5QqQvlor6uBNV5BhkCjLowk+CklTEFymSFDw7ianU8EmbmUWKfDfhWZ2vglY/iEiRFEmK8uRc8eYhcjTybtIqPahVEFyUFzkOiRNIMMilEyM2q4gcifzmTaRIkSI/uP0CdkAXNT01La0AAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">Spring Cloud 学习笔记</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="JinXuyang's Avatar">
+        <span>2020-11-09</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=Spring Cloud 学习笔记&url=http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=Spring Cloud 学习笔记&url=http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Verge's Blog&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACMElEQVR42u3awXKDMAxFUf7/p9tVNwTrXRFmklqXTZtA8EkGGyHp+PkH2yFSpEiRX4A8iu1v//nY8+eu9r0MeNqXxhU5G3l50QLc1cDn4ytkHFfkaCSZMC8X9gKc/sfjihRZTAY6QVaTLb0nUmQXWV34V4szDVxEiuwGGHSyXC32q8Dh8ShI5HZIeoE//ffxp0WRWyBj0qhYzKsBq8nxeFZN5FbI6iGewro3gXKykDuOyO2RdxIDKSCpAmW8X+RIZDVhUqIgLfQpgFhhRYqsDq5ep+RqJ9l/uV/kWGQaKF7gxSRKX658T+RIZMJVD1kksU9xKAoSOQJZNXZQIEnY03FEiqwKnWlRp4UogkbNSyJHIlNTHAlGOhOxXaUVOQbZGezJZCmOgkSOQd5JUpHEaKeYuvxBRI5GdpPxJCAhk6UMZESORHYbgkmjB01YtYryIkchaWI/LewpadU5v8i5yG5TSBXcpoC2Sny9XWwSuTWSBqXp83eTDSJnIztFJNJMlwoAJIElUmTn5r9MLoFmJlJwjcUmkdsjU7KJPEzRQlUn4BUpkk6YNDgJhklALHIukiThabMwWfxvF0BFjkHGRCZMCpAmvGpBby/mIrdF0gu5QqQvlor6uBNV5BhkCjLowk+CklTEFymSFDw7ianU8EmbmUWKfDfhWZ2vglY/iEiRFEmK8uRc8eYhcjTybtIqPahVEFyUFzkOiRNIMMilEyM2q4gcifzmTaRIkSI/uP0CdkAXNT01La0AAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#"><span class="post-toc-number">1.</span> <span class="post-toc-text">Spring Cloud 学习笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#版本选择"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">版本选择</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引入spring-cloud-alibaba"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">引入spring cloud alibaba</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#版本管理规范"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">版本管理规范</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用nacos"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">使用nacos</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载安装"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">下载安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注册"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">注册</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用OpenFeign"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">使用OpenFeign</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引入依赖"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">引入依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写接口"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">写接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启远程调用功能"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">开启远程调用功能</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Nacos配置中心"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Nacos配置中心</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引入依赖-2"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">引入依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置文件"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置中心添加"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">配置中心添加</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态获取配置"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">动态获取配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他"><span class="post-toc-number">1.5.5.</span> <span class="post-toc-text">其他</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#命名空间：配置隔离"><span class="post-toc-number">1.5.5.1.</span> <span class="post-toc-text">命名空间：配置隔离</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置集"><span class="post-toc-number">1.5.5.2.</span> <span class="post-toc-text">配置集</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置分组"><span class="post-toc-number">1.5.5.3.</span> <span class="post-toc-text">配置分组</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#网关Spring-Cloud-Gateway"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">网关Spring Cloud Gateway</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引入依赖-3"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">引入依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#出现the-‘Access-Control-Allow-Origin’-header-contains-multiple-values"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">出现the ‘Access-Control-Allow-Origin’ header contains multiple values</span></a></li></ol></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>[TOC]</p>
+<h1>Spring Cloud 学习笔记</h1>
+<h2 id="版本选择">版本选择</h2>
+<p>通过访问<code>https://start.spring.io/actuator/info</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"git"</span>: &#123;</span><br><span class="line">		<span class="attr">"branch"</span>: <span class="string">"82af3869647d62a1e520a076908c14eee4715d8d"</span>,</span><br><span class="line">		<span class="attr">"commit"</span>: &#123;</span><br><span class="line">			<span class="attr">"id"</span>: <span class="string">"82af386"</span>,</span><br><span class="line">			<span class="attr">"time"</span>: <span class="string">"2020-11-02T15:56:02Z"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">"build"</span>: &#123;</span><br><span class="line">		<span class="attr">"version"</span>: <span class="string">"0.0.1-SNAPSHOT"</span>,</span><br><span class="line">		<span class="attr">"artifact"</span>: <span class="string">"start-site"</span>,</span><br><span class="line">		<span class="attr">"versions"</span>: &#123;</span><br><span class="line">			<span class="attr">"spring-boot"</span>: <span class="string">"2.3.5.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"initializr"</span>: <span class="string">"0.10.0-SNAPSHOT"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"name"</span>: <span class="string">"start.spring.io website"</span>,</span><br><span class="line">		<span class="attr">"time"</span>: <span class="string">"2020-11-02T16:15:14.702Z"</span>,</span><br><span class="line">		<span class="attr">"group"</span>: <span class="string">"io.spring.start"</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">"bom-ranges"</span>: &#123;</span><br><span class="line">		<span class="attr">"azure"</span>: &#123;</span><br><span class="line">			<span class="attr">"2.0.10"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RELEASE and &lt;2.1.0.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"2.1.10"</span>: <span class="string">"Spring Boot &gt;=2.1.0.RELEASE and &lt;2.2.0.M1"</span>,</span><br><span class="line">			<span class="attr">"2.2.4"</span>: <span class="string">"Spring Boot &gt;=2.2.0.M1 and &lt;2.3.0.M1"</span>,</span><br><span class="line">			<span class="attr">"2.3.5"</span>: <span class="string">"Spring Boot &gt;=2.3.0.M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"codecentric-spring-boot-admin"</span>: &#123;</span><br><span class="line">			<span class="attr">"2.0.6"</span>: <span class="string">"Spring Boot &gt;=2.0.0.M1 and &lt;2.1.0.M1"</span>,</span><br><span class="line">			<span class="attr">"2.1.6"</span>: <span class="string">"Spring Boot &gt;=2.1.0.M1 and &lt;2.2.0.M1"</span>,</span><br><span class="line">			<span class="attr">"2.2.4"</span>: <span class="string">"Spring Boot &gt;=2.2.0.M1 and &lt;2.3.0.M1"</span>,</span><br><span class="line">			<span class="attr">"2.3.0"</span>: <span class="string">"Spring Boot &gt;=2.3.0.M1 and &lt;2.4.0-M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"solace-spring-boot"</span>: &#123;</span><br><span class="line">			<span class="attr">"1.0.0"</span>: <span class="string">"Spring Boot &gt;=2.2.0.RELEASE and &lt;2.3.0.M1"</span>,</span><br><span class="line">			<span class="attr">"1.1.0"</span>: <span class="string">"Spring Boot &gt;=2.3.0.M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"solace-spring-cloud"</span>: &#123;</span><br><span class="line">			<span class="attr">"1.0.0"</span>: <span class="string">"Spring Boot &gt;=2.2.0.RELEASE and &lt;2.3.0.M1"</span>,</span><br><span class="line">			<span class="attr">"1.1.1"</span>: <span class="string">"Spring Boot &gt;=2.3.0.M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"spring-cloud"</span>: &#123;</span><br><span class="line">			<span class="attr">"Finchley.M2"</span>: <span class="string">"Spring Boot &gt;=2.0.0.M3 and &lt;2.0.0.M5"</span>,</span><br><span class="line">			<span class="attr">"Finchley.M3"</span>: <span class="string">"Spring Boot &gt;=2.0.0.M5 and &lt;=2.0.0.M5"</span>,</span><br><span class="line">			<span class="attr">"Finchley.M4"</span>: <span class="string">"Spring Boot &gt;=2.0.0.M6 and &lt;=2.0.0.M6"</span>,</span><br><span class="line">			<span class="attr">"Finchley.M5"</span>: <span class="string">"Spring Boot &gt;=2.0.0.M7 and &lt;=2.0.0.M7"</span>,</span><br><span class="line">			<span class="attr">"Finchley.M6"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RC1 and &lt;=2.0.0.RC1"</span>,</span><br><span class="line">			<span class="attr">"Finchley.M7"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RC2 and &lt;=2.0.0.RC2"</span>,</span><br><span class="line">			<span class="attr">"Finchley.M9"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RELEASE and &lt;=2.0.0.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"Finchley.RC1"</span>: <span class="string">"Spring Boot &gt;=2.0.1.RELEASE and &lt;2.0.2.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"Finchley.RC2"</span>: <span class="string">"Spring Boot &gt;=2.0.2.RELEASE and &lt;2.0.3.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"Finchley.SR4"</span>: <span class="string">"Spring Boot &gt;=2.0.3.RELEASE and &lt;2.0.999.BUILD-SNAPSHOT"</span>,</span><br><span class="line">			<span class="attr">"Finchley.BUILD-SNAPSHOT"</span>: <span class="string">"Spring Boot &gt;=2.0.999.BUILD-SNAPSHOT and &lt;2.1.0.M3"</span>,</span><br><span class="line">			<span class="attr">"Greenwich.M1"</span>: <span class="string">"Spring Boot &gt;=2.1.0.M3 and &lt;2.1.0.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"Greenwich.SR6"</span>: <span class="string">"Spring Boot &gt;=2.1.0.RELEASE and &lt;2.1.999.BUILD-SNAPSHOT"</span>,</span><br><span class="line">			<span class="attr">"Greenwich.BUILD-SNAPSHOT"</span>: <span class="string">"Spring Boot &gt;=2.1.999.BUILD-SNAPSHOT and &lt;2.2.0.M4"</span>,</span><br><span class="line">			<span class="attr">"Hoxton.SR8"</span>: <span class="string">"Spring Boot &gt;=2.2.0.M4 and &lt;2.3.6.BUILD-SNAPSHOT"</span>,</span><br><span class="line">			<span class="attr">"Hoxton.BUILD-SNAPSHOT"</span>: <span class="string">"Spring Boot &gt;=2.3.6.BUILD-SNAPSHOT and &lt;2.4.0.M1"</span>,</span><br><span class="line">			<span class="attr">"2020.0.0-M3"</span>: <span class="string">"Spring Boot &gt;=2.4.0.M1 and &lt;=2.4.0.M1"</span>,</span><br><span class="line">			<span class="attr">"2020.0.0-M4"</span>: <span class="string">"Spring Boot &gt;=2.4.0.M2 and &lt;=2.4.0-M3"</span>,</span><br><span class="line">			<span class="attr">"2020.0.0-SNAPSHOT"</span>: <span class="string">"Spring Boot &gt;=2.4.0-M4"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"spring-cloud-alibaba"</span>: &#123;</span><br><span class="line">			<span class="attr">"2.2.1.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.2.0.RELEASE and &lt;2.3.0.M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"spring-cloud-services"</span>: &#123;</span><br><span class="line">			<span class="attr">"2.0.3.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RELEASE and &lt;2.1.0.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"2.1.8.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.1.0.RELEASE and &lt;2.2.0.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"2.2.6.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.2.0.RELEASE and &lt;2.3.0.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"2.3.0.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.3.0.RELEASE and &lt;2.4.0-M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"spring-statemachine"</span>: &#123;</span><br><span class="line">			<span class="attr">"2.0.0.M4"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RC1 and &lt;=2.0.0.RC1"</span>,</span><br><span class="line">			<span class="attr">"2.0.0.M5"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RC2 and &lt;=2.0.0.RC2"</span>,</span><br><span class="line">			<span class="attr">"2.0.1.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RELEASE"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"vaadin"</span>: &#123;</span><br><span class="line">			<span class="attr">"10.0.17"</span>: <span class="string">"Spring Boot &gt;=2.0.0.M1 and &lt;2.1.0.M1"</span>,</span><br><span class="line">			<span class="attr">"14.4.2"</span>: <span class="string">"Spring Boot &gt;=2.1.0.M1 and &lt;2.4.0-M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"wavefront"</span>: &#123;</span><br><span class="line">			<span class="attr">"2.0.2"</span>: <span class="string">"Spring Boot &gt;=2.1.0.RELEASE and &lt;2.4.0-M1"</span>,</span><br><span class="line">			<span class="attr">"2.1.0-SNAPSHOT"</span>: <span class="string">"Spring Boot &gt;=2.4.0-M1"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">"dependency-ranges"</span>: &#123;</span><br><span class="line">		<span class="attr">"okta"</span>: &#123;</span><br><span class="line">			<span class="attr">"1.2.1"</span>: <span class="string">"Spring Boot &gt;=2.1.2.RELEASE and &lt;2.2.0.M1"</span>,</span><br><span class="line">			<span class="attr">"1.4.0"</span>: <span class="string">"Spring Boot &gt;=2.2.0.M1 and &lt;2.4.0-M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"mybatis"</span>: &#123;</span><br><span class="line">			<span class="attr">"2.0.1"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RELEASE and &lt;2.1.0.RELEASE"</span>,</span><br><span class="line">			<span class="attr">"2.1.3"</span>: <span class="string">"Spring Boot &gt;=2.1.0.RELEASE and &lt;2.4.0-M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"geode"</span>: &#123;</span><br><span class="line">			<span class="attr">"1.2.10.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.2.0.M5 and &lt;2.3.0.M1"</span>,</span><br><span class="line">			<span class="attr">"1.3.4.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.3.0.M1 and &lt;2.4.0-M1"</span>,</span><br><span class="line">			<span class="attr">"1.4.0-M4"</span>: <span class="string">"Spring Boot &gt;=2.4.0-M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"camel"</span>: &#123;</span><br><span class="line">			<span class="attr">"2.22.4"</span>: <span class="string">"Spring Boot &gt;=2.0.0.M1 and &lt;2.1.0.M1"</span>,</span><br><span class="line">			<span class="attr">"2.25.2"</span>: <span class="string">"Spring Boot &gt;=2.1.0.M1 and &lt;2.2.0.M1"</span>,</span><br><span class="line">			<span class="attr">"3.3.0"</span>: <span class="string">"Spring Boot &gt;=2.2.0.M1 and &lt;2.3.0.M1"</span>,</span><br><span class="line">			<span class="attr">"3.5.0"</span>: <span class="string">"Spring Boot &gt;=2.3.0.M1 and &lt;2.4.0-M1"</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">"open-service-broker"</span>: &#123;</span><br><span class="line">			<span class="attr">"2.1.3.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.0.0.RELEASE and &lt;2.1.0.M1"</span>,</span><br><span class="line">			<span class="attr">"3.0.4.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.1.0.M1 and &lt;2.2.0.M1"</span>,</span><br><span class="line">			<span class="attr">"3.1.1.RELEASE"</span>: <span class="string">"Spring Boot &gt;=2.2.0.M1 and &lt;2.4.0-M1"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>选择Spring boot版本和Spring cloud版本</p>
+<h2 id="引入spring-cloud-alibaba">引入spring cloud alibaba</h2>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-alibaba-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在 <code>dependencies</code> 中添加自己所需使用的依赖即可使用。</p>
+<h3 id="版本管理规范">版本管理规范</h3>
+<p>项目的版本号格式为 x.x.x 的形式，其中 x 的数值类型为数字，从 0 开始取值，且不限于 0~9 这个范围。项目处于孵化器阶段时，第一位版本号固定使用 0，即版本号为 0.x.x 的格式。</p>
+<p>由于 Spring Boot 1 和 Spring Boot 2 在 Actuator 模块的接口和注解有很大的变更，且 spring-cloud-commons 从 1.x.x 版本升级到 2.0.0 版本也有较大的变更，因此我们采取跟 SpringBoot 版本号一致的版本:</p>
+<ul>
+<li>1.5.x 版本适用于 Spring Boot 1.5.x</li>
+<li>2.0.x 版本适用于 Spring Boot 2.0.x</li>
+<li>2.1.x 版本适用于 Spring Boot 2.1.x</li>
+<li>2.2.x 版本适用于 Spring Boot 2.2.x</li>
+</ul>
+<h2 id="使用nacos">使用nacos</h2>
+<h3 id="下载安装">下载安装</h3>
+<p>下载地址https://github.com/alibaba/nacos/releases</p>
+<p>windows上运行下载.zip文件，运行startup.cmd</p>
+<p>默认端口为8848</p>
+<h3 id="注册">注册</h3>
+<p>配置文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="string">localhost:8848</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">application</span> <span class="string">name</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用OpenFeign">使用OpenFeign</h2>
+<h3 id="引入依赖">引入依赖</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="写接口">写接口</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(<span class="string">"要调用的服务名"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CouponFeignService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"路径"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(@RequestParam Map&lt;String, Object&gt; params)</span></span>;<span class="comment">// 与被调用的方法相同</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="开启远程调用功能">开启远程调用功能</h3>
+<p>在spring启动类中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableFeignClients</span>(basePackages = <span class="string">"接口所在包"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Nacos配置中心">Nacos配置中心</h2>
+<h3 id="引入依赖-2">引入依赖</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置文件">配置文件</h3>
+<p>新建bootstrap.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span>    </span><br><span class="line">    <span class="attr">cloud:</span></span><br><span class="line">        <span class="attr">nacos:</span></span><br><span class="line">          <span class="attr">config:</span></span><br><span class="line">            <span class="attr">server-addr:</span> <span class="string">localhost:8848</span></span><br><span class="line">    <span class="attr">application:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">gulimall-coupon</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置中心添加">配置中心添加</h3>
+<p>应用名.后缀</p>
+<h3 id="动态获取配置">动态获取配置</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RefreshScope</span></span><br></pre></td></tr></table></figure>
+<p>配置中心和本地配置冲突时，优先使用配置中心</p>
+<h3 id="其他">其他</h3>
+<h4 id="命名空间：配置隔离">命名空间：配置隔离</h4>
+<p>例如：</p>
+<ol>
+<li>开发环境，测试环境，生产环境</li>
+<li>微服务</li>
+</ol>
+<p>修改默认命名空间</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="string">localhost:8848</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">5c990c25-30e9-4490-8e52-aaa45d8bbeb9</span> <span class="string">命名空间id</span></span><br></pre></td></tr></table></figure>
+<p><img src="D:%5CPersonal%5CBlog%5Csource_posts%5Cimg%5C84@_NEV9%5B%5DLIK_WB9~WV%7BVI.png" alt="img"></p>
+<h4 id="配置集">配置集</h4>
+<h4 id="配置分组">配置分组</h4>
+<h2 id="网关Spring-Cloud-Gateway">网关Spring Cloud Gateway</h2>
+<h3 id="引入依赖-3">引入依赖</h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-gateway<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="出现the-‘Access-Control-Allow-Origin’-header-contains-multiple-values">出现the ‘Access-Control-Allow-Origin’ header contains multiple values</h3>
+<p><img src="D:%5CPersonal%5CBlog%5Csource_posts%5Cimg%5C1.png" alt="1"></p>
+<p>这是spring的一个问题</p>
+<p>可以通过修改配置文件解决</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">default-filters:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">DedupeResponseHeader=Access-Control-Allow-Origin</span> <span class="string">Access-Control-Allow-Credentials,</span> <span class="string">RETAIN_UNIQUE</span></span><br></pre></td></tr></table></figure>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;JinXuyang</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">http://verge.ink/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-12-21");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-11-09T12:21:16.502Z" itemprop="datePublished">2020-11-09</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-12-21T09:13:34.985Z" itemprop="dateModified">2020-12-21</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Redis学习笔记</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2020/10/12/Vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Vue学习笔记</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://verge.ink">Verge's Blog</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+    <!-- Busuanzi Post Views -->
+    <span id="busuanzi_container_site_pv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_pv"></span>
+        <span>Views</span>
+        
+    </span>
+
+
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+    </body>
+
+</html>
