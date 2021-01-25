@@ -1,470 +1,24 @@
-<!DOCTYPE html>
-
-<html lang="zh-CN">
-    <head>
-    <meta charset="utf-8">
-    <!--
-        hexo-theme-suka © SukkaW
-        GitHub: https://github.com/SukkaW/hexo-theme-suka
-    -->
-
-    <!-- ### Resource Hint ### -->
-
-    <!-- ## DNS Prefetch ## -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
-
-<!-- busuanzi -->
-
-    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
-
-
-<!-- comment -->
-
-
-
-
-
-
-
-<!-- analytics -->
-
-    <link rel="dns-prefetch" href="//hm.baidu.com">
-
-
-
-
-
-
-
-    <!-- ## Preload ## -->
-    
-    <!-- Busuanzi -->
-    
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
-
-
-
-
-
-
-
-    <!-- ### Meta & Title & Info ### -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
-    <meta name="renderer" content="webkit">
-
-    <!-- Title -->
-    <title>树（Tree） | Verge&#39;s Blog</title>
-
-    <!-- Favicons -->
-    <link rel="icon" type="image&#x2F;ico" href="/img/suka-favicon.ico">
-
-    <!-- ### Import File ### -->
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
-    body {
-        background-color: #f8f9fa;
-    }
-
-    a, a:visited {
-        color: #0070ff;
-    }
-
-    a:active, a:focus, a:hover {
-        color: #0070ff;
-        opacity: .75;
-    }
-
-    #post-content a,
-    #post-content a:hover,
-    #post-content a:focus,
-    #post-content a:visited {
-        color: #005eb9;
-        opacity: 1;
-    }
-
-    
-
-    .post-entry .card-body a {
-        color: #0070ff;
-    }
-
-    .avatar {
-        background: #444;
-    }
-
-    .navbar-link,
-    .navbar-link:visited,
-    .timeline .timeline-item .timeline-icon.icon-lg {
-        color: #0070ff;
-    }
-
-    .navbar-link:hover {
-        color: #0070ff;
-        opacity: .8;
-    }
-
-    #search-input .btn,
-    #disqus_click_btn,
-    #disqus-switch-to-direct,
-    #disqus-loadmore-button {
-        background: #727e96;
-        border-color: #727e96;
-        color: #fff;
-    }
-
-    #post-toc a.post-toc-link,
-    #post-toc a.post-toc-link:visited,
-    .share-menu.menu .menu-item>a {
-        color: #727e96;
-    }
-
-    .share-menu.menu .menu-item>a:hover,
-    .share-menu.menu .menu-item>a:focus,
-    .share-menu.menu .menu-item>a:visited {
-        color: #50596c;
-        background: #f8f9fa;
-        opacity: .85;
-    }
-</style><link rel="stylesheet" href="/css/style.min.css">
-
-
-
-
-
-
-
-
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
-
-
-
-
-
-<script>
-/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
-</script>
-
-    <!-- ### Site Verification ### -->
-    
-
-
-    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Verge's Blog"><meta name="msapplication-starturl" content="http://verge.ink"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge's Blog"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="树（Tree） | Verge&#39;s Blog"><meta property="og:site_name" content="Verge&#39;s Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://verge.ink/2020/03/09/tree/"><meta property="og:locale" content="zh-CN"><meta name="description" content="[TOC] 树（Tree） n个节点构成的有限集合 n &#x3D; 0时，称为空树 非空树有以下性质：   树中有一个称为&amp;quot;根（Root）&amp;quot;的节点，用r表示   其余节点互不相交且有限，其中每个集合本身又是一棵树，称为原树的子树(SubTree)    子树是不相交的   除根节点外，每个节点有且仅有一个父节点   这些都不是树   一棵N个节点的树有N-1条边  树的一些基本术语   - JinXuyang - Verge&#39;s Blog"><meta property="og:image" content="https://s2.ax1x.com/2020/03/10/8i5Bf1.png"><meta property="og:image" content="https://s2.ax1x.com/2020/03/10/8ioDsK.png"><meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8k30kn.png"><meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8kadJJ.png"><meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8kasL6.png"><meta property="og:image" content="https://s1.ax1x.com/2020/03/12/8Z98Ug.png"><meta property="og:image" content="https://s1.ax1x.com/2020/03/12/8Z9cG9.png"><meta property="og:image" content="https://s1.ax1x.com/2020/04/08/GR6Tpt.png"><meta property="og:image" content="https://s1.ax1x.com/2020/04/09/G4l1bV.png"><meta property="article:published_time" content="2020-03-09T08:24:48.000Z"><meta property="article:modified_time" content="2020-11-12T14:02:27.247Z"><meta property="og:updated_time" content="2020-11-12T14:02:27.247Z"><meta property="article:author" content="JinXuyang"><meta name="twitter:card" content="summary">
-
-    
-
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="http://verge.ink/2020/03/09/tree/">
-
-    <meta name="generator" content="Hexo 4.2.1">
-
-    <!-- ### Analytics ### -->
-    
-
-
-    <script>
-    var _hmt = _hmt || [];
-    (function() {var hm = document.createElement('script');
-    hm.src = 'https://hm.baidu.com/hm.js?ab2c3f0f8d8c3db192ee50c2eea8075f';
-    var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-
-
-
-
-    <!-- ### Structured Data ### -->
-    
-
-
-
-<script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "url": "http://verge.ink/2020/03/09/tree/",
-    "@type": "BlogPosting",
-    "logo": "http://verge.ink/img/suka-favicon.ico",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "http://verge.ink/2020/03/09/tree/"
-    },
-    "headline": "树（Tree） | Verge&#39;s Blog",
-    
-    "image": {
-        "@type": "ImageObject",
-        "url": "http://verge.ink/img/suka-favicon.ico"
-    },
-    
-    "datePublished": "2020-03-09T08:24:48.000Z",
-    "dateModified": "2020-11-12T14:02:27.247Z",
-    "author": {
-        "@type": "Person",
-        "name": "JinXuyang",
-        "image": {
-            "@type": "ImageObject",
-            "url": "http://verge.ink/img/default_avatar.png"
-        },
-        "description": "生命万岁."
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "Verge&#39;s Blog",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "http://verge.ink/img/suka-favicon.ico"
-        }
-    },
-    
-    "potentialAction": {
-        "@type": "SearchAction",
-        "target": "http://verge.ink/search?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-    },
-    
-    "keywords": "",
-    "description": "[TOC] 树（Tree） n个节点构成的有限集合 n = 0时，称为空树 非空树有以下性质：   树中有一个称为&amp;amp;quot;根（Root）&amp;amp;quot;的节点，用r表示   其余节点互不相交且有限，其中每个集合本身又是一棵树，称为原树的子树(SubTree)    子树是不相交的   除根节点外，每个节点有且仅有一个父节点   这些都不是树   一棵N个节点的树有N-1条边  树的一些基本术语   - JinXuyang - Verge&#39;s Blog"
-}
-</script>
-
-
-
-    <!-- ### Custom Head ### -->
-    
-</head>
-
-    <body>
-            
-
-            <!-- ### Main content ### -->
-            <!-- ## Header ##-->
-<header>
-    <h1 class="header-title text-center"><a href="/">Verge&#39;s Blog</a></h1>
-
-    <p class="text-center header-slogan">
-        
-            
-                生命万岁.
-            
-        
-    </p>
-
-    <nav class="navbar-section text-center">
-    
-        <a href="/" class="navbar-link">首页</a>
-    
-    
-        <a href="/archives/" class="navbar-link">归档</a>
-    
-    
-        <a href="/search" class="navbar-link">搜索</a>
-    
-    
-        <a href="/about/" class="navbar-link">About</a>
-    
-        <a href="/links/" class="navbar-link">Friends</a>
-    
-    
-        <div class="dropdown dropdown-right">
-    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
-    <ul class="menu share-menu">
-
-        <!-- Share Weibo -->
-        
-        <li class="menu-item">
-            <a href="http://service.weibo.com/share/share.php?appkey=&title=Verge's Blog&url=http://verge.ink&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
-        </li>
-        
-
-        <!-- Share Twitter -->
-        
-        <li class="menu-item">
-            <a href="https://twitter.com/intent/tweet?text=Verge's Blog&url=http://verge.ink&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
-        </li>
-        
-
-        <!-- Share Facebook -->
-        
-        <li class="menu-item">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
-        </li>
-        
-
-        <!-- Share Google+ -->
-        
-        <li class="menu-item">
-            <a href="https://plus.google.com/share?url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
-        </li>
-        
-
-        <!-- Share LinkedIn -->
-        
-        <li class="menu-item">
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink&title=树（Tree）" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
-        </li>
-        
-
-        <!-- Share QQ -->
-        
-        <li class="menu-item">
-            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=树（Tree）&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
-        </li>
-        
-
-        <!-- Share Telegram -->
-        
-        <li class="menu-item">
-            <a href="https://t.me/share/url?url=http://verge.ink&text=树（Tree）" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
-        </li>
-        
-
-        <!-- QRCode -->
-        
-        <li class="menu-item">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABjklEQVR42u3aSxKDMAwDUO5/6XbLZLAkBxqUjtjQDw1v4caJzfExOI4ggghiC8QBjvM15/P4ehxLHjcIW8Rl0IAbj78Zb6yMG4Q/YgwcdKPLAUEwV+MGsS9i/IxNWkH8N0IJyCqBBbE3AiYasIBRcLezaBDLEWhBeuf82Go7iKUIefM6DIAmpJ/tyoNYglASFvscAdAEFoQnonPjakJiya1MckFYIqoLrwZi11TFs3IRFIQtAk4oBMQgMPCDsEVUE0w1eVULWbWIFoQ3YmZjgyYl9j6IfRBV0CmLH7XQSgMzCBsEKoSyDU6n+QY3P0FYI2DSaS52pwMzCDuEuglSGrXlZBaEJaJTCFEb+up3QXgiuhsZ1FBhhTNaTA3CAqEkJDYwe/BPbroEYYFQGnDoNSqksMVyEJ4IpbE+k6BYAgzCG6EGZDeRofGD8Ed0EpRadKMPhAWxJYIGl/jQ+XTnJwg7RCvQSNA+8u8IYhkCJbBOw4UV46ezaBBLEZ0HhZVNkdy0DcIS8eYRRBBBWCO+B4cIR2k6wt4AAAAASUVORK5CYII=" alr="QRCode">
-        </li>
-        
-
-    </ul>
-</div>
-    
-    
-        <a href="/atom.xml" target="_blank" class="navbar-link">RSS</a>
-    
-</nav>
-</header>
-
-            
-    <!-- ## Post ## -->
-    <div class="post-container">
-    <div id="post-card" class="card">
-        
-        <div class="card-item-container">
-            <div class="card-inner-cell">
-                <!-- # Post Header Info # -->
-                <div class="card-header">
-                    
-    <h1 class="card-title h3 mb-2">树（Tree）</h1>
-
-
-
-
-<div class="post-header-info">
-    <p class="post-header-info-left text-gray">
-        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="JinXuyang's Avatar">
-        <span>2020-03-09</span>
-        
-        
-            <!-- Busuanzi Post Views -->
-<span id="busuanzi_container_page_pv" hidden>
-    <span class="suka-devide-dot"></span>
-    <span></span>
-    <span id="busuanzi_value_page_pv"></span>
-    <span>Views</span>
-</span>
-        
-        
-    </p>
-    <div class="post-header-info-right">
-        
-            <div class="dropdown dropdown-right">
-<a class="dropdown-toggle" tabindex="0">分享本文</a>
-<ul class="menu share-menu">
-    <!-- Share Weibo -->
-    
-    <li class="menu-item">
-        <a href="http://service.weibo.com/share/share.php?appkey=&title=树（Tree）&url=http://verge.ink/2020/03/09/tree/&pic=http://verge.ink/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
-    </li>
-    
-
-    <!-- Share Twitter -->
-    
-    <li class="menu-item">
-        <a href="https://twitter.com/intent/tweet?text=树（Tree）&url=http://verge.ink/2020/03/09/tree/&via=JinXuyang" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
-    </li>
-    
-
-    <!-- Share Facebook -->
-    
-    <li class="menu-item">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=http://verge.ink/2020/03/09/tree/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
-    </li>
-    
-
-    <!-- Share Google+ -->
-    
-    <li class="menu-item">
-        <a href="https://plus.google.com/share?url=http://verge.ink/2020/03/09/tree/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
-    </li>
-    
-
-    <!-- Share LinkedIn -->
-    
-    <li class="menu-item">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://verge.ink/2020/03/09/tree/&title=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
-    </li>
-    
-
-    <!-- Share QQ -->
-    
-    <li class="menu-item">
-        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Verge's Blog&title=Verge's Blog&summary=&pics=http://verge.ink/img/suka-favicon.ico&url=http://verge.ink/2020/03/09/tree/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
-    </li>
-    
-
-    <!-- Share Telegram -->
-    
-    <li class="menu-item">
-        <a href="https://t.me/share/url?url=http://verge.ink/2020/03/09/tree/&text=Verge's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
-    </li>
-    
-
-    <!-- QRCode -->
-    
-    <li class="menu-item">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABjklEQVR42u3aSxKDMAwDUO5/6XbLZLAkBxqUjtjQDw1v4caJzfExOI4ggghiC8QBjvM15/P4ehxLHjcIW8Rl0IAbj78Zb6yMG4Q/YgwcdKPLAUEwV+MGsS9i/IxNWkH8N0IJyCqBBbE3AiYasIBRcLezaBDLEWhBeuf82Go7iKUIefM6DIAmpJ/tyoNYglASFvscAdAEFoQnonPjakJiya1MckFYIqoLrwZi11TFs3IRFIQtAk4oBMQgMPCDsEVUE0w1eVULWbWIFoQ3YmZjgyYl9j6IfRBV0CmLH7XQSgMzCBsEKoSyDU6n+QY3P0FYI2DSaS52pwMzCDuEuglSGrXlZBaEJaJTCFEb+up3QXgiuhsZ1FBhhTNaTA3CAqEkJDYwe/BPbroEYYFQGnDoNSqksMVyEJ4IpbE+k6BYAgzCG6EGZDeRofGD8Ed0EpRadKMPhAWxJYIGl/jQ+XTnJwg7RCvQSNA+8u8IYhkCJbBOw4UV46ezaBBLEZ0HhZVNkdy0DcIS8eYRRBBBWCO+B4cIR2k6wt4AAAAASUVORK5CYII=" alt="QRCode">
-    </li>
-    
-
-</ul>
-</div>
-        
-    </div>
-</div>
-                </div>
-                <div class="card-body">
-                    
-                        
-                        
-                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#树（Tree）"><span class="post-toc-number">1.</span> <span class="post-toc-text">树（Tree）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非空树有以下性质："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">非空树有以下性质：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#树的一些基本术语"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">树的一些基本术语</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#树的表示"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">树的表示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#兄弟-儿子表示法"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">兄弟-儿子表示法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二叉树（Binary-Tree）"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">二叉树（Binary Tree）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二叉树的定义"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">二叉树的定义</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二叉树的五种基本形态"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">二叉树的五种基本形态</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特殊的二叉树"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">特殊的二叉树</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二叉树的几个性质"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">二叉树的几个性质</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二叉树的抽象数据类型定义"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">二叉树的抽象数据类型定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#类型名称：二叉树"><span class="post-toc-number">1.4.5.1.</span> <span class="post-toc-text">类型名称：二叉树</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#数据对象集："><span class="post-toc-number">1.4.5.2.</span> <span class="post-toc-text">数据对象集：</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#操作集："><span class="post-toc-number">1.4.5.3.</span> <span class="post-toc-text">操作集：</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二叉树的存储结构"><span class="post-toc-number">1.4.6.</span> <span class="post-toc-text">二叉树的存储结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-顺序存储结构"><span class="post-toc-number">1.4.6.1.</span> <span class="post-toc-text">1. 顺序存储结构</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2-链表存储"><span class="post-toc-number">1.4.6.2.</span> <span class="post-toc-text">2. 链表存储</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二叉树的遍历"><span class="post-toc-number">1.4.7.</span> <span class="post-toc-text">二叉树的遍历</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#二叉树遍历的应用"><span class="post-toc-number">1.4.7.1.</span> <span class="post-toc-text">二叉树遍历的应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#二叉树的同构"><span class="post-toc-number">1.4.8.</span> <span class="post-toc-text">二叉树的同构</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二叉搜索树（Binary-Search-Tree）"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">二叉搜索树（Binary Search Tree）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#操作集"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">操作集</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#平衡二叉树"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">平衡二叉树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#平衡二叉树的调整"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">平衡二叉树的调整</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#堆"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">堆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#操作集-2"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">操作集</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#哈夫曼树（最优二叉树）（Huffman-Tree）"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">哈夫曼树（最优二叉树）（Huffman Tree）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#哈夫曼树的构造"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">哈夫曼树的构造</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#哈夫曼编码"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">哈夫曼编码</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#集合"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">集合</span></a></li></ol></li></ol></div>
-                        
-                    
-                    <article id="post-content">
-                        <p>[TOC]</p>
-<h3 id="树（Tree）">树（Tree）</h3>
-<p>n个节点构成的有限集合</p>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>数据结构-树（Tree）学习笔记 - Verge&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Verge&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Verge&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="[TOC] 树（Tree）n个节点构成的有限集合 n &amp;#x3D; 0时，称为空树"><meta property="og:type" content="blog"><meta property="og:title" content="数据结构-树（Tree）学习笔记"><meta property="og:url" content="http://blog.verge.ink/2020/03/09/tree/"><meta property="og:site_name" content="Verge&#039;s Blog"><meta property="og:description" content="[TOC] 树（Tree）n个节点构成的有限集合 n &amp;#x3D; 0时，称为空树"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.ax1x.com/2020/03/10/8i5Bf1.png"><meta property="og:image" content="https://s2.ax1x.com/2020/03/10/8ioDsK.png"><meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8k30kn.png"><meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8kadJJ.png"><meta property="og:image" content="https://s2.ax1x.com/2020/03/11/8kasL6.png"><meta property="og:image" content="https://s1.ax1x.com/2020/03/12/8Z98Ug.png"><meta property="og:image" content="https://s1.ax1x.com/2020/03/12/8Z9cG9.png"><meta property="og:image" content="https://s1.ax1x.com/2020/04/08/GR6Tpt.png"><meta property="og:image" content="https://s1.ax1x.com/2020/04/09/G4l1bV.png"><meta property="article:published_time" content="2020-03-09T08:24:48.000Z"><meta property="article:modified_time" content="2021-01-18T15:41:39.573Z"><meta property="article:author" content="Verge"><meta property="article:tag" content="跨域"><meta property="article:tag" content="学习笔记"><meta property="article:tag" content="数据结构"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://s2.ax1x.com/2020/03/10/8i5Bf1.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.verge.ink/2020/03/09/tree/"},"headline":"Verge's Blog","image":["https://s2.ax1x.com/2020/03/10/8i5Bf1.png","https://s2.ax1x.com/2020/03/10/8ioDsK.png","https://s2.ax1x.com/2020/03/11/8k30kn.png","https://s2.ax1x.com/2020/03/11/8kadJJ.png","https://s2.ax1x.com/2020/03/11/8kasL6.png","https://s1.ax1x.com/2020/03/12/8Z98Ug.png","https://s1.ax1x.com/2020/03/12/8Z9cG9.png","https://s1.ax1x.com/2020/04/08/GR6Tpt.png","https://s1.ax1x.com/2020/04/09/G4l1bV.png"],"datePublished":"2020-03-09T08:24:48.000Z","dateModified":"2021-01-18T15:41:39.573Z","author":{"@type":"Person","name":"Verge"},"description":"[TOC] 树（Tree）n个节点构成的有限集合 n &#x3D; 0时，称为空树"}</script><link rel="canonical" href="http://blog.verge.ink/2020/03/09/tree/"><link rel="alternate" href="/path/to/atom.xml" title="Verge&#039;s Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ab2c3f0f8d8c3db192ee50c2eea8075f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Verge&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-03-09T08:24:48.000Z" title="2020-3-9 4:24:48 ├F10: PM┤">2020-03-09</time>发表</span><span class="level-item"><time dateTime="2021-01-18T15:41:39.573Z" title="2021-1-18 11:41:39 ├F10: PM┤">2021-01-18</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span><span class="level-item">31 分钟读完 (大约4595个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">数据结构-树（Tree）学习笔记</h1><div class="content"><p>[TOC]</p>
+<h3 id="树（Tree）"><a href="#树（Tree）" class="headerlink" title="树（Tree）"></a>树（Tree）</h3><p>n个节点构成的有限集合</p>
 <p>n = 0时，称为空树</p>
-<h4 id="非空树有以下性质：">非空树有以下性质：</h4>
-<ul>
-<li>
-<p>树中有一个称为&quot;根（Root）&quot;的节点，用r表示</p>
+<a id="more"></a>
+
+<h4 id="非空树有以下性质："><a href="#非空树有以下性质：" class="headerlink" title="非空树有以下性质："></a>非空树有以下性质：</h4><ul>
+<li><p>树中有一个称为”根（Root）”的节点，用r表示</p>
 </li>
-<li>
-<p>其余节点互不相交且有限，其中每个集合本身又是一棵树，称为原树的子树(SubTree)</p>
+<li><p>其余节点互不相交且有限，其中每个集合本身又是一棵树，称为原树的子树(SubTree)</p>
 <p><img src="https://s2.ax1x.com/2020/03/10/8i5Bf1.png" alt="8i5Bf1.png"></p>
 </li>
-<li>
-<p>子树是不相交的</p>
+<li><p>子树是不相交的</p>
 </li>
-<li>
-<p>除根节点外，每个节点有且仅有一个父节点</p>
+<li><p>除根节点外，每个节点有且仅有一个父节点</p>
 </li>
 </ul>
 <p><strong>这些都不是树</strong></p>
@@ -472,8 +26,7 @@
 <ul>
 <li>一棵N个节点的树有N-1条边</li>
 </ul>
-<h4 id="树的一些基本术语">树的一些基本术语</h4>
-<ol>
+<h4 id="树的一些基本术语"><a href="#树的一些基本术语" class="headerlink" title="树的一些基本术语"></a>树的一些基本术语</h4><ol>
 <li>节点的度(Degree)：节点的子树个数</li>
 <li>树的度：树的所有节点中最大的度数（上面那个树的度为3）</li>
 <li>叶结点（Leaf）：度为零的节点，即没有子树</li>
@@ -486,34 +39,27 @@
 <li>结点的层次（Level）：规定根结点在1层，其他任一结点的层数是其父结点层数+1，</li>
 <li>树的深度（Depth）：树中所有结点中的最大层次就是这棵树的深度</li>
 </ol>
-<h4 id="树的表示">树的表示</h4>
-<p>为了节省空间和方便这里使用<strong>兄弟-儿子表示法</strong></p>
-<h5 id="兄弟-儿子表示法">兄弟-儿子表示法</h5>
-<table>
+<h4 id="树的表示"><a href="#树的表示" class="headerlink" title="树的表示"></a>树的表示</h4><p>为了节省空间和方便这里使用<strong>兄弟-儿子表示法</strong></p>
+<h5 id="兄弟-儿子表示法"><a href="#兄弟-儿子表示法" class="headerlink" title="兄弟-儿子表示法"></a>兄弟-儿子表示法</h5><table>
 <thead>
 <tr>
 <th>Element</th>
 <th></th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>FirstChild</td>
 <td>NextSibling</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>链表的每个结点如上图</p>
 <p>链接起来后如下图</p>
 <p><img src="https://s2.ax1x.com/2020/03/11/8k30kn.png" alt="8k30kn.png"></p>
 <p>这样的树被称为<strong>二叉树</strong></p>
-<h4 id="二叉树（Binary-Tree）">二叉树（Binary Tree）</h4>
-<h5 id="二叉树的定义">二叉树的定义</h5>
-<p>二叉树是一个有穷的结点集合</p>
+<h4 id="二叉树（Binary-Tree）"><a href="#二叉树（Binary-Tree）" class="headerlink" title="二叉树（Binary Tree）"></a>二叉树（Binary Tree）</h4><h5 id="二叉树的定义"><a href="#二叉树的定义" class="headerlink" title="二叉树的定义"></a>二叉树的定义</h5><p>二叉树是一个有穷的结点集合</p>
 <p>这个集合可以为空</p>
 <p>若不为空，则它是由根节点和称为其<strong>左子树</strong>和<strong>右子树</strong>的两个<strong>不相交</strong>的二叉树组成</p>
-<h5 id="二叉树的五种基本形态">二叉树的五种基本形态</h5>
-<ul>
+<h5 id="二叉树的五种基本形态"><a href="#二叉树的五种基本形态" class="headerlink" title="二叉树的五种基本形态"></a>二叉树的五种基本形态</h5><ul>
 <li>空树</li>
 <li>只有根</li>
 <li>只有左子树</li>
@@ -521,8 +67,7 @@
 <li>左右子树都有</li>
 </ul>
 <p>二叉树和其他度为2的树的不同在于二叉树的子树有左右顺序之分</p>
-<h5 id="特殊的二叉树">特殊的二叉树</h5>
-<ul>
+<h5 id="特殊的二叉树"><a href="#特殊的二叉树" class="headerlink" title="特殊的二叉树"></a>特殊的二叉树</h5><ul>
 <li>斜二叉树（Skewed Binary Tree）</li>
 </ul>
 <p>只有左子树或只有右子树</p>
@@ -537,29 +82,20 @@
 <p>将完美二叉树的叶结点，从有往左依次删除任意个数，所形成的二叉树就是完全二叉树</p>
 <p>下图就不是一个完全二叉树</p>
 <p><img src="https://s2.ax1x.com/2020/03/11/8kasL6.png" alt="8kasL6.png"></p>
-<h5 id="二叉树的几个性质">二叉树的几个性质</h5>
-<ul>
-<li>
-<p>一个二叉树第i层的最大结点数为：2^(i-1) , i &gt;= 1</p>
+<h5 id="二叉树的几个性质"><a href="#二叉树的几个性质" class="headerlink" title="二叉树的几个性质"></a>二叉树的几个性质</h5><ul>
+<li><p>一个二叉树第i层的最大结点数为：2^(i-1) , i &gt;= 1</p>
 </li>
-<li>
-<p>深度为k的二叉树有最大结点总数为：2^k - 1 ,k &gt;= 1</p>
+<li><p>深度为k的二叉树有最大结点总数为：2^k - 1 ,k &gt;= 1</p>
 <p>完美二叉树可以达到2^k - 1个结点</p>
 </li>
-<li>
-<p>对于任何非空二叉树T，若n0表示叶节点的个数、n2是度为2的非叶结点个数，那么n0 = n2 + 1</p>
+<li><p>对于任何非空二叉树T，若n0表示叶节点的个数、n2是度为2的非叶结点个数，那么n0 = n2 + 1</p>
 </li>
 </ul>
-<h5 id="二叉树的抽象数据类型定义">二叉树的抽象数据类型定义</h5>
-<h6 id="类型名称：二叉树">类型名称：二叉树</h6>
-<h6 id="数据对象集：">数据对象集：</h6>
-<p>​		一个有穷结点集合。</p>
-<p>​		若不为空，则有根节点和其左、右二叉树组成</p>
-<h6 id="操作集：">操作集：</h6>
-<ol>
+<h5 id="二叉树的抽象数据类型定义"><a href="#二叉树的抽象数据类型定义" class="headerlink" title="二叉树的抽象数据类型定义"></a>二叉树的抽象数据类型定义</h5><h6 id="类型名称：二叉树"><a href="#类型名称：二叉树" class="headerlink" title="类型名称：二叉树"></a>类型名称：二叉树</h6><h6 id="数据对象集："><a href="#数据对象集：" class="headerlink" title="数据对象集："></a>数据对象集：</h6><p>​        一个有穷结点集合。</p>
+<p>​        若不为空，则有根节点和其左、右二叉树组成</p>
+<h6 id="操作集："><a href="#操作集：" class="headerlink" title="操作集："></a>操作集：</h6><ol>
 <li>Boolean IsEmpty(BinTree BT):判断二叉树是否为空</li>
-<li>void Traversal(BinTree BT):遍历，按某种顺序访问每个结点
-<ul>
+<li>void Traversal(BinTree BT):遍历，按某种顺序访问每个结点<ul>
 <li>void PreOrderTraversal(BinTree BT):先序-根、左子树、右子树</li>
 <li>void InOrderTraversal(BinTree BT):中序—左子树、根、右子树</li>
 <li>void PostOrderTraversal(BinTree BT):后序—左子树、右子树、根</li>
@@ -568,9 +104,7 @@
 </li>
 <li>BinTree CreatBinTree():创建二叉树</li>
 </ol>
-<h5 id="二叉树的存储结构">二叉树的存储结构</h5>
-<h6 id="1-顺序存储结构">1. 顺序存储结构</h6>
-<p><strong>完全二叉树</strong>可以方便的使用数组实现</p>
+<h5 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h5><h6 id="1-顺序存储结构"><a href="#1-顺序存储结构" class="headerlink" title="1. 顺序存储结构"></a>1. 顺序存储结构</h6><p><strong>完全二叉树</strong>可以方便的使用数组实现</p>
 <p>共n个结点</p>
 <table>
 <thead>
@@ -583,8 +117,7 @@
 <th>E</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>序号</td>
 <td>1</td>
 <td>2</td>
@@ -592,25 +125,21 @@
 <td>4</td>
 <td>5</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <ul>
 <li>非根结点（i &gt; 1）的父结点的序号是i/2</li>
 <li>结点（i）的左孩子结点序号是2i（2i &lt;= n，否则没有左孩子）</li>
 <li>结点（i）的右孩子结点的序号是2i+1（2i+1 &lt;= n,否则没有右孩子）</li>
 </ul>
 <p><strong>一般二叉树</strong>也可以使用数组实现，但是会造成空间浪费</p>
-<h6 id="2-链表存储">2. 链表存储</h6>
-<p>结点的结构：|Left|Data|Right|</p>
+<h6 id="2-链表存储"><a href="#2-链表存储" class="headerlink" title="2. 链表存储"></a>2. 链表存储</h6><p>结点的结构：|Left|Data|Right|</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> *<span class="title">BinTree</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> BinTree Position;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>&#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    BinTree Left;</span><br><span class="line">    BinTree Right;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="二叉树的遍历">二叉树的遍历</h5>
-<ol>
+<h5 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h5><ol>
 <li>遍历（递归）</li>
 </ol>
 <p>简单但是浪费空间</p>
 <ol>
-<li>
-<p>先序遍历</p>
+<li><p>先序遍历</p>
 <p>遍历过程</p>
 <ol>
 <li>访问根节点</li>
@@ -623,10 +152,9 @@
 <p><img src="https://s1.ax1x.com/2020/03/12/8Z98Ug.png" alt="8Z98Ug.png"></p>
 <p>这个图更好，注意看箭头</p>
 <p><img src="https://s1.ax1x.com/2020/03/12/8Z9cG9.png" alt="8Z9cG9.png"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(BT)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,BT-&gt;Data);<span class="comment">//打印这个结点的数据</span></span><br><span class="line">        PerOrderTraversal(BT-&gt;Left);<span class="comment">//递归地遍历左子树</span></span><br><span class="line">        PerOrderTraversal(BT-&gt;Right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(BT)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,BT-&gt;Data);<span class="comment">//打印这个结点的数据</span></span><br><span class="line">        PerOrderTraversal(BT-&gt;Left);<span class="comment">//递归地遍历左子树</span></span><br><span class="line">        PerOrderTraversal(BT-&gt;Right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="2">
-<li>
-<p>中序遍历</p>
+<li><p>中序遍历</p>
 <ol>
 <li>中序遍历其左子树</li>
 <li>访问其根节点</li>
@@ -634,10 +162,9 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(BT)&#123;</span><br><span class="line">        </span><br><span class="line">        InOrderTraversal(BT-&gt;Left);<span class="comment">//递归地遍历左子树</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,BT-&gt;Data);<span class="comment">//打印这个结点的数据</span></span><br><span class="line">        InOrderTraversal(BT-&gt;Right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(BT)&#123;</span><br><span class="line">        </span><br><span class="line">        InOrderTraversal(BT-&gt;Left);<span class="comment">//递归地遍历左子树</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,BT-&gt;Data);<span class="comment">//打印这个结点的数据</span></span><br><span class="line">        InOrderTraversal(BT-&gt;Right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>
-<p>后序遍历</p>
+<li><p>后序遍历</p>
 <ol>
 <li>后序遍历其左节点</li>
 <li>后序遍历其右节点</li>
@@ -645,11 +172,10 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(BT)&#123;</span><br><span class="line">        </span><br><span class="line">        PostOrderTraversal(BT-&gt;Left);<span class="comment">//递归地遍历左子树</span></span><br><span class="line">        PostOrderTraversal(BT-&gt;Right);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,BT-&gt;Data);<span class="comment">//打印这个结点的数据</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(BT)&#123;</span><br><span class="line">        </span><br><span class="line">        PostOrderTraversal(BT-&gt;Left);<span class="comment">//递归地遍历左子树</span></span><br><span class="line">        PostOrderTraversal(BT-&gt;Right);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,BT-&gt;Data);<span class="comment">//打印这个结点的数据</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>以上三种遍历过程，经过结点的路线一样，只是访问各结点的时机不同</strong></p>
 <ol start="2">
-<li>
-<p>遍历（非递归）</p>
+<li><p>遍历（非递归）</p>
 <ol>
 <li>中序遍历（第二次碰到结点就printf）</li>
 </ol>
@@ -659,51 +185,47 @@
 </li>
 </ol>
 <ul>
-<li>
-<p>当左子树遍历结束后，就从栈顶弹出这个结点并访问它</p>
+<li><p>当左子树遍历结束后，就从栈顶弹出这个结点并访问它</p>
 <ul>
-<li>然后按其右指针再去中序遍历该节点的右子树</li>
+<li><p>然后按其右指针再去中序遍历该节点的右子树</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">    BinTree T = BT;</span><br><span class="line">    Stack S = CreatStack(MaxSize); <span class="comment">//创建并初始化堆栈</span></span><br><span class="line">    <span class="keyword">while</span>(T || !IsEmpty(S))&#123;<span class="comment">//循环结束只要满足结点为空且堆栈为空</span></span><br><span class="line">        <span class="keyword">while</span>(T)&#123; <span class="comment">//一直循环直至结点为空</span></span><br><span class="line">            Push(S,T);<span class="comment">//把结点压入堆栈</span></span><br><span class="line">        	T = T-&gt;Left; <span class="comment">//指针转到下一个左边的结点</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!IsEmpty(S))&#123; <span class="comment">//如果堆栈不空的话就开始Pop</span></span><br><span class="line">            T = Pop(S); <span class="comment">//把栈顶元素给T，并Pop</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%5d&quot;</span>,T-&gt;Data); <span class="comment">//打印结点数据</span></span><br><span class="line">            T = T-&gt;Right; <span class="comment">//准到根节点的右子树</span></span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">	&#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">    BinTree T = BT;</span><br><span class="line">    Stack S = CreatStack(MaxSize); <span class="comment">//创建并初始化堆栈</span></span><br><span class="line">    <span class="keyword">while</span>(T || !IsEmpty(S))&#123;<span class="comment">//循环结束只要满足结点为空且堆栈为空</span></span><br><span class="line">        <span class="keyword">while</span>(T)&#123; <span class="comment">//一直循环直至结点为空</span></span><br><span class="line">            Push(S,T);<span class="comment">//把结点压入堆栈</span></span><br><span class="line">        	T = T-&gt;Left; <span class="comment">//指针转到下一个左边的结点</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!IsEmpty(S))&#123; <span class="comment">//如果堆栈不空的话就开始Pop</span></span><br><span class="line">            T = Pop(S); <span class="comment">//把栈顶元素给T，并Pop</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%5d"</span>,T-&gt;Data); <span class="comment">//打印结点数据</span></span><br><span class="line">            T = T-&gt;Right; <span class="comment">//准到根节点的右子树</span></span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">	&#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>先序遍历（第一次碰到结点就printf）</li>
 </ol>
-<p><strong>由于走过的路径相同，只需要改变访问结点的时机就可以在中序遍历的基础上实现先序遍历</strong></p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">    BinTree T = BT;</span><br><span class="line">    Stack S = CreatStack(MAxSize);</span><br><span class="line">    <span class="keyword">while</span>(T || !Empty(S))&#123;</span><br><span class="line">        <span class="keyword">while</span>(T)&#123;</span><br><span class="line">            Push(S,T);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%5d"</span>,T-&gt;Data);<span class="comment">//与中序遍历的区别就在printf的位置</span></span><br><span class="line">            T = T-&gt;Left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!IsEmpty(S))&#123;</span><br><span class="line">            T = Pop(S);</span><br><span class="line">            T = T-&gt;Right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>由于走过的路径相同，只需要改变访问结点的时机就可以在中序遍历的基础上实现先序遍历</strong></p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">    BinTree T = BT;</span><br><span class="line">    Stack S = CreatStack(MAxSize);</span><br><span class="line">    <span class="keyword">while</span>(T || !Empty(S))&#123;</span><br><span class="line">        <span class="keyword">while</span>(T)&#123;</span><br><span class="line">            Push(S,T);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%5d&quot;</span>,T-&gt;Data);<span class="comment">//与中序遍历的区别就在printf的位置</span></span><br><span class="line">            T = T-&gt;Left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!IsEmpty(S))&#123;</span><br><span class="line">            T = Pop(S);</span><br><span class="line">            T = T-&gt;Right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>
-<p>后序遍历（第三次碰到结点再printf）</p>
+<li><p>后序遍历（第三次碰到结点再printf）    </p>
 </li>
-<li>
-<p>层序遍历</p>
+<li><p>层序遍历</p>
 <p><strong>二叉树遍历的核心问题：二维结构的线性化</strong></p>
 <p>问题在于当你访问完一个结点的左儿子或右儿子之后，剩下的一个儿子怎么办？如果没有存储右儿子或者自己，那么这些结点就丢失了，所以需要一种方法保存该节点或保存他的父结点</p>
-<p><strong>总的来说就是我们需要一个存储结构保存暂时不访问的结点</strong></p>
-<p>这里使用队列解决问题</p>
-<ul>
-<li>先把根入队</li>
-<li>根出队，并且让它的两个儿子入队，左儿子现右儿子后</li>
-<li>依次让队列里的结点出队，并且让他的儿子入队</li>
-<li>重复，直至队列空</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">    Queue Q;</span><br><span class="line">    BinTree T;</span><br><span class="line">    Q = CreatQueue(MaxSize); <span class="comment">//创建并初始化队列</span></span><br><span class="line">    Add(Q,BT); <span class="comment">//让根入队</span></span><br><span class="line">    <span class="keyword">while</span>(!IsEmpty(Q))&#123; <span class="comment">//队列不空就一直循环</span></span><br><span class="line">        T = Delete(Q); <span class="comment">//队首的出队，并记录队首的地址</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,T-&gt;Data);</span><br><span class="line">        <span class="keyword">if</span>(T-&gt;Left) Add(Q,T-&gt;Left); <span class="comment">//左儿子入队</span></span><br><span class="line">        <span class="keyword">if</span>(T-&gt;Right) Add(Q,T-&gt;Right); <span class="comment">//右儿子入队</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
 </ul>
-<h6 id="二叉树遍历的应用">二叉树遍历的应用</h6>
-<h5 id="二叉树的同构">二叉树的同构</h5>
-<p>一个二叉树可以通过n次左右树交换就能变得和另一个一样，就称俩数同构</p>
-<h4 id="二叉搜索树（Binary-Search-Tree）">二叉搜索树（Binary Search Tree）</h4>
-<p>满足：</p>
+<pre><code>  **总的来说就是我们需要一个存储结构保存暂时不访问的结点**
+
+  这里使用队列解决问题
+
+  - 先把根入队
+  - 根出队，并且让它的两个儿子入队，左儿子现右儿子后
+  - 依次让队列里的结点出队，并且让他的儿子入队
+  - 重复，直至队列空
+
+
+
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">    Queue Q;</span><br><span class="line">    BinTree T;</span><br><span class="line">    Q = CreatQueue(MaxSize); <span class="comment">//创建并初始化队列</span></span><br><span class="line">    Add(Q,BT); <span class="comment">//让根入队</span></span><br><span class="line">    <span class="keyword">while</span>(!IsEmpty(Q))&#123; <span class="comment">//队列不空就一直循环</span></span><br><span class="line">        T = Delete(Q); <span class="comment">//队首的出队，并记录队首的地址</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,T-&gt;Data);</span><br><span class="line">        <span class="keyword">if</span>(T-&gt;Left) Add(Q,T-&gt;Left); <span class="comment">//左儿子入队</span></span><br><span class="line">        <span class="keyword">if</span>(T-&gt;Right) Add(Q,T-&gt;Right); <span class="comment">//右儿子入队</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
+<h6 id="二叉树遍历的应用"><a href="#二叉树遍历的应用" class="headerlink" title="二叉树遍历的应用"></a>二叉树遍历的应用</h6><h5 id="二叉树的同构"><a href="#二叉树的同构" class="headerlink" title="二叉树的同构"></a>二叉树的同构</h5><p>一个二叉树可以通过n次左右树交换就能变得和另一个一样，就称俩数同构 </p>
+<h4 id="二叉搜索树（Binary-Search-Tree）"><a href="#二叉搜索树（Binary-Search-Tree）" class="headerlink" title="二叉搜索树（Binary Search Tree）"></a>二叉搜索树（Binary Search Tree）</h4><p>满足：</p>
 <ol>
 <li>非空左子树的所有键值小于其根节点的键值</li>
 <li>右子树大于根节点</li>
 <li>左右子树都是搜索二叉树</li>
 </ol>
 <p><img src="https://s1.ax1x.com/2020/04/08/GR6Tpt.png" alt="GR6Tpt.png"></p>
-<h5 id="操作集">操作集</h5>
-<p>Position Find(ElementType X,BinTree BST):查找X，返回结点的地址</p>
+<h5 id="操作集"><a href="#操作集" class="headerlink" title="操作集"></a>操作集</h5><p>Position Find(ElementType X,BinTree BST):查找X，返回结点的地址</p>
 <p>Position FindMin(BinTree BST)：返回最小元素结点并返回</p>
 <p>Position FindMax(BinTree BST)：最大</p>
 <p>BinTree Insert(ElementType X,BinTree BST)：插入X</p>
@@ -711,8 +233,7 @@
 <p>Find()思路：</p>
 <ol>
 <li>从根节点开始，如果树为空返回NULL</li>
-<li>非空就和X进行比较
-<ol>
+<li>非空就和X进行比较<ol>
 <li>若小于根就在左子树继续查找</li>
 <li>大于则就在右子树里查找</li>
 <li>相等就返回指针</li>
@@ -723,6 +244,8 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">Find</span> <span class="params">(ElementType X,BinTree BST)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!BST) <span class="keyword">return</span> <span class="literal">NULL</span>;<span class="comment">//若数为空就返回NULL</span></span><br><span class="line">    <span class="keyword">if</span>(x &gt; BST-&gt;Data)</span><br><span class="line">        <span class="keyword">return</span> Find(X,BST-&gt;Right); <span class="comment">//递归地调用Find，进入右子树继续查找</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(X &lt; BST-&gt;Data)</span><br><span class="line">        <span class="keyword">return</span> Find(X,BST-&gt;Left);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> BST;<span class="comment">//相等时返回该节点的指针</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>循环实现</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">IterFind</span><span class="params">(ElementType X,BinTree BST)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(BST)&#123;</span><br><span class="line">        <span class="keyword">if</span>(X &gt; BST-&gt;Data)</span><br><span class="line">            BST = BST-&gt;Right;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(X &lt; BST-&gt;Data)</span><br><span class="line">            BST = BST-&gt;Left;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> BST;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <p>FindMin()&amp;FindMax()</p>
 <p>递归实现</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">FindMin</span><span class="params">(BinTree BST)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!BST) <span class="keyword">return</span> <span class="literal">NULL</span>;<span class="comment">//空就返回NULL</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(!BST-&gt;Left)<span class="comment">//如果左子树为空，说明到最小回</span></span><br><span class="line">        <span class="keyword">return</span> BST;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> FindMin(BST-&gt;Left);<span class="comment">//不为空，就进入左子树</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -738,9 +261,8 @@
 <li>只有一个孩子，直接用它的儿子替代它‘</li>
 <li>有两个孩子，</li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BinTree <span class="title">Delete</span><span class="params">(ElementType X,BinTree BST)</span></span>&#123;</span><br><span class="line">    Position Tmp;</span><br><span class="line">    <span class="keyword">if</span>(!BST) <span class="built_in">printf</span>(<span class="string">"要删除的元素未找到"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(X &lt; BST-&gt;Data)</span><br><span class="line">        BST-&gt;Left = Delete(X,BST-&gt;Left);<span class="comment">//递归</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(X &gt; BST-&gt;Data)</span><br><span class="line">        BST-&gt;Right = Delete(X,BST-&gt;Right);<span class="comment">//这两个else if都是查找的过程</span></span><br><span class="line">    <span class="keyword">else</span><span class="comment">//找到后</span></span><br><span class="line">        <span class="keyword">if</span>(BST-&gt;Left &amp;&amp; BST-&gt;Right)&#123;<span class="comment">//判断结点的类型</span></span><br><span class="line">            Tmp = FindMin(BST-&gt;Right);<span class="comment">//找到右子树中最小的结点</span></span><br><span class="line">            BST-&gt;Data = Tmp-&gt;Data;<span class="comment">//用找到的那个结点替换要删除的结点</span></span><br><span class="line">            BST-&gt;Right=Delete(BST-&gt;Data,BST-&gt;Right);<span class="comment">//删除那个用于替换原结点的结点,不理解为什么，有赋值这个操作 </span></span><br><span class="line">        &#125;</span><br><span class="line">    	<span class="keyword">else</span>&#123;</span><br><span class="line">            Tmp = BST;</span><br><span class="line">            <span class="keyword">if</span>(!BST-&gt;Left)</span><br><span class="line">                BST = BST-&gt;Right;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!BST-&gt;Right)</span><br><span class="line">                BST = BST-&gt;Left;</span><br><span class="line">            <span class="built_in">free</span>(Tmp);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> BST;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="平衡二叉树">平衡二叉树</h4>
-<p>查找效率高</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BinTree <span class="title">Delete</span><span class="params">(ElementType X,BinTree BST)</span></span>&#123;</span><br><span class="line">    Position Tmp;</span><br><span class="line">    <span class="keyword">if</span>(!BST) <span class="built_in">printf</span>(<span class="string">&quot;要删除的元素未找到&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(X &lt; BST-&gt;Data)</span><br><span class="line">        BST-&gt;Left = Delete(X,BST-&gt;Left);<span class="comment">//递归</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(X &gt; BST-&gt;Data)</span><br><span class="line">        BST-&gt;Right = Delete(X,BST-&gt;Right);<span class="comment">//这两个else if都是查找的过程</span></span><br><span class="line">    <span class="keyword">else</span><span class="comment">//找到后</span></span><br><span class="line">        <span class="keyword">if</span>(BST-&gt;Left &amp;&amp; BST-&gt;Right)&#123;<span class="comment">//判断结点的类型</span></span><br><span class="line">            Tmp = FindMin(BST-&gt;Right);<span class="comment">//找到右子树中最小的结点</span></span><br><span class="line">            BST-&gt;Data = Tmp-&gt;Data;<span class="comment">//用找到的那个结点替换要删除的结点</span></span><br><span class="line">            BST-&gt;Right=Delete(BST-&gt;Data,BST-&gt;Right);<span class="comment">//删除那个用于替换原结点的结点,不理解为什么，有赋值这个操作 </span></span><br><span class="line">        &#125;</span><br><span class="line">    	<span class="keyword">else</span>&#123;</span><br><span class="line">            Tmp = BST;</span><br><span class="line">            <span class="keyword">if</span>(!BST-&gt;Left)</span><br><span class="line">                BST = BST-&gt;Right;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!BST-&gt;Right)</span><br><span class="line">                BST = BST-&gt;Left;</span><br><span class="line">            <span class="built_in">free</span>(Tmp);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> BST;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h4><p>查找效率高</p>
 <p><strong>平衡因子（Blance Factor，BF）</strong>：BF(T) = hL-hR</p>
 <p>hL,hR分别为T的左右子树的高度</p>
 <p><strong>平衡二叉树(Blance Binary Tree)(AVL树)</strong></p>
@@ -748,42 +270,38 @@
 <li>空树</li>
 <li>任意结点左右子树高度差的绝对值不超过1</li>
 </ol>
-<h5 id="平衡二叉树的调整">平衡二叉树的调整</h5>
-<p>给树插入结点时，有可能会破坏树的平衡，因此需要调整</p>
+<h5 id="平衡二叉树的调整"><a href="#平衡二叉树的调整" class="headerlink" title="平衡二叉树的调整"></a>平衡二叉树的调整</h5><p>给树插入结点时，有可能会破坏树的平衡，因此需要调整</p>
 <p>平衡二叉树还是一个搜索二叉树，因此在调整过程中，依然要保持搜索二叉树的特性</p>
-<h4 id="堆">堆</h4>
-<p>优先队列(Priority Queue):特殊的队列，取出元素的顺序按照元素的优先权（关键字）大小</p>
+<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>优先队列(Priority Queue):特殊的队列，取出元素的顺序按照元素的优先权（关键字）大小</p>
 <p><strong>两个特性：</strong></p>
 <ol>
 <li>结构性：用数组表示的完全二叉树</li>
-<li>有序性：任意结点的关键字是其子树所有结点的最大值或最小值
-<ul>
+<li>有序性：任意结点的关键字是其子树所有结点的最大值或最小值<ul>
 <li>最大堆（MaxHeap）也称大顶堆</li>
 <li>最小堆（MinHeap）也称小顶堆</li>
 </ul>
 </li>
 </ol>
-<h5 id="操作集-2">操作集</h5>
-<p>MaxHeap Create(int MaxSize)</p>
+<h5 id="操作集-1"><a href="#操作集-1" class="headerlink" title="操作集"></a>操作集</h5><p>MaxHeap Create(int MaxSize)</p>
 <p>Boolean IsFull(MaxHeap H)</p>
 <p>Inser(MaxHeap H,ElementType item)</p>
 <p>Boolean IsEmpty(MaxHeap H)</p>
 <p>ElementType DeleteMax(MaxHeap H)</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HeapStruct</span> *<span class="title">MaxHeap</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HeapStruct</span>&#123;</span></span><br><span class="line">    ElementType *ElementType;<span class="comment">//储存堆元素的数组</span></span><br><span class="line">    <span class="keyword">int</span> Size;<span class="comment">//堆当前元素的个数</span></span><br><span class="line">    <span class="keyword">int</span> Capacity;<span class="comment">//堆的最大容量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">MaxHeap <span class="title">Create</span><span class="params">(<span class="keyword">int</span> MaxSize)</span></span>&#123;</span><br><span class="line">    MaxHeap H = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct HeapStruct));<span class="comment">//申请一块空间给H</span></span><br><span class="line">    H-&gt;Elements = <span class="built_in">malloc</span>((MaxSize+<span class="number">1</span>)*<span class="keyword">sizeof</span>(ElementType));<span class="comment">//申请一块数组空间</span></span><br><span class="line">    H-&gt;Size = <span class="number">0</span>;<span class="comment">//初始为零，当前元素个数</span></span><br><span class="line">    H-&gt;Capacity = MaxSize;<span class="comment">//初始为MaxSize，堆的最大容量</span></span><br><span class="line">    H-&gt;Element[<span class="number">0</span>] = MaxDate;<span class="comment">//哨兵，方便以后访问</span></span><br><span class="line">    <span class="keyword">return</span> H; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(MaxHeap H,ElementType item)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>(IsFull(H))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"满"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    i = ++H-&gt;Size;<span class="comment">//i指向插入后堆中的最后一个元素,插入后Size++</span></span><br><span class="line">    <span class="keyword">for</span>(;H&gt;Elements[i/<span class="number">2</span>] &lt; item;i/=<span class="number">2</span>)<span class="comment">//插入时结点放在最后，然后依次与他的父结点进行比较，直到父结点大于他为止</span></span><br><span class="line">        H-&gt;Elements[i] = H-&gt;Elements[i/<span class="number">2</span>];<span class="comment">//大于就和父结点互换位置</span></span><br><span class="line">    H-&gt;Elements[i] = item;</span><br><span class="line">    <span class="comment">//完全二叉树中，一个结点的序号/2就是它父结点的序号</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://imgchr.com/i/G4l1bV" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/04/09/G4l1bV.png" alt="G4l1bV.png"></a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(MaxHeap H,ElementType item)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>(IsFull(H))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;满&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    i = ++H-&gt;Size;<span class="comment">//i指向插入后堆中的最后一个元素,插入后Size++</span></span><br><span class="line">    <span class="keyword">for</span>(;H&gt;Elements[i/<span class="number">2</span>] &lt; item;i/=<span class="number">2</span>)<span class="comment">//插入时结点放在最后，然后依次与他的父结点进行比较，直到父结点大于他为止</span></span><br><span class="line">        H-&gt;Elements[i] = H-&gt;Elements[i/<span class="number">2</span>];<span class="comment">//大于就和父结点互换位置</span></span><br><span class="line">    H-&gt;Elements[i] = item;</span><br><span class="line">    <span class="comment">//完全二叉树中，一个结点的序号/2就是它父结点的序号</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/G4l1bV"><img src="https://s1.ax1x.com/2020/04/09/G4l1bV.png" alt="G4l1bV.png"></a></p>
 <p>哨兵的一个作用就是，哨兵的值是堆中最大的，无论多大的结点来比较，到哨兵这里就会停止，可以减少一个判断条件i&gt;1，提高效率</p>
 <p><strong>基本思路：删除根之后，把树的最后一个节点（保证完全二叉树的特性）挪到根的位置，然后进行调整排序</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">DeleteMax</span><span class="params">(MaxHeap H)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Parent,Child;</span><br><span class="line">    ElementType MaxItem,temp;</span><br><span class="line">    <span class="keyword">if</span>(IsEmpty(H))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"满"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    MaxItem = H-&gt;Elements[<span class="number">1</span>];<span class="comment">//把要删除的结点存起来，一会儿返回出去</span></span><br><span class="line">    temp = H-&gt;Element[H-&gt;Size--];<span class="comment">//把最后一个结点存起来，然后Size--</span></span><br><span class="line">    <span class="keyword">for</span>(Parent = <span class="number">1</span>;Parent*<span class="number">2</span>&lt;=H-&gt;Size;Parent=Child)&#123;<span class="comment">//从根节点开始循环，每次循环完后进入下一层的左节点，如果Parent*2&lt;=H-&gt;Size说明，下一层没有节点了</span></span><br><span class="line">        Child = Parent*<span class="number">2</span>;<span class="comment">//进入下一层的左节点</span></span><br><span class="line">        <span class="keyword">if</span>((Child!=H-&gt;Size)&amp;&amp;(H-&gt;Element[Child]&lt;H-&gt;Elements[Chile+<span class="number">1</span>]))<span class="comment">//Child!=H-&gt;Size保证进入这个判断的结点都有两个儿子，(H-&gt;Element[Child]&lt;H-&gt;Elements[Chile+1])默认左节点大于右节点，如果小于就Child++</span></span><br><span class="line">            Child++;</span><br><span class="line">        <span class="keyword">if</span>(temp &gt;= H-&gt;Element[Child]) <span class="keyword">break</span>;<span class="comment">//如果temp大于这个节点的最大子节点那么说明位置正确</span></span><br><span class="line">        <span class="keyword">else</span> H-&gt;ElementS[Parent] = H-&gt;Elements[Child];<span class="comment">//交换两节点位置</span></span><br><span class="line">    &#125; </span><br><span class="line">    H-&gt;Element[Parent] = temp;</span><br><span class="line">    <span class="keyword">return</span> MaxItem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">DeleteMax</span><span class="params">(MaxHeap H)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Parent,Child;</span><br><span class="line">    ElementType MaxItem,temp;</span><br><span class="line">    <span class="keyword">if</span>(IsEmpty(H))&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;满&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    MaxItem = H-&gt;Elements[<span class="number">1</span>];<span class="comment">//把要删除的结点存起来，一会儿返回出去</span></span><br><span class="line">    temp = H-&gt;Element[H-&gt;Size--];<span class="comment">//把最后一个结点存起来，然后Size--</span></span><br><span class="line">    <span class="keyword">for</span>(Parent = <span class="number">1</span>;Parent*<span class="number">2</span>&lt;=H-&gt;Size;Parent=Child)&#123;<span class="comment">//从根节点开始循环，每次循环完后进入下一层的左节点，如果Parent*2&lt;=H-&gt;Size说明，下一层没有节点了</span></span><br><span class="line">        Child = Parent*<span class="number">2</span>;<span class="comment">//进入下一层的左节点</span></span><br><span class="line">        <span class="keyword">if</span>((Child!=H-&gt;Size)&amp;&amp;(H-&gt;Element[Child]&lt;H-&gt;Elements[Chile+<span class="number">1</span>]))<span class="comment">//Child!=H-&gt;Size保证进入这个判断的结点都有两个儿子，(H-&gt;Element[Child]&lt;H-&gt;Elements[Chile+1])默认左节点大于右节点，如果小于就Child++</span></span><br><span class="line">            Child++;</span><br><span class="line">        <span class="keyword">if</span>(temp &gt;= H-&gt;Element[Child]) <span class="keyword">break</span>;<span class="comment">//如果temp大于这个节点的最大子节点那么说明位置正确</span></span><br><span class="line">        <span class="keyword">else</span> H-&gt;ElementS[Parent] = H-&gt;Elements[Child];<span class="comment">//交换两节点位置</span></span><br><span class="line">    &#125; </span><br><span class="line">    H-&gt;Element[Parent] = temp;</span><br><span class="line">    <span class="keyword">return</span> MaxItem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>建立最大堆</strong></p>
 <p>方法：</p>
 <ol>
-<li>
-<p>通过Insert操作，将元素一个一个插进去（O(NlogN)）</p>
+<li><p>通过Insert操作，将元素一个一个插进去（O(NlogN)）</p>
 </li>
-<li>
-<p>在线性时间复杂度下建立最大堆</p>
+<li><p>在线性时间复杂度下建立最大堆</p>
 <ol>
 <li>将N个元素按顺序存入，先满足完全二叉树的特性</li>
 <li>调整各节点位置，以满足有序特性</li>
@@ -791,11 +309,9 @@
 <p><strong>如何调整</strong></p>
 </li>
 </ol>
-<h4 id="哈夫曼树（最优二叉树）（Huffman-Tree）">哈夫曼树（最优二叉树）（Huffman Tree）</h4>
-<p>**带权路径长度（WPL）：**设二叉树有n个叶结点，每个叶结点带有权值Wk，从根节点到每个叶结点的长度为Lk，WPL=每条路径长度乘权值的和</p>
+<h4 id="哈夫曼树（最优二叉树）（Huffman-Tree）"><a href="#哈夫曼树（最优二叉树）（Huffman-Tree）" class="headerlink" title="哈夫曼树（最优二叉树）（Huffman Tree）"></a>哈夫曼树（最优二叉树）（Huffman Tree）</h4><p><strong>带权路径长度（WPL）：</strong>设二叉树有n个叶结点，每个叶结点带有权值Wk，从根节点到每个叶结点的长度为Lk，WPL=每条路径长度乘权值的和</p>
 <p>哈夫曼树：WPL最小</p>
-<h5 id="哈夫曼树的构造">哈夫曼树的构造</h5>
-<p>思路:把所有元素按权值排列，然后拿出两个权值最小的合并成一个二叉树，然后再找两个最小的合并，直到合并完</p>
+<h5 id="哈夫曼树的构造"><a href="#哈夫曼树的构造" class="headerlink" title="哈夫曼树的构造"></a>哈夫曼树的构造</h5><p>思路:把所有元素按权值排列，然后拿出两个权值最小的合并成一个二叉树，然后再找两个最小的合并，直到合并完</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> *<span class="title">HuffmanTree</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> Weight;</span><br><span class="line">    HuffmanTree Left,Right;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">HuffmanTree <span class="title">Huffman</span><span class="params">(MinHeap H)</span></span>&#123;<span class="comment">//假设H-&gt;Size的权值已经存在H-&gt;Element[]-&gt;Weight里</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    HuffmanTree T;</span><br><span class="line">    BulidMinHeap(H); <span class="comment">//将H-》ElementS[]按权值调整为最小堆</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>;i&lt;H-&gt;Size;i++)&#123;</span><br><span class="line">        T = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct TreeNode));<span class="comment">//建一个新结点，存放新组成的树</span></span><br><span class="line">        T-&gt;Left = DeleteMin(H);</span><br><span class="line">        T-&gt;Right = DeleteMin(H);<span class="comment">//从堆里拿出俩元素，进行组合</span></span><br><span class="line">        T-&gt;Weight = T-&gt;Left-&gt;Weight+T-&gt;Right-&gt;Weight;</span><br><span class="line">        Insert(H,T);<span class="comment">//把组合后的树插入最小堆</span></span><br><span class="line">    &#125;</span><br><span class="line">    T = DeleteMin(H);</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>特点</strong>：</p>
 <ul>
@@ -804,22 +320,18 @@
 <li>任意非叶结点的左右子树交换后仍是哈夫曼树</li>
 <li>同一组权值存在不同构的两颗哈夫曼树</li>
 </ul>
-<h5 id="哈夫曼编码">哈夫曼编码</h5>
-<p>为了将字符的存储空间降到最小还要避免二义性，就可以使用哈夫曼编码（编码不等长）</p>
+<h5 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h5><p>为了将字符的存储空间降到最小还要避免二义性，就可以使用哈夫曼编码（编码不等长）</p>
 <p>方法：</p>
 <ol>
 <li>将每个字符出现的次数作为权值</li>
 <li>创建一个哈夫曼树，保证每个字符都在叶结点上就不会出现二义性</li>
 </ol>
-<h4 id="集合">集合</h4>
-<p>并查集：集合并，查某元素属于那个集合</p>
+<h4 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h4><p>并查集：集合并，查某元素属于那个集合</p>
 <p>存储实现：用树结构（并非二叉树），树的每个结点代表一个元素</p>
 <ol>
-<li>
-<p>用是链表实现</p>
+<li><p>用是链表实现</p>
 </li>
-<li>
-<p>数组：</p>
+<li><p>数组：</p>
 <ul>
 <li>数组的每个分量都是一共结构，包含结点的值和父结点的下标，没有父结点则记为-1</li>
 </ul>
@@ -829,172 +341,77 @@
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(SetType s[],ElementType X)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; MaxSize &amp;&amp; S[i].Data != X;i++);<span class="comment">//循环查找X，找到后退出时i的值就是该节点的下标或没找到</span></span><br><span class="line">    <span class="keyword">if</span>(i &gt;= MaxSize) <span class="keyword">return</span> <span class="number">-1</span>;<span class="comment">//判断属于以上那种情况</span></span><br><span class="line">    <span class="keyword">for</span>(;s[i].Parent &gt;= <span class="number">0</span>;i = s[i].Parent);<span class="comment">//查找这个结点的根结点，退出时就是i是根节点的下标</span></span><br><span class="line">    <span class="keyword">return</span> i ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>并
-<ul>
+<li>并<ul>
 <li>分别找到两个集合的根节点</li>
 <li>若不同根就设置一个集合的根节点的父结点为另一个集合的根节点</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(SetType s[],ElementType X1,ElementType X2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Root1,Root2;</span><br><span class="line">    Root1 = Find(S,X1);</span><br><span class="line">    Root2 = FInd(S,X2);</span><br><span class="line">    <span class="keyword">if</span>(Root1 != Root2) s[Root2].Parent = Root1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​	如果总是这样插的话可能会导致树越来越高，所以考虑将结点少的插到结点多的树底下</p>
+<p>​    如果总是这样插的话可能会导致树越来越高，所以考虑将结点少的插到结点多的树底下</p>
 <p>这使就需要考虑如何存储一个树的结点个数，如果在结构中再创建一个变量的话，由于只有根节点需要存储数据，会造成空间浪费，所以考虑继续使用本来的数组存储，可以使用原来标记结点为根节点的空间来存储，有x个结点就在数组中存为-x，到时候只需要判断正负就可以。</p>
 </li>
 </ol>
-
-                    </article>
-                    
-    <blockquote class="post-license">
-        <p>
-            <strong>本文作者&nbsp;:&nbsp;JinXuyang</strong>
-            <br>
-            <strong>
+</div><div class="article-licensing box"><div class="licensing-title"><p>数据结构-树（Tree）学习笔记</p><p><a href="http://blog.verge.ink/2020/03/09/tree/">http://blog.verge.ink/2020/03/09/tree/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Verge</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-03-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-01-18</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E8%B7%A8%E5%9F%9F/">跨域</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2020/03/23/string/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">算法竞赛入门经典笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2020/03/09/queue/"><span class="level-item">数据结构-队列（Queue）学习笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "d9avhzyLi7ges1PUPP3LSYlD-gzGzoHsz",
+            appKey: "Dk3uaHo79EoF3n2Lo6GYrjrI",
             
-                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
-            </strong>
-            <br>
-            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://verge.ink/2020/03/09/tree/">http://verge.ink/2020/03/09/tree/</a>
-        </p>
-    </blockquote>
-
-
-
-    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
-    <script>
-    (function() {
-        var dateUpdate = Date.parse("2020-11-12");
-        var nowDate = new Date();
-        var a = nowDate.getTime();
-        var b = a - dateUpdate;
-        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
-        if (daysUpdateExpire >= 120) {
-            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
-        } else {
-            document.getElementById('date-expire-notification').style.display = 'none';
-        }
-    })();
-    </script>
-
-
-<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-03-09T08:24:48.000Z" itemprop="datePublished">2020-03-09</time>
-
-    , 最后修改于&nbsp;<time datetime="2020-11-12T14:02:27.247Z" itemprop="dateModified">2020-11-12</time>
-
-</p>
-<p class="post-footer-info mb-0 pt-2">
-
-
-
-
-</p>
-
-                </div>
-                <div class="post-nav px-2 bg-gray">
-<ul class="pagination">
-    <!-- Prev Nav -->
-    
-        <li class="page-item page-prev">
-            <a href="/2020/03/12/PTA-Pratice/" rel="prev">
-                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">PTA测试题（C语言程序设计）</div>
-            </a>
-        </li>
-    
-
-    <!-- Next Nav -->
-    
-        <li class="page-item page-next">
-            <a href="/2020/03/09/queue/" rel="next">
-                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">队列</div>
-            </a>
-        </li>
-    
-</ul>
-</div>
-
-                
-                    <!-- # Comment # -->
-                    
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-            <!-- ### Footer ### -->
-            <footer class="text-center">
-    <!-- footer copyright -->
-    
-        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
-            <a class="footer-copyright-a" href="http://verge.ink">Verge's Blog</a>
-        </p>
-
-    <!-- footer custom text -->
-    <p class="footer-text mb-0">
-    <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer noopener">陕ICP备20012211号-1</a>
-    </p>
-    <!-- footer develop info -->
-    <p class="footer-develop mb-0">
-        
-    <!-- Busuanzi User Views -->
-    <span id="busuanzi_container_site_uv" hidden>
-        <span></span>
-        <span id="busuanzi_value_site_uv"></span>
-        <span>Viewers</span>
-        
-            <span>|</span>
-        
-    </span>
-
-
-    <!-- Busuanzi Post Views -->
-    <span id="busuanzi_container_site_pv" hidden>
-        <span></span>
-        <span id="busuanzi_value_site_pv"></span>
-        <span>Views</span>
-        
-    </span>
-
-
-
-        
-        Powered by&nbsp;<!--
-         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
-         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
-    </p>
-</footer>
-
-
-        <!-- ### Import File ### -->
-        <!-- ### Footer JS Import ### -->
-
-<script>
-
-    
-window.lazyLoadOptions = {
-    elements_selector: ".lazyload",
-    threshold: 50
-};
-document.getElementById('copyright-year').textContent = new Date().getFullYear();
-console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
-
-</script>
-
-<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
-
-
-<!-- Offset -->
-
-
-
-
-<!-- Comment -->
-
-
-<!-- ### Custom Footer ### -->
-
-    </body>
-
-</html>
+            avatar: "mm",
+            
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            lang: "zh-CN",
+            visitor: true,
+            highlight: true,
+            
+            
+            
+            
+            
+            requiredFields: [],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Verge"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Verge</p><p class="is-size-6 is-block">生命万岁！</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>西安</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">34</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">12</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">17</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/jinxuyang" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/jinxuyang"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/C/"><span class="level-start"><span class="level-item">C</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/php/"><span class="level-start"><span class="level-item">php</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/redis/"><span class="level-start"><span class="level-item">redis</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/spring/"><span class="level-start"><span class="level-item">spring</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">学习笔记</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="level-start"><span class="level-item">数据库</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="level-start"><span class="level-item">数据结构</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%A1%86%E6%9E%B6/"><span class="level-start"><span class="level-item">框架</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%94%9F%E6%B4%BB/"><span class="level-start"><span class="level-item">生活</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E9%A1%B9%E7%9B%AE/"><span class="level-start"><span class="level-item">项目</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2020/12/"><span class="level-start"><span class="level-item">十二月 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/11/"><span class="level-start"><span class="level-item">十一月 2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/09/"><span class="level-start"><span class="level-item">九月 2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/05/"><span class="level-start"><span class="level-item">五月 2020</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/04/"><span class="level-start"><span class="level-item">四月 2020</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/03/"><span class="level-start"><span class="level-item">三月 2020</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/02/"><span class="level-start"><span class="level-item">二月 2020</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cors/"><span class="tag">cors</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/java/"><span class="tag">java</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mybatis/"><span class="tag">mybatis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/php/"><span class="tag">php</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/spring/"><span class="tag">spring</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/spring-cloud/"><span class="tag">spring cloud</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/xml/"><span class="tag">xml</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="tag">学习笔记</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"><span class="tag">年终总结</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="tag">数据库</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="tag">数据结构</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%AD%A3%E5%88%99/"><span class="tag">正则</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%B7%A8%E5%9F%9F/"><span class="tag">跨域</span><span class="tag">2</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-12-30T07:27:39.000Z">2020-12-30</time></p><p class="title"><a href="/2020/12/30/2020Review/">2020Review</a></p><p class="categories"><a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-12-22T01:40:33.000Z">2020-12-22</time></p><p class="title"><a href="/2020/12/22/ElasticSearch/">ES学习笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-12-18T01:40:33.000Z">2020-12-18</time></p><p class="title"><a href="/2020/12/18/Docker/">Docker学习笔记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-11-11T07:27:39.000Z">2020-11-11</time></p><p class="title"><a href="/2020/11/11/Redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Redis学习笔记</a></p><p class="categories"><a href="/categories/redis/">redis</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-11-08T16:04:09.000Z">2020-11-09</time></p><p class="title"><a href="/2020/11/09/Spring%20Cloud%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Spring Cloud学习笔记</a></p><p class="categories"><a href="/categories/spring/">spring</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Verge&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2021 Verge</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">陕ICP备20012211号-1</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/jinxuyang"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
